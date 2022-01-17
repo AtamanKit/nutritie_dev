@@ -1,8 +1,12 @@
-import './App.css';
+import './styles/main.css';
+import React from 'react';
+import HeroBg from './components/hero_bg';
 
 function App() {
   return (
-    <p>Hello World!</p>
+    <React.Fragment>
+      <HeroBg />
+    </React.Fragment>
   );
 }
 
