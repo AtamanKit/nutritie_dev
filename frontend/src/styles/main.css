@@ -1,21 +1,15 @@
 .hero-image {
-    background-image: url('../images/hero-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg');
+    /* background-color:rgb(42, 165, 149); */
     height: 100vh;
     width: 100vw;
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     position: relative;
-}
-
-.hero-area {
-    position: absolute;
-    background-color:brown;
-    /* opacity: 0.5; */
-    height: 100vh;
-    width: 100vw;
-    /* z-index: 1;    */
+    /* z-index: 0;   */
 }
 
 .hero-text h1 {
@@ -24,7 +18,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color:white;
+    color:rgb(215, 215, 215);
 }
 
 .hero-text p {
