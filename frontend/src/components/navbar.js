@@ -1,6 +1,7 @@
 import { Nav, Navbar, NavDropdown, Container, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import logo from '../images/logo.png'
+import logo from '../images/logo.png';
+import { ImCart } from 'react-icons/im';
 
 function NavBar() {
     const [color, setColor] = useState('')
@@ -14,12 +15,18 @@ function NavBar() {
     })
     
     return(
-        <Navbar bg={color} fixed='top' variant='dark' expand='lg'>
+        <Navbar 
+            bg={color} 
+            fixed='top' 
+            variant='dark' 
+            expand='lg'
+            className='navbar'
+        >
             <Container>
                 <Navbar.Brand href='#home'>
                     <img
                         src={logo}
-                        height='40'
+                        height='50'
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -32,8 +39,8 @@ function NavBar() {
 
                     </Nav>
                     <Nav>
-                        <Nav.Link>Sign In</Nav.Link>
-                        <Nav.Link>|</Nav.Link>
+                        <Nav.Link className='nav_left'><ImCart/></Nav.Link>
+                        <Nav.Link className='nav_left'>Sign In</Nav.Link>
                         <Nav.Link>Log In</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

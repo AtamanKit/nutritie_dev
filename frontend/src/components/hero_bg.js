@@ -1,4 +1,5 @@
 import React from "react";
+// import { Button } from 'react-bootstrap';
 // import NavBar from "./navbar";
 function HeroBg() {
     return(
@@ -9,6 +10,13 @@ function HeroBg() {
             <div className='hero-text'>
                 <p>VINDECARE PRIN ALIMENTATIE</p>
                 <h1>VEZI MAGAZINUL NOSTRU</h1>
+                <a href='/toate_prod' className='myBtn'>
+                    Toate produsele
+                </a>
+                {/* <a href='/categorii' className='myBtn_out'>
+                    Categorii
+                </a> */}
+                
             </div>
         </React.Fragment>
             
