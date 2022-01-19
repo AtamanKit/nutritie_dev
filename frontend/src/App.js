@@ -6,6 +6,7 @@ import NavBar from './components/navbar';
 import DummyText from './components/dummy_text';
 import { useRef } from 'react';
 import SupportLent from './components/support';
+import Footer from './components/footer';
 
 function App() {
   const myRef = useRef(null);
@@ -17,6 +18,7 @@ function App() {
       <HeroBg />
       <SupportLent />
       <DummyText myTest={myRef}/>
+      <Footer />
     </React.Fragment>
   );
 }

@@ -76,14 +76,14 @@
     /* border-radius: 100%; */
 }
 
-.myBtn:hover {
+/* .myBtn:hover {
     background-color: #017080;
     border-color: #94b237;
 }
 
 .myBtn:active {
     background-color: #017080;
-}
+} */
 /* a.myBtn_out {
     color: rgb(215, 215, 215);
     border: 2px solid #94b237;
@@ -143,4 +143,47 @@
     line-height: 52px;
     border: 2px #94b237 dotted;
     border-radius: 999px;
+}
+
+.footer {
+    background-color: #001118;
+    color: rgb(215, 215, 215);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.footer-title h3 {
+    font-size: 24px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 20px;
+    color: #fff;
+  }
+
+.footer-title h3:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 20px;
+    height: 2px;
+    background-color: #94b237;
+    content: "";
+}
+
+.face-btn {
+    width: 140px;
+    background-color: #94b237;
+    border: #94b237;
+}
+
+.whats-btn {
+    font-size: 30px;
+    padding-left: 5px;
+    color: #acacac;
+}
+
+.whats-btn:hover {
+    color:seagreen;
 }
