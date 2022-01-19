@@ -3,7 +3,7 @@ import { useState } from 'react';
 import logo from '../images/logo.png';
 import { ImCart } from 'react-icons/im';
 
-function NavBar() {
+function NavBar(props) {
     const [color, setColor] = useState('')
     
     window.addEventListener('scroll', () => {
@@ -29,17 +29,17 @@ function NavBar() {
                         height='50'
                     />
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                <Navbar.Collapse id='basic-navbar-nav'>
+                <Navbar.Toggle aria-controls='basic-navbar-nav'/>
+                <Navbar.Collapse id='basic-navbar-nav' className='nav-toggle'>
                     <Nav className='me-auto'>
                         <Nav.Link href='#home'>Home</Nav.Link>
-                        <Nav.Link href='#link'>Remedii</Nav.Link>
+                        <Nav.Link href='#link' onClick={props.myNavFunc}>Remedii</Nav.Link>
                         <Nav.Link href='#link2'>Magazin</Nav.Link>
                         <Nav.Link href='#link3'>Contacte</Nav.Link>
 
                     </Nav>
                     <Nav>
-                        <Nav.Link className='nav_left'><ImCart/></Nav.Link>
+                        <Nav.Link className='nav_left'>Cos <ImCart/></Nav.Link>
                         <Nav.Link className='nav_left'>Sign In</Nav.Link>
                         <Nav.Link>Log In</Nav.Link>
                     </Nav>

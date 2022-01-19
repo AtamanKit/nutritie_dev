@@ -1,4 +1,4 @@
-function DummyText() {
+function DummyText(props) {
     return(
     <div className='dummy'>
         <h1>THIS IS SOME DUMMY TEXT</h1>
@@ -67,7 +67,7 @@ function DummyText() {
         years, sometimes by accident, sometimes on purpose (injected humour 
         and the like).
         </p>
-        <h1>Where can I get some</h1>
+        <h1 ref={props.myTest}>Where can I get some</h1>
         <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting 
         industry. Lorem Ipsum has been the industry's standard dummy text 
