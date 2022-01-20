@@ -6,19 +6,35 @@ import NavBar from './components/navbar';
 import DummyText from './components/dummy_text';
 import { useRef } from 'react';
 import SupportLent from './components/support';
+import Categorii from './components/categorii';
 import Footer from './components/footer';
 
 function App() {
   const myRef = useRef(null);
+  const catApRef = useRef(null);
+  const footApRef = useRef(null);
+
+  const homeApFunc = () => window.scrollTo(0, 0);
+  const catApFunc = () => catApRef.current.scrollIntoView();
+  // const catApFunc = () => console.log(catApRef);
   const myRefFunc = () => myRef.current.scrollIntoView();
+  const footApFunc = () => footApRef.current.scrollIntoView();
 
   return (
     <React.Fragment>
-      <NavBar myNavFunc={myRefFunc}/>
+      <NavBar
+        navHome={homeApFunc}
+        navCat={catApFunc}
+        myNavFunc={myRefFunc}
+        navFoot={footApFunc}
+      />
       <HeroBg />
       <SupportLent />
+      <Categorii catRef={catApRef}/>
       <DummyText myTest={myRef}/>
-      <Footer />
+      <Footer 
+        footHome={homeApFunc}
+        footRef={footApRef}/>
     </React.Fragment>
   );
 }

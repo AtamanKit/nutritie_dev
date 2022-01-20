@@ -32,10 +32,19 @@ function NavBar(props) {
                 <Navbar.Toggle aria-controls='basic-navbar-nav'/>
                 <Navbar.Collapse id='basic-navbar-nav' className='nav-toggle'>
                     <Nav className='me-auto'>
-                        <Nav.Link href='#home'>Home</Nav.Link>
-                        <Nav.Link href='#link' onClick={props.myNavFunc}>Remedii</Nav.Link>
-                        <Nav.Link href='#link2'>Magazin</Nav.Link>
-                        <Nav.Link href='#link3'>Contacte</Nav.Link>
+                        <Nav.Link onClick={props.navHome}>Home</Nav.Link>
+                        <Nav.Link onClick={props.myNavFunc}>Remedii</Nav.Link>
+                        {/* <Nav.Link onClick={props.navCat}>Produse pe catecorii</Nav.Link> */}
+                        {/* <Nav.Link href='#link2'>Magazin</Nav.Link> */}
+                        <NavDropdown title='Magazin' id='basic-nav-dropdown' menuVariant='dark'>
+                             <NavDropdown.Item onMouseEnter={props.navCat}> 
+                                Produse pe catecorii
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href='/toata_prod'>
+                                Toate produsele
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link href='#link3' onClick={props.navFoot}>Contacte</Nav.Link>
 
                     </Nav>
                     <Nav>

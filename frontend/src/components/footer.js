@@ -1,9 +1,9 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { IoLogoWhatsapp } from 'react-icons/io';
 
-function Footer() {
+function Footer(props) {
     return (
-        <div className='footer'>
+        <div className='footer' ref={ props.footRef }>
             <Container>
                 <Row>
                     <Col>
@@ -41,6 +41,17 @@ function Footer() {
                             >
                                 Facebook
                             </Button>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className='footer-title'>
+                            <h3>MENU</h3>
+                            <ul>
+                                <li><a onClick={props.footHome}>Home</a></li>
+                                <li><a href='/#remedii'>Remedii</a></li>
+                                <li><a href='/#cat_prod'>Produse pe categorii</a></li>
+                                <li><a href='/#toate_prod'>Toate produsele</a></li>
+                            </ul>
                         </div>
                     </Col>
                 </Row>
