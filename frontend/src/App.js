@@ -6,8 +6,9 @@ import NavBar from './components/navbar';
 import DummyText from './components/dummy_text';
 import { useRef } from 'react';
 import SupportLent from './components/support';
-import Categorii from './components/categorii';
+import Categories from './components/categories';
 import Footer from './components/footer';
+// import ClassFetch from './components/class_fetch';
 
 function App() {
   const myRef = useRef(null);
@@ -30,11 +31,12 @@ function App() {
       />
       <HeroBg />
       <SupportLent />
-      <Categorii catRef={catApRef}/>
+      <Categories catRef={catApRef}/>
       <DummyText myTest={myRef}/>
       <Footer 
         footHome={homeApFunc}
         footRef={footApRef}/>
+      {/* <ClassFetch /> */}
     </React.Fragment>
   );
 }

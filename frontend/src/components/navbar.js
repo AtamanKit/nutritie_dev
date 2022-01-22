@@ -1,4 +1,4 @@
-import { Nav, Navbar, NavDropdown, Container, Button } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import logo from '../images/logo.png';
 import { ImCart } from 'react-icons/im';
