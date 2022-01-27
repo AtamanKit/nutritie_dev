@@ -5,17 +5,16 @@ import ingr_corp_img from '../images/ingr_corp_366x160.jpg';
 import React, {useEffect, useState} from 'react';
 
 function Categories(props){
-    const [category, setCategory] = useState('');
+    const [categories, setCategories] = useState('');
 
     useEffect(() => {
-        const url = 'http://127.0.0.1:8000/categories/';
+        const url = 'http://127.0.0.1:8000/nut_app/categories/';
 
         const fetchData = async() => {
             try {
                 const result = await fetch(url);
                 const json = await result.json();
-                console.log(json);
-                setCategory(result);
+                setCategories(json);
             } catch (error) {
                 console.log("error", error);
             }
@@ -23,7 +22,7 @@ function Categories(props){
 
         fetchData();
     }, [])
-    // console.log(category)
+    // console.log(categories.length)
 
     return (
         <React.Fragment>
@@ -42,26 +41,27 @@ function Categories(props){
             </Card>
             {/* </div> */}
             <CardGroup>
-                <Card className='cardbody'>
-                    <Card.Img 
-                            variant='top' 
-                            src={alim_img} 
-                            
-                    />
-                    <Card.Body>
-                        <Card.Title>ALIMENTE</Card.Title>
-                        <Card.Text>
-                            In categoria respectiva gasiti alimente pentru consumul normal,
-                            dar si cel medicamentos. Alimentele pe care le propunem noi
-                            pot servi o buna profilaxiei a dietei alimentare in viata de
-                            zi cu zi.
-                        </Card.Text>
-                        <Button variant='success' className='cat-btn'>
-                            Accesati...
-                        </Button>
-                    </Card.Body>
-                </Card>
-                <Card className='cardbody'>
+                {
+                    categories.length !== 0
+                    ?   categories.map(category =>
+                        <Card className='cardbody'>
+                            <Card.Img 
+                                    variant='top' 
+                                    src={alim_img} 
+                                    
+                            />
+                            <Card.Body>
+                                <Card.Title>{category.title}</Card.Title>
+                                <Card.Text>{category.description}</Card.Text>
+                                <Button variant='success' className='cat-btn'>
+                                    Accesati...
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    )
+                    : []
+                }
+                {/* <Card className='cardbody'>
                     <Card.Img 
                         variant='top'
                         src={supl_img}
@@ -77,8 +77,8 @@ function Categories(props){
                             Accesati...
                         </Button>
                     </Card.Body>
-                </Card>
-                <Card className='cardbody'>
+                </Card> */}
+                {/* <Card className='cardbody'>
                     <Card.Img 
                         variant='top'
                         src={ingr_corp_img}
@@ -94,7 +94,7 @@ function Categories(props){
                             Accesati...
                         </Button>
                     </Card.Body>
-                </Card>
+                </Card> */}
             </CardGroup>
         </React.Fragment>
     )
