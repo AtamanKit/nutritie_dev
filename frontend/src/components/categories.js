@@ -1,7 +1,7 @@
 import { CardGroup, Card, Button } from 'react-bootstrap';
-import alim_img from '../images/alimente_366x160.jpg';
-import supl_img from '../images/suplimente_366x160.jpg';
-import ingr_corp_img from '../images/ingr_corp_366x160.jpg';
+// import alim_img from '../images/alimente_366x160.jpg';
+// import supl_img from '../images/suplimente_366x160.jpg';
+// import ingr_corp_img from '../images/ingr_corp_366x160.jpg';
 import React, {useEffect, useState} from 'react';
 
 function Categories(props){
@@ -47,7 +47,7 @@ function Categories(props){
                         <Card className='cardbody'>
                             <Card.Img 
                                     variant='top' 
-                                    src={alim_img} 
+                                    src={category.image_desc} 
                                     
                             />
                             <Card.Body>
