@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 class Categories(models.Model):
     title = models.CharField(max_length=30, unique=True)
     description = models.TextField(max_length=255)
-    image_desc = models.ImageField(upload_to='nut_app/media')
+    image_desc = models.ImageField(upload_to='nut_app/media/categories/')
 
     def clean(self):
         if self.image_desc.width != 366 or \
@@ -13,3 +13,8 @@ class Categories(models.Model):
 
     def __str__(self):
         return self.title
+
+class Remedies_feat(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    feat_text = models.TextField()
+    image_desc = models.ImageField(upload_to='nut_app/media/remedies')

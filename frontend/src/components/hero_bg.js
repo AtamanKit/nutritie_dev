@@ -1,27 +1,44 @@
 import React from "react";
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 // import NavBar from "./navbar";
 function HeroBg() {
     return(
         <React.Fragment>
-            <div className='hero-image'/>
-            {/* <div className='hero-area'/>  */}
-            
-            <div className='hero-text'>
+            <div className='hero-image'>
+           
+            {/* <div className='hero-text'>
                 <p>VINDECARE PRIN ALIMENTATIE</p>
                 <h1>VEZI MAGAZINUL NOSTRU</h1>
                 
-                {/* <a href='/categorii' className='myBtn_out'>
-                    Categorii
-                </a> */}
-                
             </div>
-            <div className='hero-btns'>
-                    {/* <a href='/toate_prod' className='myBtn'>
-                        Toate produsele
-                    </a> */}
+                <div className='hero-btns'>
                     <Button variant='success' className='myBtn'>Toate produsele</Button>
-            </div>
+                </div> */}
+            
+            <Card style={{backgroundColor: 'rgba(0, 0, 0, 0.0)'}}>
+                {/* <Card.Img src={require('../images/hero-bg-5.jpg')} alt="Card image" /> */}
+                {/* <Card.ImgOverlay> */}
+                    <Card.Text style={{
+                                    textAlign: 'center',
+                                    color: '#94b237',
+                                    marginTop: '12rem'
+                                }}>
+                        VINDECARE PRIN ALIMENTATIE
+                    </Card.Text>
+                    <Card.Title style={{
+                                    textAlign: 'center',
+                                    fontWeight: 'bold',
+                                    color: '#fff',
+                                }}
+                                    ><h1 style={{fontWeight: 'bold'}}>VEZI MAGAZINUL NOSTRU</h1>
+                    </Card.Title>
+                    <Card className='card-hero-btn'>
+                        <Button variant='success' className='myBtn'>Vezi produse...</Button>
+                    </Card>
+                    {/* <Card.Text>Last updated 3 mins ago</Card.Text> */}
+                {/* </Card.ImgOverlay> */}
+                </Card>
+                </div>
         </React.Fragment>
             
         

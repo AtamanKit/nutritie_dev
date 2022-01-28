@@ -37,10 +37,10 @@ function NavBar(props) {
                         {/* <Nav.Link onClick={props.navCat}>Produse pe catecorii</Nav.Link> */}
                         {/* <Nav.Link href='#link2'>Magazin</Nav.Link> */}
                         <NavDropdown title='Magazin' id='basic-nav-dropdown' menuVariant='dark'>
-                             <NavDropdown.Item onMouseEnter={props.navCat}> 
+                             <NavDropdown.Item onMouseEnter={props.navCat} className='nav-drop-sub'> 
                                 Produse pe catecorii
                             </NavDropdown.Item>
-                            <NavDropdown.Item href='/toata_prod'>
+                            <NavDropdown.Item href='/toata_prod' className='nav-drop-sub'>
                                 Toate produsele
                             </NavDropdown.Item>
                         </NavDropdown>

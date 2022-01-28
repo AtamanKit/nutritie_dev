@@ -1,17 +1,17 @@
 import { CardGroup, Card, Button } from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 
-function Categories(props){
-    const [categories, setCategories] = useState('');
+function Remedies(props){
+    const [rmedies, setRemedies] = useState('');
 
     useEffect(() => {
-        const url = 'http://127.0.0.1:8000/nut_app/categories/';
+        const url = 'http://127.0.0.1:8000/nut_app/remedies/';
 
         const fetchData = async() => {
             try {
                 const result = await fetch(url);
                 const json = await result.json();
-                setCategories(json);
+                setRemedies(json);
             } catch (error) {
                 console.log("error", error);
             }
