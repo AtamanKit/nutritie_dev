@@ -80,9 +80,16 @@
 
 .card-hero-btn {
     background-color: rgba(0, 0, 0, 0);
-    padding-left: 43%;
-    padding-right: 43%;
+    padding-left: 45%;
+    padding-right: 45%;
     /* transform: translate(-10%, 0) */
+}
+
+@media only screen and (max-width: 1300px) {
+    .card-hero-btn {
+        padding-left: 43%;
+        padding-right: 43%;
+    }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -146,7 +153,7 @@
 
 @media only screen and (min-width: 992px) {
     .navbar {
-        font-size: 0.8rem;
+        font-size: 1rem;
         color:rgb(0, 0, 0);
     }
 }
@@ -173,7 +180,7 @@
 }
 
 .nav-drop-sub {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 }
 
 .support-lent {
@@ -261,7 +268,7 @@
     color:seagreen;
 }
 
-.cardbody {
+.card-body {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
@@ -303,4 +310,9 @@ h2.categorii {
     border: #94b237;
     position: relative;
     /* width: 50%; */
+}
+
+.front-widths {
+    margin-left: 10rem;
+    margin-right: 10rem;
 }

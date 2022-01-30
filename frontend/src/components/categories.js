@@ -37,11 +37,11 @@ function Categories(props){
                 </Card.Body>
             </Card>
             {/* </div> */}
-            <CardGroup>
+            <CardGroup className='front-widths'>
                 {
                     categories.length !== 0
                     ?   categories.map(category =>
-                        <Card className='cardbody'>
+                        <Card className='card-body'>
                             <Card.Img 
                                     variant='top' 
                                     src={category.image_desc} 

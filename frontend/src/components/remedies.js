@@ -2,7 +2,7 @@ import { CardGroup, Card, Button } from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 
 function Remedies(props){
-    const [rmedies, setRemedies] = useState('');
+    const [remedies, setRemedies] = useState('');
 
     useEffect(() => {
         const url = 'http://127.0.0.1:8000/nut_app/remedies/';
@@ -37,7 +37,7 @@ function Remedies(props){
                 </Card.Body>
             </Card>
             {/* </div> */}
-            <CardGroup>
+            <CardGroup className='front-widths'>
                 {
                     categories.length !== 0
                     ?   categories.map(category =>

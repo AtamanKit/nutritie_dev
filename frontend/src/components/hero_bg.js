@@ -21,16 +21,16 @@ function HeroBg() {
                     <Card.Text style={{
                                     textAlign: 'center',
                                     color: '#94b237',
-                                    marginTop: '12rem'
+                                    marginTop: '20rem',
+                                    fontSize: '1.2rem'
                                 }}>
                         VINDECARE PRIN ALIMENTATIE
                     </Card.Text>
                     <Card.Title style={{
                                     textAlign: 'center',
-                                    fontWeight: 'bold',
                                     color: '#fff',
                                 }}
-                                    ><h1 style={{fontWeight: 'bold'}}>VEZI MAGAZINUL NOSTRU</h1>
+                                    ><h1 style={{fontWeight: 'bold', fontSize: '4rem'}}>VEZI MAGAZINUL NOSTRU</h1>
                     </Card.Title>
                     <Card className='card-hero-btn'>
                         <Button variant='success' className='myBtn'>Vezi produse...</Button>
