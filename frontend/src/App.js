@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import SupportLent from './components/support';
 import Categories from './components/categories';
 import Footer from './components/footer';
+import Remedies_feat from './components/remedies_feat'
 // import ClassFetch from './components/class_fetch';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <HeroBg />
       <SupportLent />
       <Categories catRef={catApRef}/>
+      <Remedies_feat/>
       <DummyText myTest={myRef}/>
       <Footer 
         footHome={homeApFunc}

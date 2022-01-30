@@ -14,9 +14,10 @@ class Categories(models.Model):
     def __str__(self):
         return self.title
 
-class Remedies_feat(models.Model):
+class Remedies(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    feat_text = models.TextField()
+    description = models.TextField()
+    text = models.TextField()
     image_desc = models.ImageField(upload_to='nut_app/media/remedies')
 
     def clean(self):
