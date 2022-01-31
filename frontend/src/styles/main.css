@@ -121,17 +121,17 @@
     }
 }
 
-.myBtn  {
-    background-color: #94b237;
+/* .myBtn  { */
+    /* background-color: #94b237; */
     /* display: inline-block; */
-    border-color: #94b237;
+    /* border-color: #94b237; */
     /* width: 10rem; */
     /* display: flex; */
     /* margin-left: 15rem; */
     /* align-items: center; */
     /* border-radius: 10%; */
     /* border-style: inset; */
-}
+/* } */
 
 /* .myBtn:hover {
     background-color: #017080;
@@ -305,14 +305,24 @@ h2.categorii {
 
 } */
 
-.cat-btn {
+.myBtn {
     background-color: #94b237;
     border: #94b237;
     position: relative;
+    color:white;
     /* width: 50%; */
 }
 
+.myBtn:hover {
+    background-color: #106b1f;
+    color: white;
+}
+
+/* .rem-btn {
+    back
+} */
+
 .front-widths {
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
 }

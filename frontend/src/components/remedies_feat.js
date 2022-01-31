@@ -24,7 +24,7 @@ function Remedies_feat(props){
     return (
         <React.Fragment>
             {/* <div ref={props.catRef}> */}
-            <Card className='prod-cat' ref={props.catRef}>
+            <Card className='prod-cat' ref={props.remRef}>
                 <Card.Body>
                     <Card.Title>
                         <h2 className='produsele'>RECOMANDARI </h2>
@@ -32,33 +32,10 @@ function Remedies_feat(props){
                         <div className='card-line'/>
                     </Card.Title>
                     <Card.Text>
-                        Accesati una din categorii pentru a vedea produsele.
+                        Venim cu niste sfaturi catre dumneavoastra.
                     </Card.Text>
                 </Card.Body>
             </Card>
-            {/* </div>
-            {/* <CardGroup className='front-widths'>
-                {
-                    remedies.length !== 0
-                    ?   remedies.map(remedy =>
-                        <Card>
-                            <Card.Img 
-                                    variant='top' 
-                                    src={remedy.image_desc} 
-                                    
-                            />
-                            <Card.ImgOverlay>
-                                <Card.Title>{remedy.title}</Card.Title>
-                                <Card.Text>{remedy.feat_text}</Card.Text>
-                                <Button variant='success' className='cat-btn'>
-                                    Accesati...
-                                </Button>
-                            </Card.ImgOverlay>
-                        </Card>
-                    )
-                    : []
-                }
-            </CardGroup> */}
             <Carousel variant='dark'>
                 {
                     remedies.length !== 0
@@ -69,8 +46,17 @@ function Remedies_feat(props){
                                     src={remedy.image_desc}
                                 />
                                 <Carousel.Caption>
-                                    <h3>{remedy.title}</h3>
-                                    <p>{remedy.description}</p>
+                                    <div style={{
+                                        backgroundColor: 'rgba(50, 50, 50, 0.7)',
+                                        paddingTop: '1rem',
+                                        paddingBottom: '1rem',
+                                        paddingLeft: '2rem',
+                                        paddingRight: '2rem',
+                                        }}>
+                                        <h3 style={{color: '#fff'}}>{remedy.title}</h3>
+                                        <p style={{color: '#94b237'}}>{remedy.description}</p>
+                                        <Button variant='succes' className='myBtn'>Mai mult...</Button>
+                                    </div>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         )

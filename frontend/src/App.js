@@ -3,7 +3,7 @@ import './styles/main.css';
 import React from 'react';
 import HeroBg from './components/hero_bg';
 import NavBar from './components/navbar';
-import DummyText from './components/dummy_text';
+// import DummyText from './components/dummy_text';
 import { useRef } from 'react';
 import SupportLent from './components/support';
 import Categories from './components/categories';
@@ -12,14 +12,14 @@ import Remedies_feat from './components/remedies_feat'
 // import ClassFetch from './components/class_fetch';
 
 function App() {
-  const myRef = useRef(null);
+  // const myRef = useRef(null);
   const catApRef = useRef(null);
+  const remApRef = useRef(null);
   const footApRef = useRef(null);
 
   const homeApFunc = () => window.scrollTo(0, 0);
   const catApFunc = () => catApRef.current.scrollIntoView();
-  // const catApFunc = () => console.log(catApRef);
-  const myRefFunc = () => myRef.current.scrollIntoView();
+  const remApFunc = () => remApRef.current.scrollIntoView();
   const footApFunc = () => footApRef.current.scrollIntoView();
 
   return (
@@ -27,14 +27,13 @@ function App() {
       <NavBar
         navHome={homeApFunc}
         navCat={catApFunc}
-        myNavFunc={myRefFunc}
+        navRem={remApFunc}
         navFoot={footApFunc}
       />
       <HeroBg />
       <SupportLent />
       <Categories catRef={catApRef}/>
-      <Remedies_feat/>
-      <DummyText myTest={myRef}/>
+      <Remedies_feat remRef={remApRef}/>
       <Footer 
         footHome={homeApFunc}
         footRef={footApRef}/>

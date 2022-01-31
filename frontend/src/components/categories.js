@@ -50,7 +50,7 @@ function Categories(props){
                             <Card.Body>
                                 <Card.Title>{category.title}</Card.Title>
                                 <Card.Text>{category.description}</Card.Text>
-                                <Button variant='success' className='cat-btn'>
+                                <Button variant='success' className='myBtn'>
                                     Accesati...
                                 </Button>
                             </Card.Body>
