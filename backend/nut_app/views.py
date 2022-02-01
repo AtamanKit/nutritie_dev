@@ -1,5 +1,5 @@
-from .models import Categories, Remedies
-from .serializers import CategoriesSerializer, RemediesSerializer
+from .models import Categories, Remedies, Brands
+from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer
 from rest_framework import viewsets
 
 class CategoriesViewSet(viewsets.ModelViewSet):
@@ -9,3 +9,7 @@ class CategoriesViewSet(viewsets.ModelViewSet):
 class RemediesViewSet(viewsets.ModelViewSet):
     queryset = Remedies.objects.all()
     serializer_class = RemediesSerializer
+
+class BrandsViewSet(viewsets.ModelViewSet):
+    queryset = Brands.objects.all()
+    serializer_class = BrandsSerializer

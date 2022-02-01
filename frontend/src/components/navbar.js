@@ -44,8 +44,8 @@ function NavBar(props) {
                                 Toate produsele
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href='#link3' onClick={props.navFoot}>Contacte</Nav.Link>
-
+                        <Nav.Link onClick={props.navBrand}>Branduri</Nav.Link>
+                        <Nav.Link onClick={props.navFoot}>Contacte</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link className='nav_left'>Cos <ImCart/></Nav.Link>

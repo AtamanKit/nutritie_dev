@@ -3,7 +3,7 @@ import { IoLogoWhatsapp } from 'react-icons/io';
 
 function Footer(props) {
     return (
-        <div className='footer' ref={ props.footRef }>
+        <div className='footer' ref={props.footRef}>
             <Container>
                 <Row>
                     <Col>
@@ -48,8 +48,8 @@ function Footer(props) {
                             <h3>MENU</h3>
                             <ul>
                                 <li><a onClick={props.footHome}>Home</a></li>
-                                <li><a href='/#remedii'>Remedii</a></li>
-                                <li><a href='/#cat_prod'>Produse pe categorii</a></li>
+                                <li><a onClick={props.footRem}>Remedii</a></li>
+                                <li><a onClick={props.footCat}>Produse pe categorii</a></li>
                                 <li><a href='/#toate_prod'>Toate produsele</a></li>
                             </ul>
                         </div>

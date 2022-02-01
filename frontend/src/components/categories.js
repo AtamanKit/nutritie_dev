@@ -32,12 +32,12 @@ function Categories(props){
                         <div className='card-line'/>
                     </Card.Title>
                     <Card.Text>
-                        Accesati una din categorii pentru a vedea produsele.
+                        Accesati una din categorii pentru a vedea produsele
                     </Card.Text>
                 </Card.Body>
             </Card>
             {/* </div> */}
-            <CardGroup className='front-widths'>
+            <CardGroup>
                 {
                     categories.length !== 0
                     ?   categories.map(category =>

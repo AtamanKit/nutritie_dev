@@ -27,3 +27,11 @@ class Remedies(models.Model):
 
     def __str__(self):
         return self.title
+
+class Brands(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    link = models.CharField(max_length=255, blank=True, )
+    image_desc = models.ImageField(upload_to='nut_app/media/logos')
+
+    def __str__(self):
+        return self.title

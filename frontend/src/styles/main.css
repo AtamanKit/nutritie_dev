@@ -268,11 +268,11 @@
     color:seagreen;
 }
 
-.card-body {
+/* .card-body {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-}
+} */
 
 .cardbody:hover {
     background-color:rgba(0, 0, 0, 0.05);
