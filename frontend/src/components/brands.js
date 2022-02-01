@@ -37,7 +37,11 @@ function Brands(props){
                 </Card.Body>
             </Card>
             {/* </div> */}
-            <CardGroup style={{paddingTop: '80px', paddingBottom: '80px'}}>
+            <CardGroup style={{
+                            paddingTop: '80px', 
+                            paddingBottom: '80px',
+                            paddingLeft: '2rem',
+                            }}>
             
             
                 {
