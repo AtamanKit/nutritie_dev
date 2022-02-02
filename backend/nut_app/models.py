@@ -43,7 +43,7 @@ class Products(models.Model):
     ]
 
     title = models.CharField(max_length=255, unique=True)
-    product_cod = models.IntegerField(unique=True, blank=False, null=True)
+    product_code = models.IntegerField(unique=True, blank=False, null=True)
     description = models.TextField(blank=True)
     administration = models.TextField(null=True, blank=True)
     contraindications = models.TextField(null=True, blank=True)

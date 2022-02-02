@@ -1,8 +1,8 @@
 import { CardGroup, Card, Button } from 'react-bootstrap';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Categories(props){
-    const [categories, setCategories] = useState('');
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         const url = 'http://127.0.0.1:8000/nut_app/categories/';
@@ -19,7 +19,7 @@ function Categories(props){
 
         fetchData();
     }, [])
-    // console.log(categories.length)
+    // console.log(window.location.pathname)
 
     return (
         <React.Fragment>
@@ -39,8 +39,7 @@ function Categories(props){
             {/* </div> */}
             <CardGroup>
                 {
-                    categories.length !== 0
-                    ?   categories.map(category =>
+                    categories.map(category =>
                         <Card className='card-body'>
                             <Card.Img 
                                     variant='top' 
@@ -50,13 +49,12 @@ function Categories(props){
                             <Card.Body>
                                 <Card.Title>{category.title}</Card.Title>
                                 <Card.Text>{category.description}</Card.Text>
-                                <Button variant='success' className='myBtn'>
+                                <Button href='/suplimente/' variant='success' className='myBtn'>
                                     Accesati...
                                 </Button>
                             </Card.Body>
                         </Card>
                     )
-                    : []
                 }
             </CardGroup>
         </React.Fragment>
