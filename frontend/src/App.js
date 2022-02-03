@@ -11,15 +11,17 @@ import Footer from './components/footer';
 import Remedies from './components/remedies';
 import Brands from './components/brands';
 import Products from './components/products';
-import BreadProd from './components/bread_prod';
+import ProductSingle from './components/product_single';
 
 function App() {
+  const homeApRef = useRef(null);
   const remApRef = useRef(null);
   const catApRef = useRef(null);
   const brandApRef = useRef(null);
   const footApRef = useRef(null);
 
-  const homeApFunc = () => window.scrollTo(0, 0);
+  // const homeApFunc = () => window.scrollTo(0, 0);
+  const homeApFunc = () => homeApRef.current.scrollIntoView();
   const remApFunc = () => remApRef.current.scrollIntoView();
   const catApFunc = () => catApRef.current.scrollIntoView();
   const brandApFunc = () => brandApRef.current.scrollIntoView();
@@ -37,13 +39,15 @@ function App() {
         />
         {
           window.location.pathname ==='/suplimente/'
-          ? <React.Fragment>
-              <BreadProd />
-              <Products />
-            </React.Fragment>
+          ?  <Products />
           : []
         }
-        <HeroBg />
+        {
+          window.location.pathname.includes('/product%20singur/')
+          ? <ProductSingle/>
+          : []
+        }
+        <HeroBg homeRef={homeApRef}/>
         <SupportLent />
         <Categories catRef={catApRef}/>
         <Remedies remRef={remApRef}/>

@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Card } from 'react-bootstrap';
-function HeroBg() {
+function HeroBg(props) {
     return(
         <React.Fragment>
-            <div className='hero-image'>
+            <div className='hero-image' ref={props.homeRef}>
            
             <Card style={{
                     backgroundColor: 'rgba(0, 0, 0, 0.0)',

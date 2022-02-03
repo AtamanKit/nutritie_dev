@@ -1,5 +1,6 @@
-import { Tooltip, OverlayTrigger,Card, Button, Row, Col }  from 'react-bootstrap';
-import React, { useEffect, useEffects, useState } from 'react';
+import { Tooltip, OverlayTrigger, Card, Button, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import BreadProd from './bread_prod';
 
 function CountFunc(title) {
     var new_title = ""
@@ -35,6 +36,10 @@ function Products(props) {
 
     return(
         <React.Fragment>
+            <BreadProd 
+                upGreen='VEDETI PRODUSELE DIN'
+                downWhite='CATEGORIA: SUPLIMENTE'
+            />
             <Row xs={1} md={5}>
                 {
                     products.map(product =>
@@ -64,7 +69,7 @@ function Products(props) {
                                     >
                                     <Card.Title>
                                         <a 
-                                            href={`/producte/${product.title}/`}
+                                            href={`/product%20singur/${product.id}`}
                                             style={{
                                                 color: 'rgb(30, 30, 30)',
                                                 textDecorationLine: 'none',

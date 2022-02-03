@@ -47,7 +47,7 @@ function Footer(props) {
                         <div className='footer-title'>
                             <h3>MENU</h3>
                             <ul>
-                                <li><a onClick={props.footHome}>Home</a></li>
+                                <li><a href='/' onClick={props.footHome} className='footer-home-link'>Home</a></li>
                                 <li><a onClick={props.footRem}>Remedii</a></li>
                                 <li><a onClick={props.footCat}>Produse pe categorii</a></li>
                                 <li><a href='/#toate_prod'>Toate produsele</a></li>

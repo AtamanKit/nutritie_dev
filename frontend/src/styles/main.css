@@ -251,7 +251,7 @@
 }
 
 .footer-title a {
-    color: white;
+    /* color: white; */
     font-style: normal;
 }
 
@@ -338,4 +338,13 @@ h2.categorii {
 .front-widths {
     margin-left: 15rem;
     margin-right: 15rem;
+}
+
+.footer-home-link {
+    color: rgb(200, 200, 200);
+    text-decoration-line: none;
+}
+
+.footer-home-link:hover {
+    color:#106b1f;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from 'react-bootstrap';
-function BreadProd() {
+function BreadProd(props) {
     return(
         <React.Fragment>
             <div className='bread-prod-image'>
@@ -17,17 +17,22 @@ function BreadProd() {
                                     marginTop: '15rem',
                                     fontSize: '1.2rem'
                                 }}>
-                        VEDETI PRODUSELE DIN
+                        {props.upGreen}
                     </Card.Text>
                     <Card.Title style={{
                                     textAlign: 'center',
                                     color: '#fff',
                                 }}
-                                    ><h1 style={{fontWeight: 'bold', fontSize: '4rem'}}>CATEGORIA: SUPLIMENTE</h1>
+                    >
+                        <h1 
+                            style={{
+                                fontWeight: 'bold',
+                                fontSize: '4rem'
+                            }}
+                        >
+                            {props.downWhite}
+                        </h1>
                     </Card.Title>
-                    {/* <Card className='card-hero-btn'>
-                        <Button variant='success' className='myBtn'>Vezi produse...</Button>
-                    </Card> */}
                 </Card>
                 </div>
         </React.Fragment>
