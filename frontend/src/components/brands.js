@@ -1,4 +1,4 @@
-import { CardGroup, Card, Button, Figure } from 'react-bootstrap';
+import { CardGroup, Card, Button, Figure, Row, Col } from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 
 function Brands(props){
@@ -37,35 +37,39 @@ function Brands(props){
                 </Card.Body>
             </Card>
             {/* </div> */}
-            <CardGroup style={{
+            {/* <CardGroup style={{
                             paddingTop: '80px', 
                             paddingBottom: '80px',
                             paddingLeft: '2rem',
-                            }}>
+                            }}> */}
             
-            
+                <Row xs={2} md={5}>
                 {
                     brands.length !== 0
                     ?   brands.map(brand =>
+                        <Col>
                         <Card style={{border: '0'}}>
                         
                             <Card.Img
                                 src={brand.image_desc} 
                                 style={{
                                     // paddingTop: '1rem',
-                                    paddingLeft:'1rem',
-                                    paddingRight: '1rem'
+                                    // paddingLeft:'1rem',
+                                    // paddingRight: '1rem'
+                                    padding: '4rem'
                                 }}
                             />
                         </Card>
+                        </Col>
                         
                     )
                     : []
                 }
+                </Row>            
             
 
 
-            </CardGroup>
+            {/* </CardGroup> */}
         </React.Fragment>
     )
 }

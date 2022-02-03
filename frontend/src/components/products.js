@@ -1,5 +1,18 @@
-import { CardGroup, Card, Button, Row, Col }  from 'react-bootstrap';
+import { Tooltip, OverlayTrigger,Card, Button, Row, Col }  from 'react-bootstrap';
 import React, { useEffect, useEffects, useState } from 'react';
+
+function CountFunc(title) {
+    var new_title = ""
+    if (title.length > 25) {
+        for (let i = 0; i < 20; i++) {
+            new_title = new_title + title[i]
+        }
+
+        new_title = new_title + "..."
+    } else var new_title = title
+
+    return new_title
+}
 
 function Products(props) {
     const [products, setProducts] = useState([]);
@@ -22,10 +35,10 @@ function Products(props) {
 
     return(
         <React.Fragment>
-            <Row md={5}>
+            <Row xs={1} md={5}>
                 {
                     products.map(product =>
-                        <Col>
+                        <Col style={{paddingTop: '2rem'}}>
                             <Card style={{
                                             textAlign: 'center',
                                             border: 'none',
@@ -38,10 +51,33 @@ function Products(props) {
                                     src={product.image_desc}
                                 />
                                 <Card.Body>
-                                    <Card.Title>{product.title}</Card.Title>
+                                    <OverlayTrigger
+                                        key='top'
+                                        placement='top'
+                                        overlay={
+                                            <Tooltip 
+                                                id={`tooltip-top`} 
+                                            >
+                                                {product.title}
+                                            </Tooltip>
+                                        }
+                                    >
+                                    <Card.Title>
+                                        <a 
+                                            href={`/producte/${product.title}/`}
+                                            style={{
+                                                color: 'rgb(30, 30, 30)',
+                                                textDecorationLine: 'none',
+                                            }}
+                                        >
+                                                {CountFunc(product.title)}
+                                        </a>
+                                    </Card.Title>
+                                    </OverlayTrigger>
+                                    <Card.Text style={{color: 'rgb(200, 41, 41)'}}>{product.stock}</Card.Text>
                                     <Card.Title><h1>{product.price} lei</h1></Card.Title>
                                     <Button variant='success' className='myBtn'>
-                                        Adaugati in cos
+                                        Adauga in cos
                                     </Button>
                                 </Card.Body>
                             </Card>

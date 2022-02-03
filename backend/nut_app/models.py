@@ -38,8 +38,8 @@ class Brands(models.Model):
 
 class Products(models.Model):
     IN_STOCK_CHOICES = [
-        ('in', 'In stoc'),
-        ('out', 'Stoc epuizat')
+        ('In stoc', 'In stoc'),
+        ('Stoc epuizat', 'Stoc epuizat')
     ]
 
     title = models.CharField(max_length=255, unique=True)
@@ -49,7 +49,7 @@ class Products(models.Model):
     contraindications = models.TextField(null=True, blank=True)
     ingredients = models.TextField(null=True, blank=True)
     form = models.CharField(max_length=255, null=True, blank=True)
-    stock = models.CharField(max_length=10, choices=IN_STOCK_CHOICES, default='in')
+    stock = models.CharField(max_length=20, choices=IN_STOCK_CHOICES, default='in')
     price = models.IntegerField(null=True, blank=True)
     image_desc = models.ImageField(upload_to='nut_app/media/products', blank=True, null=True)
     date = models.DateTimeField()

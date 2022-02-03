@@ -32,7 +32,7 @@ function NavBar(props) {
                 <Navbar.Toggle aria-controls='basic-navbar-nav'/>
                 <Navbar.Collapse id='basic-navbar-nav' className='nav-toggle'>
                     <Nav className='me-auto'>
-                        <Nav.Link onClick={props.navHome}>Home</Nav.Link>
+                        <Nav.Link href='/' onClick={props.navHome}>Home</Nav.Link>
                         <Nav.Link onClick={props.navRem}>Remedii</Nav.Link>
                         {/* <Nav.Link onClick={props.navCat}>Produse pe catecorii</Nav.Link> */}
                         {/* <Nav.Link href='#link2'>Magazin</Nav.Link> */}

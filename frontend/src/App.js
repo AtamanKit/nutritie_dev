@@ -11,6 +11,7 @@ import Footer from './components/footer';
 import Remedies from './components/remedies';
 import Brands from './components/brands';
 import Products from './components/products';
+import BreadProd from './components/bread_prod';
 
 function App() {
   const remApRef = useRef(null);
@@ -24,7 +25,7 @@ function App() {
   const brandApFunc = () => brandApRef.current.scrollIntoView();
   const footApFunc = () => footApRef.current.scrollIntoView();
 
-  if (window.location.pathname === '/') {
+  // if (window.location.pathname === '/') {
     return (
       <React.Fragment>
         <NavBar
@@ -34,11 +35,21 @@ function App() {
           navBrand={brandApFunc}
           navFoot={footApFunc}
         />
+        {
+          window.location.pathname ==='/suplimente/'
+          ? <React.Fragment>
+              <BreadProd />
+              <Products />
+            </React.Fragment>
+          : []
+        }
         <HeroBg />
         <SupportLent />
         <Categories catRef={catApRef}/>
         <Remedies remRef={remApRef}/>
         <Brands brandRef={brandApRef}/>
+        {/* <BreadProd /> */}
+        {/* <Products /> */}
         <Footer
           footRef={footApRef} 
           footHome={homeApFunc}
@@ -48,13 +59,15 @@ function App() {
         {/* <ClassFetch /> */}
       </React.Fragment>
     );
-  } else if (window.location.pathname === '/suplimente/') {
-    return (
-      <React.Fragment>
-        <Products />
-      </React.Fragment>
-    );
-  }
+  // } else if (window.location.pathname === '/suplimente/') {
+  //   return (
+  //     <React.Fragment>
+  //       <NavBar />
+  //       <BreadProd />
+  //       <Products />
+  //     </React.Fragment>
+  //   );
+  // }
 }
 
 export default App;

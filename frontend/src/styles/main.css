@@ -1,6 +1,5 @@
 .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg-5.jpg');
-    /* background-color:rgb(42, 165, 149); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg-6.jpg');
     height: 100vh;
     width: 100vw;
 
@@ -9,8 +8,22 @@
     background-size: cover;
     background-attachment: fixed;
     position: relative;
-    /* z-index: 0;   */
 }
+
+.bread-prod-image {
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(34, 120, 146)), url('../images/breadcrumb-supl.jpg');
+    height: 50vh;
+    width: 100vw;
+
+    background-position: top;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-attachment: fixed;
+    position: relative;
+}
+
+    /* background-color:rgb(42, 165, 149); */
+
 
 /* .hero-text h1 {
     font-size: 2rem;
@@ -82,7 +95,7 @@
     background-color: rgba(0, 0, 0, 0);
     padding-left: 45%;
     padding-right: 45%;
-    /* transform: translate(-10%, 0) */
+    border: 0;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -268,11 +281,11 @@
     color:seagreen;
 }
 
-/* .card-body {
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-} */
+.card-body {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
 
 .cardbody:hover {
     background-color:rgba(0, 0, 0, 0.05);
