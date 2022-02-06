@@ -11,7 +11,8 @@ import Footer from './components/footer';
 import Remedies from './components/remedies';
 import Brands from './components/brands';
 import Products from './components/products';
-import ProductSingle from './components/product_single';
+import ProductDetail from './components/product_detail';
+import RemedyDetail from './components/remedy_detail';
 
 function App() {
   const homeApRef = useRef(null);
@@ -43,8 +44,13 @@ function App() {
           : []
         }
         {
-          window.location.pathname.includes('/product%20singur/')
-          ? <ProductSingle/>
+          window.location.pathname.includes('/product%20detaliat/')
+          ? <ProductDetail/>
+          : []
+        }
+        {
+          window.location.pathname.includes('/remediu%20detaliat/')
+          ? <RemedyDetail/>
           : []
         }
         <HeroBg homeRef={homeApRef}/>

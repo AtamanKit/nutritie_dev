@@ -12,7 +12,7 @@
 
 .bread-prod-image {
     background-image: linear-gradient(rgb(0, 0, 0), rgb(34, 120, 146)), url('../images/breadcrumb-supl.jpg');
-    height: 50vh;
+    height: 40vh;
     width: 100vw;
 
     background-position: top;
@@ -91,48 +91,48 @@
     }
 } */
 
-.card-hero-btn {
+/* .card-hero-btn {
     background-color: rgba(0, 0, 0, 0);
     padding-left: 45%;
     padding-right: 45%;
     border: 0;
-}
+} */
 
-@media only screen and (max-width: 1300px) {
+/* @media only screen and (max-width: 1300px) {
     .card-hero-btn {
         padding-left: 43%;
         padding-right: 43%;
     }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1200px) {
     .card-hero-btn {
         padding-left: 41%;
         padding-right: 41%;
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 992px) {
     .card-hero-btn {
         padding-left: 38%;
         padding-right: 38%;
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
     .card-hero-btn {
         padding-left: 35%;
         padding-right: 35%;
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 576px) {
     .card-hero-btn {
         padding-left: 5%;
         padding-right: 5%;
         transform: translate(-1.7%, 0)
     }
-}
+} */
 
 /* .myBtn  { */
     /* background-color: #94b237; */
@@ -331,6 +331,18 @@ h2.categorii {
     color: white;
 }
 
+.myBtnBord {
+    background-color: #94b237;
+    border: #94b237;
+    color: white;
+    margin-left: 1rem;
+}
+
+.myBtnBord:hover {
+    background-color: #106b1f;
+    color: white;
+}
+
 /* .rem-btn {
     back
 } */
@@ -347,4 +359,57 @@ h2.categorii {
 
 .footer-home-link:hover {
     color:#106b1f;
+}
+
+.cardGroup-product {
+    padding-left: 20rem;
+    padding-right: 20rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .cardGroup-product {
+        padding-left: 0rem;
+        padding-right: 0rem
+    }
+}
+
+/* .tabs-product { */
+    /* padding-left: 20rem;
+    padding-right: 20rem; */
+    /* padding-bottom: 1rem; */
+    /* padding-bottom: 1rem; */
+/* } */
+
+.tab-prod {
+    padding-right: 5rem;
+    padding-bottom: 5rem;
+}
+
+.prog-img {
+    border: none;
+    padding-left: 20rem;
+}
+
+@media only screen and (max-width: 1440px) {
+    .prog-img {
+        padding-left: 0;
+    }
+}
+
+.rem-detail {
+    margin-top: 6rem;
+    padding-bottom: 1rem;
+    padding-left: 15rem;
+}
+
+@media only screen and (max-width: 1440px) {
+    .rem-detail {
+        padding-left: 8rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .rem-detail {
+        padding-left: 0;
+    }
 }

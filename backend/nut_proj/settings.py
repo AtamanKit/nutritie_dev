@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'nut_app',
     'rest_framework',
     'corsheaders',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

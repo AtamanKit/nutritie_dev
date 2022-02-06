@@ -1,14 +1,19 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from ckeditor.fields import RichTextField
 
 class Categories(models.Model):
     title = models.CharField(max_length=30, unique=True)
     description = models.TextField()
     image_desc = models.ImageField(upload_to='nut_app/media/categories/')
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
     def clean(self):
-        if self.image_desc.width != 366 or \
-            self.image_desc.height != 160:
+        if self.image_desc.width != 863 or \
+            self.image_desc.height != 458:
             raise ValidationError("Dimensiunile imaginii trebuie sa corespunda 366x160px")
 
     def __str__(self):
@@ -16,14 +21,25 @@ class Categories(models.Model):
 
 class Remedies(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    description = models.TextField()
-    text = models.TextField()
+    text = RichTextField()
     image_desc = models.ImageField(upload_to='nut_app/media/remedies')
+    date = models.DateTimeField(null=True)
+
+    class Meta:
+        verbose_name = 'Remedy'
+        verbose_name_plural = 'Remedies'
 
     def clean(self):
-        if self.image_desc.width != 1920 or \
-            self.image_desc.height != 494:
+        if self.image_desc.width != 863 or \
+            self.image_desc.height != 458:
             raise ValidationError("Dimensiunile imaginii trebuie sa corespunda 1920x494px")
+
+    def __str__(self):
+        return self.title
+
+class Carouselart(models.Model):
+    title = models.CharField(max_length=255, null=True, unique=True)
+    remedy = models.OneToOneField(Remedies, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
         return self.title
@@ -32,6 +48,10 @@ class Brands(models.Model):
     title = models.CharField(max_length=255, unique=True)
     link = models.CharField(max_length=255, blank=True, )
     image_desc = models.ImageField(upload_to='nut_app/media/logos')
+
+    class Meta:
+        verbose_name = 'Brand'
+        verbose_name_plural = 'Brands'
 
     def __str__(self):
         return self.title
@@ -55,6 +75,10 @@ class Products(models.Model):
     date = models.DateTimeField()
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brands, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
 
     def clean(self):
         if self.image_desc.width != 1000 or \

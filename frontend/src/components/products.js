@@ -1,21 +1,28 @@
 import { Tooltip, OverlayTrigger, Card, Button, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import BreadProd from './bread_prod';
+import { ImCart } from 'react-icons/im';
+import { CountText }  from './count_text';
 
-function CountFunc(title) {
-    var new_title = ""
-    if (title.length > 25) {
-        for (let i = 0; i < 20; i++) {
-            new_title = new_title + title[i]
-        }
 
-        new_title = new_title + "..."
-    } else var new_title = title
+// var text = []
+// var num = 0
+// const myCount = CountText(text, num);
 
-    return new_title
-}
+// function CountFunc(title) {
+//     var new_title = ""
+//     if (title.length > 25) {
+//         for (let i = 0; i < 20; i++) {
+//             new_title = new_title + title[i]
+//         }
 
-function Products(props) {
+//         new_title = new_title + "..."
+//     } else var new_title = title
+
+//     return new_title
+// }
+
+function Products() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -69,20 +76,20 @@ function Products(props) {
                                     >
                                     <Card.Title>
                                         <a 
-                                            href={`/product%20singur/${product.id}`}
+                                            href={`/product%20detaliat/${product.id}`}
                                             style={{
                                                 color: 'rgb(30, 30, 30)',
                                                 textDecorationLine: 'none',
                                             }}
                                         >
-                                                {CountFunc(product.title)}
+                                                {CountText(product.title, 25)}
                                         </a>
                                     </Card.Title>
                                     </OverlayTrigger>
                                     <Card.Text style={{color: 'rgb(200, 41, 41)'}}>{product.stock}</Card.Text>
                                     <Card.Title><h1>{product.price} lei</h1></Card.Title>
                                     <Button variant='success' className='myBtn'>
-                                        Adauga in cos
+                                        In cos <ImCart/>
                                     </Button>
                                 </Card.Body>
                             </Card>

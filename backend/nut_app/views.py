@@ -1,5 +1,5 @@
-from .models import Categories, Remedies, Brands, Products
-from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer
+from .models import Categories, Remedies, Brands, Products, Carouselart
+from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer, CarouselartSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -9,8 +9,12 @@ class CategoriesViewSet(viewsets.ModelViewSet):
     serializer_class = CategoriesSerializer
 
 class RemediesViewSet(viewsets.ModelViewSet):
-    queryset = Remedies.objects.all()
+    queryset = Remedies.objects.all().order_by('-date')
     serializer_class = RemediesSerializer
+
+class CarouselartViewSet(viewsets.ModelViewSet):
+    queryset = Carouselart.objects.all()
+    serializer_class = CarouselartSerializer
 
 class BrandsViewSet(viewsets.ModelViewSet):
     queryset = Brands.objects.all()
@@ -19,17 +23,3 @@ class BrandsViewSet(viewsets.ModelViewSet):
 class ProductsViewSet(viewsets.ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
-
-    def ProductSingle(request, pk):
-        queryset = Products.objects.all()
-        serializer = ProductSerializer(queryset)
-
-        return Response(serializer.data)
-
-#@api_view(['GET'])
-#def ProductSingle(request, pk):
-#    if request.method == 'GET':
-#        queryset = Products.objects.get(pk=pk)
-#        serializer = ProductSerializer(queryset)
-#
-#        return Response(serializer.data)

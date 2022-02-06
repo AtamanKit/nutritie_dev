@@ -1,4 +1,4 @@
-from .models import Categories, Remedies, Brands, Products
+from .models import Categories, Remedies, Brands, Products, Carouselart
 from rest_framework import serializers
 
 class CategoriesSerializer(serializers.ModelSerializer):
@@ -14,11 +14,18 @@ class RemediesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Remedies
         fields = [
+            'id',
             'title',
-            'description',
             'text',
             'image_desc',
         ]
+
+class CarouselartSerializer(serializers.ModelSerializer):
+    model = Carouselart
+    fields = [
+        'title',
+        'remedy',
+    ]
 
 class BrandsSerializer(serializers.ModelSerializer):
     class Meta:

@@ -24,9 +24,12 @@ function HeroBg(props) {
                                 }}
                                     ><h1 style={{fontWeight: 'bold', fontSize: '4rem'}}>VEDETI MAGAZINUL NOSTRU</h1>
                     </Card.Title>
-                    <Card className='card-hero-btn'>
+                    <div 
+                        className='text-center'
+                        
+                    >
                         <Button variant='success' className='myBtn'>Spre produse...</Button>
-                    </Card>
+                    </div>
                 </Card>
                 </div>
         </React.Fragment>

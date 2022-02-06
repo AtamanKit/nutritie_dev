@@ -14,7 +14,7 @@ function BreadProd(props) {
                     <Card.Text style={{
                                     textAlign: 'center',
                                     color: '#94b237',
-                                    marginTop: '15rem',
+                                    marginTop: '10rem',
                                     fontSize: '1.2rem'
                                 }}>
                         {props.upGreen}

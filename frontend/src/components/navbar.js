@@ -23,7 +23,7 @@ function NavBar(props) {
             className='navbar'
         >
             <Container>
-                <Navbar.Brand href='#home'>
+                <Navbar.Brand href='/'>
                     <img
                         src={logo}
                         height='50'
