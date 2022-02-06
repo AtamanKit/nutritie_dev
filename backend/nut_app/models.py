@@ -38,8 +38,8 @@ class Remedies(models.Model):
         return self.title
 
 class Carouselart(models.Model):
-    title = models.CharField(max_length=255, null=True, unique=True)
-    remedy = models.OneToOneField(Remedies, on_delete=models.CASCADE, primary_key=True)
+    title = models.CharField(max_length=255, unique=True)
+    remedy = models.OneToOneField(Remedies, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

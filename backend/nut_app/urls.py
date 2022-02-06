@@ -5,7 +5,7 @@ from .views import CategoriesViewSet, RemediesViewSet, BrandsViewSet, ProductsVi
 router = routers.DefaultRouter()
 router.register(r'categories', CategoriesViewSet)
 router.register(r'remedies', RemediesViewSet)
-router.register(r'carousel_art', CarouselartViewSet)
+router.register(r'carouselart', CarouselartViewSet)
 router.register(r'brands', BrandsViewSet)
 router.register(r'products', ProductsViewSet)
 
