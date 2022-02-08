@@ -21,6 +21,8 @@ class RemediesSerializer(serializers.ModelSerializer):
         ]
 
 class ArticlefeatSerializer(serializers.ModelSerializer):
+    article = RemediesSerializer()
+
     class Meta:
         model = Articlefeat
         fields = [
