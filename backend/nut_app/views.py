@@ -1,8 +1,6 @@
-from .models import Categories, Remedies, Brands, Products, Carouselart
-from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer, CarouselartSerializer
+from .models import Categories, Remedies, Brands, Products, Articlefeat
+from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer, ArticlefeatSerializer
 from rest_framework import viewsets
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 
 class CategoriesViewSet(viewsets.ModelViewSet):
     queryset = Categories.objects.all()
@@ -12,9 +10,9 @@ class RemediesViewSet(viewsets.ModelViewSet):
     queryset = Remedies.objects.all().order_by('-date')
     serializer_class = RemediesSerializer
 
-class CarouselartViewSet(viewsets.ModelViewSet):
-    queryset = Carouselart.objects.all()
-    serializer_class = CarouselartSerializer
+class ArticlefeatViewSet(viewsets.ModelViewSet):
+    queryset = Articlefeat.objects.all()
+    serializer_class = ArticlefeatSerializer
 
 class BrandsViewSet(viewsets.ModelViewSet):
     queryset = Brands.objects.all()

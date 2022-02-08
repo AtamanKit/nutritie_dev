@@ -37,9 +37,9 @@ class Remedies(models.Model):
     def __str__(self):
         return self.title
 
-class Carouselart(models.Model):
+class Articlefeat(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    remedy = models.OneToOneField(Remedies, on_delete=models.CASCADE)
+    article = models.OneToOneField(Remedies, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
