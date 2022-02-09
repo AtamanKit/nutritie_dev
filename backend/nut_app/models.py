@@ -14,7 +14,7 @@ class Categories(models.Model):
     def clean(self):
         if self.image_desc.width != 863 or \
             self.image_desc.height != 458:
-            raise ValidationError("Dimensiunile imaginii trebuie sa corespunda 366x160px")
+            raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
 
     def __str__(self):
         return self.title
@@ -32,7 +32,20 @@ class Remedies(models.Model):
     def clean(self):
         if self.image_desc.width != 863 or \
             self.image_desc.height != 458:
-            raise ValidationError("Dimensiunile imaginii trebuie sa corespunda 1920x494px")
+            raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
+
+    def __str__(self):
+        return self.title
+
+class Articlecollection(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    image_desc = models.ImageField(upload_to='nut_app/media/articlecollections')
+
+    def clean(self):
+        if self.image_desc.width != 863 or \
+            self.image_desc.height !=458:
+            raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
 
     def __str__(self):
         return self.title
@@ -41,8 +54,8 @@ class Articlefeat(models.Model):
     title = models.CharField(max_length=255, unique=True)
     article = models.OneToOneField(Remedies, on_delete=models.CASCADE)
 
-#    def __str__(self):
-#        return self.title
+    def __str__(self):
+        return self.title
 
 class Brands(models.Model):
     title = models.CharField(max_length=255, unique=True)
@@ -83,7 +96,7 @@ class Products(models.Model):
     def clean(self):
         if self.image_desc.width != 1000 or \
             self.image_desc.height != 1000:
-            raise ValidationError("Dimensiunile imaginii trebuie sa corespunda 1000x1000px")
+            raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 1000x1000px")
 
     def __str__(self):
         return self.title

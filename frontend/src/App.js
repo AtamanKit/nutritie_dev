@@ -39,7 +39,7 @@ function App() {
           navFoot={footApFunc}
         />
         {
-          window.location.pathname ==='/suplimente/'
+          window.location.pathname.includes('/categorii%20produse/')
           ?  <Products />
           : []
         }
@@ -55,8 +55,22 @@ function App() {
         }
         <HeroBg homeRef={homeApRef}/>
         <SupportLent />
-        <Categories catRef={catApRef}/>
-        <Remedies remRef={remApRef}/>
+        <Categories 
+          url = 'http://127.0.0.1:8000/nut_app/categories/'
+          catRef={catApRef}
+          first_title = 'CATEGORII'
+          second_title = 'DE PRODUSE'
+          text = 'Accesati una din categorii pentru a vedea produsele'
+        />
+        {/* <Remedies remRef={remApRef}/> */}
+        <Remedies />
+        <Categories 
+          url = 'http://127.0.0.1:8000/nut_app/articlecollections/'
+          catRef={remApRef}
+          first_title = 'CATEGORII'
+          second_title = 'DE PRODUSE'
+          text = 'Accesati una din categorii pentru a vedea produsele'
+        />
         <Brands brandRef={brandApRef}/>
         {/* <BreadProd /> */}
         {/* <Products /> */}

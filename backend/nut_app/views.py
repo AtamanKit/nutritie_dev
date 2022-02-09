@@ -1,5 +1,5 @@
-from .models import Categories, Remedies, Brands, Products, Articlefeat
-from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer, ArticlefeatSerializer
+from .models import Categories, Remedies, Brands, Products, Articlefeat, Articlecollection
+from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer, ArticlefeatSerializer, ArticlecollectionSerializer
 from rest_framework import viewsets
 
 class CategoriesViewSet(viewsets.ModelViewSet):
@@ -9,6 +9,14 @@ class CategoriesViewSet(viewsets.ModelViewSet):
 class RemediesViewSet(viewsets.ModelViewSet):
     queryset = Remedies.objects.all().order_by('-date')
     serializer_class = RemediesSerializer
+
+class ArticlelastViewSet(viewsets.ModelViewSet):
+    queryset = Remedies.objects.all().order_by('-date')[:10]
+    serializer_class = RemediesSerializer
+
+class ArticlecollectionViewSet(viewsets.ModelViewSet):
+    queryset = Articlecollection.objects.all()
+    serializer_class = ArticlecollectionSerializer
 
 class ArticlefeatViewSet(viewsets.ModelViewSet):
     queryset = Articlefeat.objects.all()

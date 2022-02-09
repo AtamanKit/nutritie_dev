@@ -1,10 +1,11 @@
-from .models import Categories, Remedies, Brands, Products, Articlefeat
+from .models import Categories, Remedies, Brands, Products, Articlefeat, Articlecollection
 from rest_framework import serializers
 
 class CategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories
         fields = [
+            'id',
             'title',
             'description',
             'image_desc',
@@ -17,6 +18,15 @@ class RemediesSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'text',
+            'image_desc',
+        ]
+
+class ArticlecollectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Articlecollection
+        fields = [
+            'title',
+            'description',
             'image_desc',
         ]
 

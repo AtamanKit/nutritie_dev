@@ -1,17 +1,17 @@
 import { CardGroup, Card, Button } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 
-function Categories(props){
-    const [categories, setCategories] = useState([]);
+function articleCollection(props){
+    const [collections, setArticle_collections] = useState([]);
 
     useEffect(() => {
-        const url = props.url
+        const url = 'http://127.0.0.1:8000/nut_app/articlecollections/';
 
         const fetchData = async() => {
             try {
                 const result = await fetch(url);
                 const json = await result.json();
-                setCategories(json);
+                setArticle_collections(json);
             } catch (error) {
                 console.log("error", error);
             }
@@ -27,19 +27,19 @@ function Categories(props){
             <Card className='prod-cat' ref={props.catRef}>
                 <Card.Body>
                     <Card.Title>
-                        <h2 className='produsele'>{props.first_title} </h2>
-                        <h2 className='categorii'>{props.second_title}</h2>
+                        <h2 className='produsele'>CATEGORII </h2>
+                        <h2 className='categorii'>DE ARTICOLE</h2>
                         <div className='card-line'/>
                     </Card.Title>
                     <Card.Text>
-                        {props.text}
+                        Accesati una din categorii pentru a vedea articolele
                     </Card.Text>
                 </Card.Body>
             </Card>
             {/* </div> */}
             <CardGroup>
                 {
-                    categories.map(category =>
+                    article_collections.map(article_colletion =>
                         <Card className='card-body'>
                             <Card.Img 
                                     variant='top' 
@@ -49,7 +49,7 @@ function Categories(props){
                             <Card.Body>
                                 <Card.Title>{category.title}</Card.Title>
                                 <Card.Text>{category.description}</Card.Text>
-                                <Button href='/categorii%20produse/' variant='success' className='myBtn'>
+                                <Button href='/suplimente/' variant='success' className='myBtn'>
                                     Accesati...
                                 </Button>
                             </Card.Body>

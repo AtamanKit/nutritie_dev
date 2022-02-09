@@ -33,7 +33,7 @@ function NavBar(props) {
                 <Navbar.Collapse id='basic-navbar-nav' className='nav-toggle'>
                     <Nav className='me-auto'>
                         <Nav.Link href='/' onClick={props.navHome}>Home</Nav.Link>
-                        <Nav.Link onClick={props.navRem}>Remedii</Nav.Link>
+                        <Nav.Link onClick={props.navRem}>Articole</Nav.Link>
                         {/* <Nav.Link onClick={props.navCat}>Produse pe catecorii</Nav.Link> */}
                         {/* <Nav.Link href='#link2'>Magazin</Nav.Link> */}
                         <NavDropdown title='Magazin' id='basic-nav-dropdown' menuVariant='dark'>

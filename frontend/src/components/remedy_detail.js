@@ -72,12 +72,14 @@ function RemedyDetail() {
                 </Col>
                 <Col>
                     <SideList 
-                        list='remedies'
+                        list='articlelasts'
                         header='ULTIMELE ARTICOLE'
+                        namespace='remediu%20detaliat'
                     />
                     <SideList
                         list='categories'
                         header='CATEGORII DE PRODUSE'
+                        namespace='suplimente'
                     />
                     <SideList
                         list='brands'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import RemedyDetail from './remedy_detail';
 import { FiChevronsRight } from 'react-icons/fi'
 
@@ -31,11 +31,27 @@ function SideList(props) {
                 {
                     list.map(element => 
                         <li style={{listStyleType: 'none'}}>
-                            <FiChevronsRight/> {element.title}
+                            <FiChevronsRight/> 
+                            <a href={
+                                `/${props.namespace}/${element.id}`
+                            }>
+                                {element.title}
+                            </a>
                         </li>
                     )
                 }
             </ul>
+            {
+                props.list === 'articlelasts'
+                ? <Button 
+                    variant='success' 
+                    className='myBtnHero'
+                    style={{marginBottom: '1rem'}}
+                    >
+                        Mai mult...
+                    </Button>
+                : []
+            }
             <div style={{
                 backgroundColor: '#94b237',
                 height: '2px',
