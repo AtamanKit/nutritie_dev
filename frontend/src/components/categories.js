@@ -49,7 +49,7 @@ function Categories(props){
                             <Card.Body>
                                 <Card.Title>{category.title}</Card.Title>
                                 <Card.Text>{category.description}</Card.Text>
-                                <Button href='/categorii%20produse/' variant='success' className='myBtn'>
+                                <Button href={`/categoria/${props.btn}/`} variant='success' className='myBtn'>
                                     Accesati...
                                 </Button>
                             </Card.Body>
