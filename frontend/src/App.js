@@ -39,8 +39,21 @@ function App() {
           navFoot={footApFunc}
         />
         {
-          window.location.pathname.includes('/categorii%20produse/')
-          ?  <Products />
+          window.location.includes('/categoria/alimente/')
+          ? <Products
+              url = 'http://127.0.0.1:8000/nut_app/productsalim/'
+              bread_green = 'VEDETI PRODUSELE DIN'
+              bread_white = 'CATEGORIA: ALIMENTE'
+            />
+          : []
+        }
+        {
+          window.location.pathname.includes('/categoria/suplimente/')
+          ?  <Products 
+                url = 'http://127.0.0.1:8000/nut_app/productsupls/'
+                bread_green = 'VEDETI PRODUSELE DIN'
+                bread_white = 'CATEGORIA: SUPLIMENTE'
+              />
           : []
         }
         {
@@ -61,6 +74,7 @@ function App() {
           first_title = 'CATEGORII'
           second_title = 'DE PRODUSE'
           text = 'Accesati una din categorii pentru a vedea produsele'
+          btn = 'suplimente'
         />
         {/* <Remedies remRef={remApRef}/> */}
         <Remedies />
@@ -70,6 +84,7 @@ function App() {
           first_title = 'CATEGORII'
           second_title = 'DE PRODUSE'
           text = 'Accesati una din categorii pentru a vedea produsele'
+          btn = 'suplimente'
         />
         <Brands brandRef={brandApRef}/>
         {/* <BreadProd /> */}
