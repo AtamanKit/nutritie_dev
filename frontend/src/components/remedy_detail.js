@@ -2,13 +2,24 @@ import { Tooltip, OverlayTrigger, Card, CardGroup, Tabs, Tab, Button, Row, Col, 
 import React, { useEffect, useState } from 'react';
 import BreadProd from './bread_prod';
 import SideList from './side_list';
-import { quatesHtml, productId } from './utils'
+import { quatesHtml } from './quates_html';
+
+function RemedyId(){
+    const url_split = window.location.pathname.split('/remediu%20detaliat/')
+    const product_id = url_split[1]
+
+    return product_id
+}
+
+// function quatesHtml(quates) {
+//     return {__html: quates};
+// }
 
 function RemedyDetail() {
     const [remedy, setRemedy] = useState([]);
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/remedies/${productId('/remediu%20detaliat/')}`;
+        const url = `http://127.0.0.1:8000/nut_app/remedies/${RemedyId()}`;
 
         const fetchData = async() => {
             try {

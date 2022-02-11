@@ -5,12 +5,28 @@ import { ImCart } from 'react-icons/im';
 import { CountText }  from './count_text';
 
 
-function Products(props) {
+// var text = []
+// var num = 0
+// const myCount = CountText(text, num);
+
+// function CountFunc(title) {
+//     var new_title = ""
+//     if (title.length > 25) {
+//         for (let i = 0; i < 20; i++) {
+//             new_title = new_title + title[i]
+//         }
+
+//         new_title = new_title + "..."
+//     } else var new_title = title
+
+//     return new_title
+// }
+
+function Products() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // const url = 'http://127.0.0.1:8000/nut_app/productsupls/';
-        const url = props.url
+        const url = 'http://127.0.0.1:8000/nut_app/products/';
 
         const fetchData = async() => {
             try {
@@ -28,10 +44,8 @@ function Products(props) {
     return(
         <React.Fragment>
             <BreadProd 
-                // upGreen='VEDETI PRODUSELE DIN'
-                // downWhite='CATEGORIA: SUPLIMENTE'
-                upGreen={props.bread_green}
-                downWhite = {props.bread_white}
+                upGreen='VEDETI PRODUSELE DIN'
+                downWhite='CATEGORIA: SUPLIMENTE'
             />
             <Row xs={1} md={5}>
                 {

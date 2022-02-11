@@ -2,13 +2,19 @@ import { Tooltip, OverlayTrigger, Card, CardGroup, Tabs, Tab, Button, Row, Col, 
 import React, { useEffect, useState } from 'react';
 import BreadProd from './bread_prod';
 import { ImCart } from 'react-icons/im';
-import { quatesHtml, productId } from './utils'
+
+function ProductId(){
+    const url_split = window.location.pathname.split('/product%20detaliat/')
+    const product_id = url_split[1]
+
+    return product_id
+}
 
 function ProductDetail(props) {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/products/${productId('/product%20detaliat/')}`;
+        const url = `http://127.0.0.1:8000/nut_app/products/${ProductId()}`;
 
         const fetchData = async() => {
             try {
@@ -89,9 +95,12 @@ function ProductDetail(props) {
                             eventKey='administration'
                             title={<h6 style={{color: '#94b237'}}>MOD DE ADMINISTRARE</h6>}
                             className='tab-prod'
-                            dangerouslySetInnerHTML={quatesHtml(product.administration)}
+                            // style={{
+                            //     paddingLeft: '20rem',
+                            //     paddingRight: '20rem',
+                            // }}
                         >
-                            {/* {product.administration} */}
+                            {product.administration}
                         </Tab>
                         <Tab
                             eventKey='contraindications'

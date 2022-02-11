@@ -1,4 +1,4 @@
-import { quatesHtml } from './utils';
+import { quatesHtml } from './quates_html';
 
 export function CountText(text, num) {
     var new_text = ""

@@ -29,11 +29,3 @@ class BrandsViewSet(viewsets.ModelViewSet):
 class ProductsViewSet(viewsets.ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
-
-class AlimentViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.filter(category=1)
-    serializer_class = ProductsSerializer
-    
-class SuplimentViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.filter(category=2)
-    serializer_class = ProductsSerializer
