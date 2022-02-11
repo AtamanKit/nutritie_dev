@@ -47,7 +47,7 @@ function Brands(props){
                 {
                     brands.length !== 0
                     ?   brands.map(brand =>
-                        <Col>
+                        <Col key={brand.id}>
                         <Card style={{border: '0'}}>
                         
                             <Card.Img

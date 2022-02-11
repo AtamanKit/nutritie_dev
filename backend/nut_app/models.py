@@ -51,11 +51,7 @@ class Articlecollection(models.Model):
         return self.title
 
 class Articlefeat(models.Model):
-    title = models.CharField(max_length=255, unique=True)
     article = models.OneToOneField(Remedies, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title
 
 class Brands(models.Model):
     title = models.CharField(max_length=255, unique=True)

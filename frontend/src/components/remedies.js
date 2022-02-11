@@ -64,7 +64,7 @@ function Remedies(props){
             <Carousel variant='dark'>
                 {
                     remedies.map(remedy =>
-                        <Carousel.Item>
+                        <Carousel.Item key={remedy.id}>
                             <div style={{display: 'flex'}}>
                                 <div 
                                     style={{

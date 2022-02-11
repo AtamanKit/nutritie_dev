@@ -8,7 +8,7 @@ function ProductDetail(props) {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/products/${productId('/product%20detaliat/')}`;
+        const url = `http://127.0.0.1:8000/nut_app/products/${productId(props.for_split)}`;
 
         const fetchData = async() => {
             try {
@@ -80,14 +80,15 @@ function ProductDetail(props) {
                     >
                         <Tab 
                             eventKey='description'
-                            title={<h6 style={{color: '#94b237'}}>DESCRIERE</h6>}
+                            title={<h6 style={{color: '#94b237'}}>{props.description}</h6>}
                             className='tab-prod'
+                            dangerouslySetInnerHTML={quatesHtml(product.description)}
                         >
-                            {product.description}
+                            {/* {product.description} */}
                         </Tab>
                         <Tab 
                             eventKey='administration'
-                            title={<h6 style={{color: '#94b237'}}>MOD DE ADMINISTRARE</h6>}
+                            title={<h6 style={{color: '#94b237'}}>{props.administration}</h6>}
                             className='tab-prod'
                             dangerouslySetInnerHTML={quatesHtml(product.administration)}
                         >
@@ -95,17 +96,19 @@ function ProductDetail(props) {
                         </Tab>
                         <Tab
                             eventKey='contraindications'
-                            title={<h6 style={{color: '#94b237'}}>CONTRAINDICATII</h6>}
+                            title={<h6 style={{color: '#94b237'}}>{props.contraindication}</h6>}
                             className='tab-prod'
+                            dangerouslySetInnerHTML={quatesHtml(product.contraindication)}
                         >
-                            {product.contraindications}
+                            {/* {product.contraindications} */}
                         </Tab>
                         <Tab 
                             eventKey='ingredients'
-                            title={<h6 style={{color: '#94b237'}}>INGREDIENTE</h6>}
+                            title={<h6 style={{color: '#94b237'}}>{props.ingredients}</h6>}
                             className='tab-prod'
+                            dangerouslySetInnerHTML={quatesHtml(product.ingredients)}
                         >
-                            {product.ingredients}
+                            {/* {product.ingredients} */}
                         </Tab>
                     </Tabs>
                     <div style={{paddingBottom: '2rem'}}>

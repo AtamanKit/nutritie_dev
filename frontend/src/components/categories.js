@@ -19,11 +19,9 @@ function Categories(props){
 
         fetchData();
     }, [])
-    // console.log(window.location.pathname)
 
     return (
         <React.Fragment>
-            {/* <div ref={props.catRef}> */}
             <Card className='prod-cat' ref={props.catRef}>
                 <Card.Body>
                     <Card.Title>
@@ -36,20 +34,19 @@ function Categories(props){
                     </Card.Text>
                 </Card.Body>
             </Card>
-            {/* </div> */}
             <CardGroup>
                 {
                     categories.map(category =>
-                        <Card className='card-body'>
+                        <Card key={category.id} className='card-body'>
                             <Card.Img 
                                     variant='top' 
-                                    src={category.image_desc} 
+                                    src={category.image_desc}
                                     
                             />
                             <Card.Body>
                                 <Card.Title>{category.title}</Card.Title>
                                 <Card.Text>{category.description}</Card.Text>
-                                <Button href={`/categoria/${props.btn}/`} variant='success' className='myBtn'>
+                                <Button href={`/categoria/${category.title}/`} variant='success' className='myBtn'>
                                     Accesati...
                                 </Button>
                             </Card.Body>

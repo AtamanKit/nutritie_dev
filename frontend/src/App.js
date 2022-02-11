@@ -21,92 +21,93 @@ function App() {
   const brandApRef = useRef(null);
   const footApRef = useRef(null);
 
-  // const homeApFunc = () => window.scrollTo(0, 0);
   const homeApFunc = () => homeApRef.current.scrollIntoView();
   const remApFunc = () => remApRef.current.scrollIntoView();
   const catApFunc = () => catApRef.current.scrollIntoView();
   const brandApFunc = () => brandApRef.current.scrollIntoView();
   const footApFunc = () => footApRef.current.scrollIntoView();
 
-  // if (window.location.pathname === '/') {
-    return (
-      <React.Fragment>
-        <NavBar
-          navHome={homeApFunc}
-          navRem={remApFunc}
-          navCat={catApFunc}
-          navBrand={brandApFunc}
-          navFoot={footApFunc}
-        />
-        {
-          window.location.includes('/categoria/alimente/')
-          ? <Products
-              url = 'http://127.0.0.1:8000/nut_app/productsalim/'
+  return (
+    <React.Fragment>
+      <NavBar
+        navHome={homeApFunc}
+        navRem={remApFunc}
+        navCat={catApFunc}
+        navBrand={brandApFunc}
+        navFoot={footApFunc}
+      />
+      {
+        window.location.pathname === '/categoria/ALIMENTE/'
+        ? <Products
+            url = 'http://127.0.0.1:8000/nut_app/aliments/'
+            bread_green = 'VEDETI PRODUSELE DIN'
+            bread_white = 'CATEGORIA: ALIMENTE'
+          />
+        : []
+      }
+      {
+        window.location.pathname === '/categoria/SUPLIMENTE/'
+        ?  <Products 
+              url = 'http://127.0.0.1:8000/nut_app/supliments/'
               bread_green = 'VEDETI PRODUSELE DIN'
-              bread_white = 'CATEGORIA: ALIMENTE'
+              bread_white = 'CATEGORIA: SUPLIMENTE'
             />
-          : []
-        }
-        {
-          window.location.pathname.includes('/categoria/suplimente/')
-          ?  <Products 
-                url = 'http://127.0.0.1:8000/nut_app/productsupls/'
-                bread_green = 'VEDETI PRODUSELE DIN'
-                bread_white = 'CATEGORIA: SUPLIMENTE'
-              />
-          : []
-        }
-        {
-          window.location.pathname.includes('/product%20detaliat/')
-          ? <ProductDetail/>
-          : []
-        }
-        {
-          window.location.pathname.includes('/remediu%20detaliat/')
-          ? <RemedyDetail/>
-          : []
-        }
-        <HeroBg homeRef={homeApRef}/>
-        <SupportLent />
-        <Categories 
-          url = 'http://127.0.0.1:8000/nut_app/categories/'
-          catRef={catApRef}
-          first_title = 'CATEGORII'
-          second_title = 'DE PRODUSE'
-          text = 'Accesati una din categorii pentru a vedea produsele'
-          btn = 'suplimente'
-        />
-        {/* <Remedies remRef={remApRef}/> */}
-        <Remedies />
-        <Categories 
-          url = 'http://127.0.0.1:8000/nut_app/articlecollections/'
-          catRef={remApRef}
-          first_title = 'CATEGORII'
-          second_title = 'DE PRODUSE'
-          text = 'Accesati una din categorii pentru a vedea produsele'
-          btn = 'suplimente'
-        />
-        <Brands brandRef={brandApRef}/>
-        {/* <BreadProd /> */}
-        {/* <Products /> */}
-        <Footer
-          footRef={footApRef} 
-          footHome={homeApFunc}
-          footRem={remApFunc}
-          footCat={catApFunc}
-        />
-        {/* <ClassFetch /> */}
-      </React.Fragment>
-    );
-  // } else if (window.location.pathname === '/suplimente/') {
-  //   return (
-  //     <React.Fragment>
-  //       <NavBar />
-  //       <BreadProd />
-  //       <Products />
-  //     </React.Fragment>
-  //   );
-  // }
+        : []
+      }
+      {
+        window.location.pathname.includes('/product/ALIMENTE/')
+        ? <ProductDetail
+            for_split = '/product/ALIMENTE/'
+            description='DESCRIERE'
+            administration='DECLARATIE NUTRITIONALA'
+            contraindication='CONTRAINDICATII'
+            ingredients='INGREDIENTE'
+          />
+        : []
+      }
+      {
+        window.location.pathname.includes('/product/SUPLIMENTE/')
+        ? <ProductDetail
+            for_split = '/product/SUPLIMENTE/'
+            description='DESCRIERE'
+            administration='MOD DE ADMINISTRARE'
+            contraindication='CONTRAINDICATII'
+            ingredients='INGREDIENTE'
+          />
+        : []
+      }
+      {
+        window.location.pathname.includes('/remediu%20detaliat/')
+        ? <RemedyDetail/>
+        : []
+      }
+      <HeroBg homeRef={homeApRef}/>
+      <SupportLent />
+      <Categories 
+        url = 'http://127.0.0.1:8000/nut_app/categories/'
+        catRef={catApRef}
+        first_title = 'CATEGORII'
+        second_title = 'DE PRODUSE'
+        text = 'Accesati una din categorii pentru a vedea produsele'
+      />
+      <Remedies />
+      <Categories 
+        url = 'http://127.0.0.1:8000/nut_app/articlecollections/'
+        catRef={remApRef}
+        first_title = 'CATEGORII'
+        second_title = 'DE PRODUSE'
+        text = 'Accesati una din categorii pentru a vedea produsele'
+      />
+      <Brands brandRef={brandApRef}/>
+      <Footer
+        footRef={footApRef} 
+        footHome={homeApFunc}
+        footRem={remApFunc}
+        footCat={catApFunc}
+      />
+    </React.Fragment>
+  );
+
 }
 
 export default App;

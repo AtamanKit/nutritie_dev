@@ -11,6 +11,14 @@ class CategoriesSerializer(serializers.ModelSerializer):
             'image_desc',
         ]
 
+class CategorytitleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categories
+        fields = [
+            'id',
+            'title',
+        ]
+
 class RemediesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Remedies
@@ -44,12 +52,15 @@ class BrandsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brands
         fields = [
+            'id',
             'title',
             'link',
             'image_desc',
         ]
 
 class ProductsSerializer(serializers.ModelSerializer):
+    category = CategorytitleSerializer()
+
     class Meta:
         model = Products
         fields = [

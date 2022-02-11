@@ -36,7 +36,7 @@ function Products(props) {
             <Row xs={1} md={5}>
                 {
                     products.map(product =>
-                        <Col style={{paddingTop: '2rem'}}>
+                        <Col key={product.id} style={{paddingTop: '2rem'}}>
                             <Card style={{
                                             textAlign: 'center',
                                             border: 'none',
@@ -62,7 +62,7 @@ function Products(props) {
                                     >
                                     <Card.Title>
                                         <a 
-                                            href={`/product%20detaliat/${product.id}`}
+                                            href={`/product/${product.category.title}/${product.id}`}
                                             style={{
                                                 color: 'rgb(30, 30, 30)',
                                                 textDecorationLine: 'none',
