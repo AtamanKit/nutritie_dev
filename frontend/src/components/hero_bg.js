@@ -26,7 +26,13 @@ function HeroBg(props) {
                         </Card.Title>
                 </Card>
                 <div className='text-center'>
-                    <Button variant='success' className='myBtnHero'>Spre produse...</Button>
+                    <Button 
+                        variant='success' 
+                        className='myBtnHero'
+                        href='/breadcrumb/PRODUSE/TOATE PRODUSELE/'
+                    >
+                        Spre produse...
+                    </Button>
                 </div>
             </div>
         </React.Fragment>

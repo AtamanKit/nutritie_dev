@@ -32,11 +32,21 @@ function SideList(props) {
                     list.map(element => 
                         <li style={{listStyleType: 'none'}}>
                             <FiChevronsRight/> 
-                            <a href={
-                                `/${props.namespace}/${element.id}`
-                            }>
-                                {element.title}
-                            </a>
+                            {
+                                props.namespace === 'ARTICOL'
+                                ? <a href={
+                                    `/breadcrumb/${props.namespace}/${element.category.title}/${element.id}`
+                                    }>
+                                         {element.title}
+                                    </a>
+                                : <a href={
+                                    `/breadcrumb/${props.namespace}/${element.title}/`
+                                    }>
+                                         {element.title}
+                                    </a>
+                            }
+                            
+                               
                         </li>
                     )
                 }
@@ -47,6 +57,7 @@ function SideList(props) {
                     variant='success' 
                     className='myBtnHero'
                     style={{marginBottom: '1rem'}}
+                    href={'/breadcrumb/ARTICOLE/TOATE%20ARTICOLELE/'}
                     >
                         Mai mult...
                     </Button>

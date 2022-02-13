@@ -2,13 +2,15 @@ import { Tooltip, OverlayTrigger, Card, CardGroup, Tabs, Tab, Button, Row, Col, 
 import React, { useEffect, useState } from 'react';
 import BreadProd from './bread_prod';
 import SideList from './side_list';
-import { quatesHtml, productId } from './utils'
+import { quatesHtml, elementPath } from './utils'
+
+const pathname = elementPath()
 
 function RemedyDetail() {
     const [remedy, setRemedy] = useState([]);
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/remedies/${productId('/remediu%20detaliat/')}`;
+        const url = `http://127.0.0.1:8000/nut_app/remedies/${pathname.id}`;
 
         const fetchData = async() => {
             try {
@@ -25,10 +27,6 @@ function RemedyDetail() {
 
     return(
         <React.Fragment>
-            <BreadProd 
-                upGreen='VEDETI SECTIUNEA'
-                downWhite='REMEDIUL ALES'
-            />
             <Row xs={1} md={2} className='rem-detail'>
                 <Col>
                 {/* <div className='text-center'> */}
@@ -63,16 +61,17 @@ function RemedyDetail() {
                     <SideList 
                         list='articlelasts'
                         header='ULTIMELE ARTICOLE'
-                        namespace='remediu%20detaliat'
+                        namespace='ARTICOL'
                     />
                     <SideList
                         list='categories'
                         header='CATEGORII DE PRODUSE'
-                        namespace='suplimente'
+                        namespace='PRODUSE'
                     />
                     <SideList
                         list='brands'
                         header='PRODUCATORI'
+                        namespace='PRODUSE'
                     />
                 </Col>
             </Row>

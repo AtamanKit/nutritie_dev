@@ -143,14 +143,14 @@ a:hover {
     color:seagreen;
 }
 
-.card-body {
+.cardbody {
     padding-top: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
 }
 
 .cardbody:hover {
-    background-color:rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .prod-cat {
@@ -228,6 +228,24 @@ h2.categorii {
     }
 }
 
+.myBtnDetalii {
+    background-color: #94b237;
+    border: #94b237;
+    position: relative;
+    color:white;
+    margin-right: 0.3rem;
+    /* width: 50%; */
+}
+
+.myBtnIncos {
+    background-color: #94b237;
+    border: #94b237;
+    position: relative;
+    color:white;
+    margin-left: 0.3rem;
+    /* width: 50%; */
+}
+
 .front-widths {
     margin-left: 15rem;
     margin-right: 15rem;
@@ -253,13 +271,6 @@ h2.categorii {
         padding-right: 0rem
     }
 }
-
-/* .tabs-product { */
-    /* padding-left: 20rem;
-    padding-right: 20rem; */
-    /* padding-bottom: 1rem; */
-    /* padding-bottom: 1rem; */
-/* } */
 
 .tab-prod {
     padding-right: 5rem;
@@ -293,4 +304,19 @@ h2.categorii {
     .rem-detail {
         padding-left: 0;
     }
+}
+
+.search-box {
+    padding-left: 1rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .search-box {
+        padding: 0 1rem 0.5rem 0
+    }
+}
+
+.btn-search {
+    color:rgb(200, 200, 200);
+    border-color: #94b237;
 }

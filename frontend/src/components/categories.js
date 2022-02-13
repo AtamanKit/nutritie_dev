@@ -1,4 +1,4 @@
-import { CardGroup, Card, Button } from 'react-bootstrap';
+import { CardGroup, Card, Button, OverlayTrigger } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 
 function Categories(props){
@@ -20,6 +20,7 @@ function Categories(props){
         fetchData();
     }, [])
 
+    
     return (
         <React.Fragment>
             <Card className='prod-cat' ref={props.catRef}>
@@ -36,22 +37,31 @@ function Categories(props){
             </Card>
             <CardGroup>
                 {
-                    categories.map(category =>
-                        <Card key={category.id} className='card-body'>
-                            <Card.Img 
-                                    variant='top' 
-                                    src={category.image_desc}
-                                    
-                            />
-                            <Card.Body>
-                                <Card.Title>{category.title}</Card.Title>
-                                <Card.Text>{category.description}</Card.Text>
-                                <Button href={`/categoria/${category.title}/`} variant='success' className='myBtn'>
-                                    Accesati...
-                                </Button>
-                            </Card.Body>
-                        </Card>
-                    )
+                    categories.map((category) => {
+                        const hrefpath = `/breadcrumb/${props.second_title}/${category.title}/`
+                        return (
+                            <React.Fragment>
+                                <Card key={category.id} className='cardbody'>
+                                {/* <div className='cat-img'> */}
+                                    <a href={hrefpath}>
+                                        <Card.Img 
+                                                variant='top' 
+                                                src={category.image_desc}
+                                                className='cat-img'
+                                        />
+                                    </a>
+                                    <Card.Body>
+                                        <Card.Title>{category.title}</Card.Title>
+                                        <Card.Text>{category.description}</Card.Text>
+                                        <Button href={hrefpath} variant='success' className='myBtn'>
+                                            Accesati...
+                                        </Button>
+                                    </Card.Body>
+                                {/* </div> */}
+                                </Card>
+                        </React.Fragment>
+                        )
+                    })
                 }
             </CardGroup>
         </React.Fragment>

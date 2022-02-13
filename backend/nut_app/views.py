@@ -1,6 +1,6 @@
 from .models import Categories, Remedies, Brands, Products, Articlefeat, Articlecollection
 from .serializers import CategoriesSerializer, RemediesSerializer, BrandsSerializer, ProductsSerializer, ArticlefeatSerializer, ArticlecollectionSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 
 class CategoriesViewSet(viewsets.ModelViewSet):
     queryset = Categories.objects.all()
@@ -9,6 +9,9 @@ class CategoriesViewSet(viewsets.ModelViewSet):
 class RemediesViewSet(viewsets.ModelViewSet):
     queryset = Remedies.objects.all().order_by('-date')
     serializer_class = RemediesSerializer
+    
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'text']
 
 class ArticlelastViewSet(viewsets.ModelViewSet):
     queryset = Remedies.objects.all().order_by('-date')[:10]
@@ -30,10 +33,11 @@ class ProductsViewSet(viewsets.ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
 
-class AlimentViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.filter(category=1)
-    serializer_class = ProductsSerializer
-    
-class SuplimentViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.filter(category=2)
-    serializer_class = ProductsSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = [
+            'title', 
+            'description',
+            'administration',
+            'content',
+            'ingredients',
+    ]

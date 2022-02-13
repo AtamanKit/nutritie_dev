@@ -3,7 +3,6 @@ import './styles/main.css';
 import React from 'react';
 import HeroBg from './components/hero_bg';
 import NavBar from './components/navbar';
-// import DummyText from './components/dummy_text';
 import { useRef } from 'react';
 import SupportLent from './components/support';
 import Categories from './components/categories';
@@ -13,6 +12,11 @@ import Brands from './components/brands';
 import Products from './components/products';
 import ProductDetail from './components/product_detail';
 import RemedyDetail from './components/remedy_detail';
+import Articles from './components/articles';
+import { elementPath, spacePath } from './components/utils';
+import BreadProd from './components/bread_prod';
+
+const pathname = elementPath();
 
 function App() {
   const homeApRef = useRef(null);
@@ -37,47 +41,30 @@ function App() {
         navFoot={footApFunc}
       />
       {
-        window.location.pathname === '/categoria/ALIMENTE/'
-        ? <Products
-            url = 'http://127.0.0.1:8000/nut_app/aliments/'
-            bread_green = 'VEDETI PRODUSELE DIN'
-            bread_white = 'CATEGORIA: ALIMENTE'
-          />
+        pathname.breadcrumb === 'breadcrumb'
+            ?   <BreadProd
+                    upGreen={`VEDETI ${pathname.type} DIN`}
+                    downWhite={`CATEGORIA: ${spacePath(pathname.category)}`}
+                />
+            :   []
+      }
+      {
+        pathname.type === 'PRODUSE'
+        ? <Products />
         : []
       }
       {
-        window.location.pathname === '/categoria/SUPLIMENTE/'
-        ?  <Products 
-              url = 'http://127.0.0.1:8000/nut_app/supliments/'
-              bread_green = 'VEDETI PRODUSELE DIN'
-              bread_white = 'CATEGORIA: SUPLIMENTE'
-            />
+        pathname.type === 'PRODUS'
+        ? <ProductDetail />
         : []
       }
       {
-        window.location.pathname.includes('/product/ALIMENTE/')
-        ? <ProductDetail
-            for_split = '/product/ALIMENTE/'
-            description='DESCRIERE'
-            administration='DECLARATIE NUTRITIONALA'
-            contraindication='CONTRAINDICATII'
-            ingredients='INGREDIENTE'
-          />
+        pathname.type === 'ARTICOLE'
+        ? <Articles />
         : []
       }
       {
-        window.location.pathname.includes('/product/SUPLIMENTE/')
-        ? <ProductDetail
-            for_split = '/product/SUPLIMENTE/'
-            description='DESCRIERE'
-            administration='MOD DE ADMINISTRARE'
-            contraindication='CONTRAINDICATII'
-            ingredients='INGREDIENTE'
-          />
-        : []
-      }
-      {
-        window.location.pathname.includes('/remediu%20detaliat/')
+        pathname.type === 'ARTICOL'
         ? <RemedyDetail/>
         : []
       }
@@ -87,7 +74,7 @@ function App() {
         url = 'http://127.0.0.1:8000/nut_app/categories/'
         catRef={catApRef}
         first_title = 'CATEGORII'
-        second_title = 'DE PRODUSE'
+        second_title = 'PRODUSE'
         text = 'Accesati una din categorii pentru a vedea produsele'
       />
       <Remedies />
@@ -95,8 +82,8 @@ function App() {
         url = 'http://127.0.0.1:8000/nut_app/articlecollections/'
         catRef={remApRef}
         first_title = 'CATEGORII'
-        second_title = 'DE PRODUSE'
-        text = 'Accesati una din categorii pentru a vedea produsele'
+        second_title = 'ARTICOLE'
+        text = 'Accesati una din categorii pentru a vedea articolele'
       />
       <Brands brandRef={brandApRef}/>
       <Footer

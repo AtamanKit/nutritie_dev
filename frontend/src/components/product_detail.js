@@ -1,14 +1,15 @@
-import { Tooltip, OverlayTrigger, Card, CardGroup, Tabs, Tab, Button, Row, Col, Image } from 'react-bootstrap';
+import { Card, Tabs, Tab, Button, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
-import BreadProd from './bread_prod';
 import { ImCart } from 'react-icons/im';
-import { quatesHtml, productId } from './utils'
+import { quatesHtml, elementPath } from './utils';
+
+const pathname = elementPath()
 
 function ProductDetail(props) {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/products/${productId(props.for_split)}`;
+        const url = `http://127.0.0.1:8000/nut_app/products/${pathname.id}`;
 
         const fetchData = async() => {
             try {
@@ -25,10 +26,6 @@ function ProductDetail(props) {
 
     return(
         <React.Fragment>
-            <BreadProd 
-                upGreen='VEDETI SECTIUNEA'
-                downWhite='PRODUSUL ALES'
-            />
             <Row xs={1} md={2} style={{paddingBottom: '2rem'}}>
                 <Col>
                     <Card className='prog-img'>
@@ -80,7 +77,7 @@ function ProductDetail(props) {
                     >
                         <Tab 
                             eventKey='description'
-                            title={<h6 style={{color: '#94b237'}}>{props.description}</h6>}
+                            title={<h6 style={{color: '#94b237'}}>DESCRIERE</h6>}
                             className='tab-prod'
                             dangerouslySetInnerHTML={quatesHtml(product.description)}
                         >
@@ -88,23 +85,23 @@ function ProductDetail(props) {
                         </Tab>
                         <Tab 
                             eventKey='administration'
-                            title={<h6 style={{color: '#94b237'}}>{props.administration}</h6>}
+                            title={<h6 style={{color: '#94b237'}}>MOD DE ADMINISTRARE</h6>}
                             className='tab-prod'
                             dangerouslySetInnerHTML={quatesHtml(product.administration)}
                         >
                             {/* {product.administration} */}
                         </Tab>
                         <Tab
-                            eventKey='contraindications'
-                            title={<h6 style={{color: '#94b237'}}>{props.contraindication}</h6>}
+                            eventKey='content'
+                            title={<h6 style={{color: '#94b237'}}>NUTRIENTI</h6>}
                             className='tab-prod'
-                            dangerouslySetInnerHTML={quatesHtml(product.contraindication)}
+                            dangerouslySetInnerHTML={quatesHtml(product.content)}
                         >
                             {/* {product.contraindications} */}
                         </Tab>
                         <Tab 
                             eventKey='ingredients'
-                            title={<h6 style={{color: '#94b237'}}>{props.ingredients}</h6>}
+                            title={<h6 style={{color: '#94b237'}}>INGREDIENTE</h6>}
                             className='tab-prod'
                             dangerouslySetInnerHTML={quatesHtml(product.ingredients)}
                         >
@@ -127,6 +124,17 @@ function ProductDetail(props) {
                         </Button>
                     </div>
                 </Col>
+                {/* <Col>
+                     <SideList
+                        list='categories'
+                        header='CATEGORII DE PRODUSE'
+                        namespace='suplimente'
+                     />
+                     <SideList
+                        list='brands'
+                        header='PRODUCATORI'
+                     />
+                </Col> */}
             </Row>
         </React.Fragment>
     )

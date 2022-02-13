@@ -19,24 +19,6 @@ class Categories(models.Model):
     def __str__(self):
         return self.title
 
-class Remedies(models.Model):
-    title = models.CharField(max_length=255, unique=True)
-    text = RichTextField()
-    image_desc = models.ImageField(upload_to='nut_app/media/remedies')
-    date = models.DateTimeField(null=True)
-
-    class Meta:
-        verbose_name = 'Remedy'
-        verbose_name_plural = 'Remedies'
-
-    def clean(self):
-        if self.image_desc.width != 863 or \
-            self.image_desc.height != 458:
-            raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
-
-    def __str__(self):
-        return self.title
-
 class Articlecollection(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -49,6 +31,25 @@ class Articlecollection(models.Model):
 
     def __str__(self):
         return self.title
+
+class Remedies(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    text = RichTextField()
+    image_desc = models.ImageField(upload_to='nut_app/media/remedies')
+    date = models.DateTimeField(null=True)
+    category = models.ForeignKey(Articlecollection, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = 'Remedy'
+        verbose_name_plural = 'Remedies'
+
+    def clean(self):
+        if self.image_desc.width != 863 or \
+            self.image_desc.height != 458:
+            raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
+
+#    def __str__(self):
+#        return self.title
 
 class Articlefeat(models.Model):
     article = models.OneToOneField(Remedies, on_delete=models.CASCADE)
@@ -75,7 +76,7 @@ class Products(models.Model):
     product_code = models.IntegerField(unique=True, blank=False, null=True)
     description = RichTextField(blank=True)
     administration = RichTextField(null=True, blank=True)
-    contraindications = RichTextField(null=True, blank=True)
+    content = RichTextField(null=True, blank=True)
     ingredients = RichTextField(null=True, blank=True)
     form = models.CharField(max_length=255, null=True, blank=True)
     stock = models.CharField(max_length=20, choices=IN_STOCK_CHOICES, default='in')

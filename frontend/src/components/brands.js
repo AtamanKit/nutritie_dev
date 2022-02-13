@@ -47,9 +47,9 @@ function Brands(props){
                 {
                     brands.length !== 0
                     ?   brands.map(brand =>
-                        <Col key={brand.id}>
+                        <Col key={brand.id} >
                         <Card style={{border: '0'}}>
-                        
+                        <a href={`/breadcrumb/PRODUSE/${brand.title}/`}>
                             <Card.Img
                                 src={brand.image_desc} 
                                 style={{
@@ -59,6 +59,7 @@ function Brands(props){
                                     padding: '4rem'
                                 }}
                             />
+                        </a>
                         </Card>
                         </Col>
                         

@@ -31,6 +31,13 @@ function Remedies(props){
         'resize', contrWidth
     )
 
+    function titleLong() {
+        if (width <= 576) {
+            return 35
+        }
+        
+    }
+
     function textLong() {
         if (width <= 1200 && width >= 992) {
             return 250
@@ -90,7 +97,11 @@ function Remedies(props){
                                         width: '40%',
                                         paddingTop: '5rem',
                                         }}>
-                                    <h3 style={{color: '#fff'}}>{remedy.article.title}</h3>
+                                    <h3 style={{color: '#fff'}}>
+                                        {
+                                            CountText(remedy.article.title, titleLong())
+                                        }
+                                    </h3>
                                     <p style={{
                                         color: '#94b237',
                                         paddingTop: '1rem',
@@ -103,11 +114,11 @@ function Remedies(props){
                                         {/* {contrWidth(remedy.article.text)} */}
                                     </p>
                                     <Button 
-                                        href={`/remediu%20detaliat/${remedy.article.id}`}
+                                        href={`/breadcrumb/TOATE%20ARTICOLELE/`}
                                         variant='succes' 
                                         className='myBtn'
                                     >
-                                        Toate rem...
+                                        Toate artic...
                                     </Button>
                                     <Button 
                                         href={`/remediu%20detaliat/${remedy.article.id}`}
@@ -118,24 +129,6 @@ function Remedies(props){
                                     </Button>
                                 </div>
                             </div>
-                            {/* <Carousel.Caption>
-                                <div style={{
-                                    backgroundColor: 'rgba(50, 50, 50, 0.7)',
-                                    paddingTop: '1rem',
-                                    paddingBottom: '1rem',
-                                    paddingLeft: '2rem',
-                                    paddingRight: '2rem',
-                                    }}>
-                                    <h3 style={{color: '#fff'}}>{remedy.title}</h3>
-                                    <p style={{color: '#94b237'}}>{remedy.description}</p>
-                                    <Button 
-                                        href={`/remediu%20detaliat/${remedy.id}`}
-                                        variant='succes' className='myBtn'
-                                    >
-                                        Mai mult...
-                                    </Button>
-                                </div>
-                            </Carousel.Caption> */}
                         </Carousel.Item>
                     )
                     

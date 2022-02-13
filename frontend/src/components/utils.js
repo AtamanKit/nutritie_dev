@@ -2,9 +2,20 @@ export function quatesHtml(quates) {
     return {__html: quates}
 }
 
-export function productId(namespace) {
-    const url_split = window.location.pathname.split(namespace)
-    const product_id = url_split[1]
+export function spacePath(namespace) {
+    var pathname = namespace
+    if (pathname.includes('%20')) {
+        pathname = pathname.replace(/%20/g, ' ')
+    }
+    return pathname
+}
 
-    return product_id
+export function elementPath() {
+    const pathname_split = window.location.pathname.split('/')
+    return {
+        'breadcrumb': pathname_split[1],
+        'type': pathname_split[2],
+        'category': pathname_split[3],
+        'id': pathname_split[4],
+    }
 }
