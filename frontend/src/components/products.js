@@ -1,6 +1,5 @@
 import { Tooltip, OverlayTrigger, Card, Button, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
-import BreadProd from './bread_prod';
 import { ImCart } from 'react-icons/im';
 import { CountText }  from './count_text';
 import { spacePath, elementPath } from './utils';
@@ -70,16 +69,23 @@ function Products() {
                             </OverlayTrigger>
                             <Card.Text style={{color: 'rgb(200, 41, 41)'}}>{product.stock}</Card.Text>
                             <Card.Title><h1>{product.price} lei</h1></Card.Title>
-                            <Button 
+                            {/* <Button 
                                 variant='success' 
                                 className='myBtnDetalii'
                                 href={hrefpath}
                             >
                                 Detalii...
-                            </Button>
+                            </Button> */}
+                            {/* <Button 
+                                variant='success'
+                                className='myBtn'
+                                style={{marginRight: '1rem'}}
+                            >
+                                Cumparati...
+                            </Button> */}
                             <Button 
                                 variant='success' 
-                                className='myBtnIncos'
+                                className='myBtn'
                             >
                                 In cos <ImCart/>
                             </Button>

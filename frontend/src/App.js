@@ -15,6 +15,7 @@ import RemedyDetail from './components/remedy_detail';
 import Articles from './components/articles';
 import { elementPath, spacePath } from './components/utils';
 import BreadProd from './components/bread_prod';
+import Search from './components/search';
 
 const pathname = elementPath();
 
@@ -44,12 +45,28 @@ function App() {
         pathname.breadcrumb === 'breadcrumb'
             ?   <BreadProd
                     upGreen={`VEDETI ${pathname.type} DIN`}
-                    downWhite={`CATEGORIA: ${spacePath(pathname.category)}`}
+                    downWhite={`RUBRICA: ${spacePath(pathname.category)}`}
                 />
             :   []
       }
       {
-        pathname.type === 'PRODUSE'
+        pathname.type === 'PRODUSE' && pathname.category === 'CAUTATI'
+        ? <Search
+            table = 'products'
+            type = 'PRODUS'
+          />
+        : []
+      }
+      {
+        pathname.type === 'ARTICOLE' && pathname.category === 'CAUTATI'
+        ? <Search 
+            table = 'remedies'
+            type = 'ARTICOL'
+          />
+        : []
+      }
+      {
+        pathname.type === 'PRODUSE' && pathname.category !== 'CAUTATI'
         ? <Products />
         : []
       }
@@ -59,7 +76,7 @@ function App() {
         : []
       }
       {
-        pathname.type === 'ARTICOLE'
+        pathname.type === 'ARTICOLE' && pathname.category !== 'CAUTATI'
         ? <Articles />
         : []
       }

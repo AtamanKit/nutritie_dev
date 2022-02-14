@@ -13,7 +13,10 @@ import { ImCart } from 'react-icons/im';
 import { BsSearch } from 'react-icons/bs';
 
 function NavBar(props) {
-    const [color, setColor] = useState('')
+    const [color, setColor] = useState('');
+
+    const [searchselect, setSearchselect] = useState('PRODUSE');
+    const [searchinput, setSearchinput] = useState('')
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80){
@@ -65,7 +68,26 @@ function NavBar(props) {
                         <Nav.Link onClick={props.navFoot}>Contacte</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link className='nav_left'>Cos <ImCart/></Nav.Link>
+                        <Nav.Link className='nav_left'>
+                            {/* <div style={{display: 'block'}}> */}
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    backgroundColor: 'red',
+                                    width: 16,
+                                    height: 16,
+                                    borderRadius: 15/2,
+                                    left: 50,
+                                    // top: 0,
+                                    alignItems: 'center',
+                                    // marginLeft: '2.5rem',
+                                    // marginBottom: '10.5rem',
+                                    // justigyContent: 'center',
+                                }}
+                            />
+                            Cos <ImCart/>
+                            {/* </div> */}
+                        </Nav.Link>
                         <Nav.Link className='nav_left'>Sign In</Nav.Link>
                         <Nav.Link>Log In</Nav.Link>
                     </Nav>
@@ -77,20 +99,22 @@ function NavBar(props) {
                                 className='me-2'
                                 style={{width: '10rem'}}
                                 // aria-label='Search'
+                                onChange={e => setSearchinput(e.target.value)}
                             />
                             <Form.Select style={{
                                             width: '7rem', 
                                             fontSize: '0.8rem',
                                             marginRight: '0.5rem',
                                             }}
+                                            onChange={e => {setSearchselect(e.target.value)}}
                             >
-                                <option style={{fontSize: '0.8rem'}}>PRODUSE</option>
-                                <option style={{fontSize: '0.8rem'}}>ARTICOLE</option>
+                                <option style={{fontSize: '0.8rem'}} value='PRODUSE'>PRODUSE</option>
+                                <option style={{fontSize: '0.8rem'}} value='ARTICOLE'>ARTICOLE</option>
                             </Form.Select>
                             <Button 
                                 variant='outline-success' 
                                 className='btn-search'
-                                // href='/breadcrumbs/TITLURILE/CAUTATI/'
+                                href={`/breadcrumb/${searchselect}/CAUTATI/${searchinput}`}
                             >
                                 <BsSearch />
                             </Button>
