@@ -54,11 +54,54 @@ a:hover {
     }
 }
 
+/* .nav_left {
+    margin-top: 1rem
+}
+
+.nav_left_sign {
+    margin-top: 1rem
+}
+
+.nav_left_login {
+    margin-top: 1rem
+} */
+
 @media only screen and (min-width: 992px) {
+    .vertical-line {
+        background-color:rgba(200, 200, 200, 0.8);
+        width: 0.1rem;
+        height: 1.5rem;
+        margin-top: 1.6rem;
+    }
     .nav_left {
-        border-right: 2px solid rgb(200, 200, 200);
+        /* border-right: 2px solid rgb(200, 200, 200); */
+        margin-top: 1rem;
+    }
+
+    .nav_left_sign {
+        /* border-right: 2px solid rgb(200, 200, 200); */
+        margin-top: 1rem
+    }
+
+    .nav_left_login {
+        margin-top: 1rem
     }
 }
+
+@media only screen and (max-width: 992px) {
+    .nav_left {
+        padding-bottom: 0
+    }
+    .nav_left_sign {
+        padding-top: 0;
+    }
+}
+
+/* @media only screen and (max-width: 992px) {
+    .nav_left_sign {
+        padding-top: 0;
+    }
+} */
 
 .nav-drop-sub {
     font-size: 0.9rem;
@@ -204,7 +247,7 @@ h2.categorii {
     background-color: #94b237;
     border: #94b237;
     color: white;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     /* display: block; */
 }
 
@@ -213,7 +256,7 @@ h2.categorii {
     color: white;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
     .myBtn {
         display: block;
         width: 100%;
@@ -226,15 +269,6 @@ h2.categorii {
         width: 100%;
         margin: 0;
     }
-}
-
-.myBtnDetalii {
-    background-color: #94b237;
-    border: #94b237;
-    position: relative;
-    color:white;
-    margin-right: 0.3rem;
-    /* width: 50%; */
 }
 
 .myBtnIncos {

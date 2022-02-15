@@ -6,6 +6,10 @@ import { spacePath, elementPath } from './utils';
 
 const pathname = elementPath()
 
+function incosFunc() {
+    console.log("product")
+}
+
 function Products() {
     const [products, setProducts] = useState([]);
 
@@ -69,23 +73,20 @@ function Products() {
                             </OverlayTrigger>
                             <Card.Text style={{color: 'rgb(200, 41, 41)'}}>{product.stock}</Card.Text>
                             <Card.Title><h1>{product.price} lei</h1></Card.Title>
-                            {/* <Button 
-                                variant='success' 
-                                className='myBtnDetalii'
-                                href={hrefpath}
-                            >
-                                Detalii...
-                            </Button> */}
-                            {/* <Button 
-                                variant='success'
-                                className='myBtn'
-                                style={{marginRight: '1rem'}}
-                            >
-                                Cumparati...
-                            </Button> */}
                             <Button 
                                 variant='success' 
                                 className='myBtn'
+                                href={hrefpath}
+                            >
+                                Detalii...
+                            </Button>
+                            <Button 
+                                variant='success' 
+                                className='myBtnBord'
+                                onClick={() => {
+                                    document.cookie =
+                                    `product_incart=${product.id}`
+                                }}
                             >
                                 In cos <ImCart/>
                             </Button>

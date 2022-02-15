@@ -6,6 +6,7 @@ import {
         Form, 
         FormControl,
         Button,
+        Badge,
     } from 'react-bootstrap';
 import { useState } from 'react';
 import logo from '../images/logo.png';
@@ -69,27 +70,39 @@ function NavBar(props) {
                     </Nav>
                     <Nav>
                         <Nav.Link className='nav_left'>
-                            {/* <div style={{display: 'block'}}> */}
-                            <div
-                                style={{
-                                    position: 'relative',
-                                    backgroundColor: 'red',
-                                    width: 16,
-                                    height: 16,
-                                    borderRadius: 15/2,
-                                    left: 50,
-                                    // top: 0,
-                                    alignItems: 'center',
-                                    // marginLeft: '2.5rem',
-                                    // marginBottom: '10.5rem',
-                                    // justigyContent: 'center',
-                                }}
-                            />
-                            Cos <ImCart/>
-                            {/* </div> */}
+                            <div style={{display: 'flex'}}>
+                                Cos
+                                <div style={{marginLeft: '0.3rem'}}>
+                                    <ImCart/>
+                                    {/* <Badge bg='danger' pill
+                                        style={{left: '20rem'}}
+                                    >
+                                        119
+                                    </Badge> */}
+                                    <div
+                                        style={{
+                                            position: 'relative',
+                                            backgroundColor: 'red',
+                                            // width: 16,
+                                            // height: 16,
+                                            borderRadius: 10/2,
+                                            left: 10,
+                                            bottom: 32,
+                                            textAlign: 'center',
+                                            color: 'white',
+                                            fontSize: '0.7rem',
+                                            padding: '0 0.2rem 0 0.2rem'
+                                        }}
+                                    >
+                                        0
+                                    </div>
+                                </div>
+                                </div>
                         </Nav.Link>
-                        <Nav.Link className='nav_left'>Sign In</Nav.Link>
-                        <Nav.Link>Log In</Nav.Link>
+                        <div className='vertical-line'/>
+                        <Nav.Link className='nav_left_sign'>SignIn</Nav.Link>
+                        <div className='vertical-line'/>
+                        <Nav.Link className='nav_left_login'>LogIn</Nav.Link>
                     </Nav>
                     <div className='search-box'>
                         <Form className='d-flex'>

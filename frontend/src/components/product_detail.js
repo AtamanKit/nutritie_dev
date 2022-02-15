@@ -112,7 +112,7 @@ function ProductDetail(props) {
                         <Button 
                             variant='success'
                             className='myBtn'
-                            style={{marginRight: '1rem'}}
+                            style={{marginRight: '0.8rem'}}
                         >
                             Cumparati...
                         </Button>
