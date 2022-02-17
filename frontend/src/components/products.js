@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { CountText }  from './count_text';
 import { spacePath, elementPath } from './utils';
+import { useDispatch } from 'react-redux';
+import { increment } from '../features/counter/counterSlice';
 
 const pathname = elementPath()
 
-function incosFunc() {
-    console.log("product")
-}
-
 function Products() {
     const [products, setProducts] = useState([]);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const url = 'http://127.0.0.1:8000/nut_app/products/'
@@ -84,8 +84,7 @@ function Products() {
                                 variant='success' 
                                 className='myBtnBord'
                                 onClick={() => {
-                                    document.cookie =
-                                    `product_incart=${product.id}`
+                                    dispatch(increment());
                                 }}
                             >
                                 In cos <ImCart/>

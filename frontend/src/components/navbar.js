@@ -6,18 +6,20 @@ import {
         Form, 
         FormControl,
         Button,
-        Badge,
     } from 'react-bootstrap';
 import { useState } from 'react';
 import logo from '../images/logo.png';
 import { ImCart } from 'react-icons/im';
 import { BsSearch } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 
 function NavBar(props) {
     const [color, setColor] = useState('');
 
     const [searchselect, setSearchselect] = useState('PRODUSE');
-    const [searchinput, setSearchinput] = useState('')
+    const [searchinput, setSearchinput] = useState('');
+
+    const count = useSelector((state) => state.counter.value)
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80){
@@ -26,7 +28,6 @@ function NavBar(props) {
             setColor('')
         }
     })
-    
     return(
         <Navbar 
             bg={color} 
@@ -74,28 +75,26 @@ function NavBar(props) {
                                 Cos
                                 <div style={{marginLeft: '0.3rem'}}>
                                     <ImCart/>
-                                    {/* <Badge bg='danger' pill
-                                        style={{left: '20rem'}}
-                                    >
-                                        119
-                                    </Badge> */}
-                                    <div
-                                        style={{
-                                            position: 'relative',
-                                            backgroundColor: 'red',
-                                            // width: 16,
-                                            // height: 16,
-                                            borderRadius: 10/2,
-                                            left: 10,
-                                            bottom: 32,
-                                            textAlign: 'center',
-                                            color: 'white',
-                                            fontSize: '0.7rem',
-                                            padding: '0 0.2rem 0 0.2rem'
-                                        }}
-                                    >
-                                        0
-                                    </div>
+                                    {
+                                        count !== 0
+                                        ?   <div
+                                                style={{
+                                                    position: 'relative',
+                                                    backgroundColor: 'red',
+                                                    // width: 16,
+                                                    // height: 16,
+                                                    borderRadius: 10/2,
+                                                    left: 10,
+                                                    bottom: 32,
+                                                    textAlign: 'center',
+                                                    color: 'white',
+                                                    fontSize: '0.7rem',
+                                                    padding: '0 0.2rem 0 0.2rem'
+                                                }}
+                                            >
+                                                {count}
+                                            </div>
+                                        : <div style={{marginBottom: '1.05rem'}}/>                                    }
                                 </div>
                                 </div>
                         </Nav.Link>
