@@ -19,24 +19,6 @@ export const counterSlice = createSlice({
     },
 })
 
-export const productInCartSlice = createSlice({
-    name: 'productInCart',
-    initialState: {
-        value: '',
-    },
-
-    reducers: {
-        incrementProductInCart: (state) => {
-            state.value += '%20'
-        },
-        decrementProductInCart: (state) => {
-            state.value += '%20'
-        },
-    }
-})
-
 export const { increment, decrement } = counterSlice.actions
-export const { incrementProductInCart, decrementProductInCart } = productInCartSlice
 
 export default counterSlice.reducer
-export default productInCartSlice.reducer
