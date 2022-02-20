@@ -1,5 +1,6 @@
-import { CardGroup, Card, Button, OverlayTrigger } from 'react-bootstrap';
+import { CardGroup, Card, Button } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
+// import SectionTitle from './section_title';
 
 function Categories(props){
     const [categories, setCategories] = useState([]);
@@ -23,7 +24,13 @@ function Categories(props){
     
     return (
         <React.Fragment>
-            <Card className='prod-cat' ref={props.catRef}>
+            {/* <SectionTitle 
+                _ref={props.catRef}
+                _first_title={props.first_title}
+                _second_title={props.second_title}
+                _text={props.text}
+            /> */}
+            {/* <Card className='prod-cat' ref={props.catRef}>
                 <Card.Body>
                     <Card.Title>
                         <h2 className='produsele'>{props.first_title} </h2>
@@ -34,11 +41,11 @@ function Categories(props){
                         {props.text}
                     </Card.Text>
                 </Card.Body>
-            </Card>
+            </Card> */}
             <CardGroup>
                 {
                     categories.map((category) => {
-                        const hrefpath = `/breadcrumb/${props.second_title}/${category.title}/`
+                        const hrefpath = `/breadcrumb/${props.type}/${category.title}/`
                         return (
                             <React.Fragment>
                                 <Card key={category.id} className='cardbody'>

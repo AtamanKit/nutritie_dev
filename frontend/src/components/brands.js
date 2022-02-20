@@ -19,12 +19,11 @@ function Brands(props){
 
         fetchData();
     }, [])
-    // console.log(categories.length)
 
     return (
         <React.Fragment>
             {/* <div ref={props.catRef}> */}
-            <Card className='prod-cat' ref={props.brandRef}>
+            {/* <Card className='prod-cat' ref={props.brandRef}>
                 <Card.Body>
                     <Card.Title>
                         <h2 className='produsele'>BRAND</h2>
@@ -35,7 +34,7 @@ function Brands(props){
                         Producatori cu care colaboram
                     </Card.Text>
                 </Card.Body>
-            </Card>
+            </Card> */}
             {/* </div> */}
             {/* <CardGroup style={{
                             paddingTop: '80px', 

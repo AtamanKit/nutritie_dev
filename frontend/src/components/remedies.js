@@ -55,19 +55,6 @@ function Remedies(props){
 
     return (
         <React.Fragment>
-            {/* <div ref={props.catRef}> */}
-            <Card className='prod-cat' ref={props.remRef}>
-                <Card.Body>
-                    <Card.Title>
-                        <h2 className='produsele'>RECOMANDARI </h2>
-                        <h2 className='categorii'>SI REMEDII</h2>
-                        <div className='card-line'/>
-                    </Card.Title>
-                    <Card.Text>
-                        Venim cu unele sfaturi
-                    </Card.Text>
-                </Card.Body>
-            </Card>
             <Carousel variant='dark'>
                 {
                     remedies.map(remedy =>
@@ -82,10 +69,6 @@ function Remedies(props){
                                         backgroundRepeat: 'no-repeat',
                                         backgroundSize: 'cover',
                                     }}>
-                                {/* <img */}
-                                    {/* // className='d-block w-200' */}
-                                    {/* // src={remedy.image_short} */}
-                                {/* /> */}
                                 </div>
                                 <div style={{
                                         backgroundColor: 'rgba(50, 50, 50, 0.7)',
@@ -121,7 +104,7 @@ function Remedies(props){
                                         Toate artic...
                                     </Button>
                                     <Button 
-                                        href={`/remediu%20detaliat/${remedy.article.id}`}
+                                        href={`/breadcrumb/ARTICOL/${remedy.article.category.title}/${remedy.article.id}`}
                                         variant='succes' 
                                         className='myBtnBord'
                                     >

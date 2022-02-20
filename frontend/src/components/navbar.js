@@ -70,7 +70,7 @@ function NavBar(props) {
                         <Nav.Link onClick={props.navFoot}>Contacte</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link className='nav_left'>
+                        <Nav.Link className='nav_left' onClick={props.navCart}>
                             <div style={{display: 'flex'}}>
                                 Cos
                                 <div style={{marginLeft: '0.3rem'}}>

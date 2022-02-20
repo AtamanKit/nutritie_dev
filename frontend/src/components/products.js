@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { CountText }  from './count_text';
 import { spacePath, elementPath } from './utils';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { increment } from '../features/counter/counterSlice';
 import { incrementCart } from '../features/cart/cartSlice';
 
@@ -12,7 +12,7 @@ const pathname = elementPath()
 function Products() {
     const [products, setProducts] = useState([]);
 
-    const inCart = useSelector((state) => state.cart.value)
+    // const inCart = useSelector((state) => state.cart.value)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function Products() {
         fetchData();
     }, [])
 
-    console.log(inCart.slice(0, -3))
+    // console.log(inCart.slice(0, -3))
 
     function finalReturn(product) {
         const hrefpath = `/breadcrumb/PRODUS/${product.category.title}/${product.id}`
@@ -89,7 +89,13 @@ function Products() {
                                 className='myBtnBord'
                                 onClick={() => {
                                     dispatch(increment());
-                                    dispatch(incrementCart(product.title));
+                                    dispatch(incrementCart(
+                                                `{"id":"${product.id}",` +
+                                                `"title":"${product.title}",` +
+                                                `"price":"${product.price}",` +
+                                                `"image_desc":"${product.image_desc}"}`
+                                        )
+                                    );
                                 }}
                             >
                                 In cos <ImCart/>
