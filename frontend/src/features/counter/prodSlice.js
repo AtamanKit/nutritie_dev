@@ -1,3 +1,6 @@
+//reducers to increment (decrement) numbers of products from the cart 
+// (by pushing '+' or '-' button)
+
 import { createSlice } from '@reduxjs/toolkit';
 
 export const prodSlice = createSlice({
@@ -26,10 +29,16 @@ export const prodSlice = createSlice({
             } else {
                 state.items.push({id: payload, value: 0})
             }
-        }
+        },
+        removeNumProd: (state, { payload }) => {
+            const item = state.items.find((item) => item.id === payload);
+            if (item) {
+                state.items.splice(state.items.indexOf(item), 1)
+            }
+        },
     }
 })
 
-export const { incrementProd, decrementProd } = prodSlice.actions
+export const { incrementProd, decrementProd, removeNumProd } = prodSlice.actions
 
 export default prodSlice.reducer

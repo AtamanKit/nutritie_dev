@@ -113,7 +113,7 @@ function App() {
         _ref={cartApRef}
         first_title = 'PRODUSE IN'
         second_title = 'COS'
-        text = 'Accesati una din categorii pentru a vedea articolele'
+        // text = 'Alegeti unul sau mai multe produse ori excludeti'
       />
       <Cart />
       <SectionTitle 

@@ -3,9 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { quatesHtml, elementPath } from './utils';
 
+import { increment } from '../features/counter/counterSlice'; //increments numbers on the cart icon in the navbar
+import { incrementCart } from '../features/cart/cartSlice'; //adds products to the cart
+import { useDispatch } from 'react-redux';
+
 const pathname = elementPath()
 
-function ProductDetail(props) {
+function ProductDetail() {
+    const dispatch = useDispatch();
+
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
@@ -119,6 +125,10 @@ function ProductDetail(props) {
                         <Button
                             variant='success'
                             className='myBtn'
+                            onClick={() => {
+                                dispatch(increment());
+                                dispatch(incrementCart(product));
+                            }}
                         >
                             In cos <ImCart/>
                         </Button>

@@ -1,3 +1,5 @@
+//reducers for number increment on the cart icon in the navbar
+
 import { createSlice } from '@reduxjs/toolkit';
 
 export const counterSlice = createSlice({

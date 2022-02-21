@@ -1,3 +1,6 @@
+//reducers to add product to the cart
+//in the Cart component from cart.js we arrange the products in the cart
+
 import { createSlice } from '@reduxjs/toolkit';
 
 export const cartSlice = createSlice({
@@ -11,7 +14,10 @@ export const cartSlice = createSlice({
             state.items.push(payload);
         },
         decrementCart: (state, { payload }) => {
-            console.log(state.items.indexOf(payload))
+            const item = state.items.find(item => item.id === payload)
+            if (item) {
+                state.items.splice(state.items.indexOf(item), 1)
+            }
         },
     }
 })
