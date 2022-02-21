@@ -89,13 +89,7 @@ function Products() {
                                 className='myBtnBord'
                                 onClick={() => {
                                     dispatch(increment());
-                                    dispatch(incrementCart(
-                                                `{"id":"${product.id}",` +
-                                                `"title":"${product.title}",` +
-                                                `"price":"${product.price}",` +
-                                                `"image_desc":"${product.image_desc}"}`
-                                        )
-                                    );
+                                    dispatch(incrementCart(product));
                                 }}
                             >
                                 In cos <ImCart/>

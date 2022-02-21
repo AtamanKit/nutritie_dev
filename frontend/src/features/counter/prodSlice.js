@@ -15,8 +15,17 @@ export const prodSlice = createSlice({
                 state.items.push({id: payload, value: 2})
              }
         },
-        decrementProd: (state) => {
-            state.value -= 1
+        decrementProd: (state, { payload }) => {
+            const item = state.items.find((item) => item.id === payload);
+            if (item) {
+                if (item.value > 0) {
+                    item.value -= 1;
+                } else {
+                    item.value = 0;
+                }
+            } else {
+                state.items.push({id: payload, value: 0})
+            }
         }
     }
 })

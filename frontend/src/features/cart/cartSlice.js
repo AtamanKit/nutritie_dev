@@ -3,16 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        value: '',
+        items: [],
     },
 
     reducers: {
-        incrementCart: (state, action) => {
-            // state.value += '%20'
-            state.value += action.payload + '%20'
+        incrementCart: (state, { payload }) => {
+            state.items.push(payload);
         },
-        decrementCart: (state) => {
-            state.value -= '%20'
+        decrementCart: (state, { payload }) => {
+            console.log(state.items.indexOf(payload))
         },
     }
 })
