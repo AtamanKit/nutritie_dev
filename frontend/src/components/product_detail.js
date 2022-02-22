@@ -3,16 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { quatesHtml, elementPath } from './utils';
 
-import { increment } from '../features/counter/counterSlice'; //increments numbers on the cart icon in the navbar
-import { incrementCart } from '../features/cart/cartSlice'; //adds products to the cart
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { incrementFunc } from '../features/cart/incrementFunc';
 
 const pathname = elementPath()
 
 function ProductDetail() {
-    const dispatch = useDispatch();
-
     const [product, setProduct] = useState([]);
+
+    const inCart = useSelector((state) => state.cart.items)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const url = `http://127.0.0.1:8000/nut_app/products/${pathname.id}`;
@@ -126,8 +126,7 @@ function ProductDetail() {
                             variant='success'
                             className='myBtn'
                             onClick={() => {
-                                dispatch(increment());
-                                dispatch(incrementCart(product));
+                                incrementFunc(product, inCart, dispatch)
                             }}
                         >
                             In cos <ImCart/>

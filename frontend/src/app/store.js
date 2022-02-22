@@ -11,8 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import counterReducer from '../features/counter/counterSlice';
-import prodReducer from '../features/counter/prodSlice';
+import counterReducer from '../features/cart/counterSlice';
+import prodReducer from '../features/cart/prodSlice';
 import cartReducer from '../features/cart/cartSlice';
 
 const rootReducer = combineReducers({

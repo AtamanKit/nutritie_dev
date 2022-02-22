@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementProd, decrementProd, removeNumProd } from '../features/counter/prodSlice';
-import { decrement } from '../features/counter/counterSlice';
+import { incrementProd, decrementProd, removeNumProd } from '../features/cart/prodSlice';
+import { decrement } from '../features/cart/counterSlice';
 import { decrementCart } from '../features/cart/cartSlice';
 
 import { CountText }  from './count_text';

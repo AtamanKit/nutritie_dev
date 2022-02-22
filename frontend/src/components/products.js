@@ -5,15 +5,12 @@ import { CountText }  from './count_text';
 import { spacePath, elementPath } from './utils';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { increment } from '../features/counter/counterSlice'; //increments numbers on the cart icon in the navbar
-import { incrementCart } from '../features/cart/cartSlice'; //adds products to the cart
-import { incrementProd } from '../features/counter/prodSlice'; //increment counter of product in cart
+import { incrementFunc } from '../features/cart/incrementFunc';
 
 const pathname = elementPath()
 
 function Products() {
     const [products, setProducts] = useState([]);
-    // const [check, setCheck] = useState(false);
 
     const inCart = useSelector((state) => state.cart.items)
     const dispatch = useDispatch();
@@ -33,30 +30,6 @@ function Products() {
 
         fetchData();
     }, [])
-
-    function incrementFunc(product) {
-        let check = true;
-
-        if (inCart.length !== 0) {
-            inCart.map(item => {
-                if (item.id !== product.id) {
-                    check = false
-                } else {
-                    check = true
-                }
-            })
-        } else {
-            dispatch(increment());
-            dispatch(incrementCart(product))
-        }
-
-        if (!check) {
-            dispatch(increment());
-            dispatch(incrementCart(product));
-        } else if (check && inCart.length !== 0) {
-            dispatch(incrementProd(product.id))
-        }
-    }
 
     function finalReturn(product) {
         const hrefpath = `/breadcrumb/PRODUS/${product.category.title}/${product.id}`
@@ -114,9 +87,7 @@ function Products() {
                                 variant='success' 
                                 className='myBtnBord'
                                 onClick={() => {
-                                    // dispatch(increment());
-                                    // dispatch(incrementCart(product));
-                                    incrementFunc(product)
+                                    incrementFunc(product, inCart, dispatch)
                                 }}
                             >
                                 In cos <ImCart/>
