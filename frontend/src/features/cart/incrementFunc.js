@@ -2,8 +2,6 @@ import { increment } from './counterSlice'; //increments numbers on the cart ico
 import { incrementCart } from './cartSlice'; //adds products to the cart
 import { incrementProd } from './prodSlice'; //increment counter of product in cart
 
-
-
 export function incrementFunc(product, inCart, dispatch) {
 
     let check = false;
@@ -24,4 +22,5 @@ export function incrementFunc(product, inCart, dispatch) {
         dispatch(increment());
         dispatch(incrementCart(product))
     }
+
 }

@@ -1,4 +1,12 @@
-import { Tooltip, OverlayTrigger, Card, Button, Row, Col } from 'react-bootstrap';
+import { 
+    Tooltip, 
+    OverlayTrigger, 
+    Card, 
+    Button, 
+    Row, 
+    Col,
+    Offcanvas,
+} from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { CountText }  from './count_text';
@@ -14,6 +22,11 @@ function Products() {
 
     const inCart = useSelector((state) => state.cart.items)
     const dispatch = useDispatch();
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         const url = 'http://127.0.0.1:8000/nut_app/products/'
@@ -87,7 +100,8 @@ function Products() {
                                 variant='success' 
                                 className='myBtnBord'
                                 onClick={() => {
-                                    incrementFunc(product, inCart, dispatch)
+                                    incrementFunc(product, inCart, dispatch);
+                                    handleShow()
                                 }}
                             >
                                 In cos <ImCart/>
@@ -95,6 +109,20 @@ function Products() {
                         </Card.Body>
                     </Card>
                 </Col>
+                <Offcanvas 
+                    show={show} 
+                    onHide={handleClose}
+                    placement='end'
+                    // backdrop={true}
+                    backdropClassName="p-3 mb-2 bg-gradient-warning text-dark"
+                >
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                        </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        Some text
+                    </Offcanvas.Body>
+                </Offcanvas>
             </React.Fragment>
                
         )
