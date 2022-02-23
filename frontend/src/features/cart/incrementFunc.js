@@ -13,6 +13,7 @@ export function incrementFunc(product, inCart, dispatch) {
             }
         })
         if (check) {
+            dispatch(increment());
             dispatch(incrementProd(product.id))
         } else if (!check) {
             dispatch(increment());

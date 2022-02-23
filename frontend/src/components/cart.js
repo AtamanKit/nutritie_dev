@@ -3,7 +3,7 @@ import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap
 
 import { useSelector, useDispatch } from 'react-redux';
 import { incrementProd, decrementProd, removeNumProd } from '../features/cart/prodSlice';
-import { decrement } from '../features/cart/counterSlice';
+import { increment, decrement } from '../features/cart/counterSlice';
 import { decrementCart } from '../features/cart/cartSlice';
 
 import { CountText }  from './count_text';
@@ -27,9 +27,7 @@ export default function Cart() {
         return (
             <React.Fragment>
                 <div className='text-center' style={{margin: '5rem 0 5rem 0'}}>
-                    {/* <Card className='text-center'> */}
                         <Card.Img
-                            // src='../images/cart_300.png'
                             src={cartImage}
                             style={{
                                 width: '300px',
@@ -90,7 +88,10 @@ export default function Cart() {
                                         variant='success' 
                                         className='cart-btn-min'
                                         onClick={() => {
-                                            dispatch(decrementProd(product.id))
+                                            if (getNum(product.id) !==0) {
+                                                dispatch(decrement(1));
+                                            }
+                                            dispatch(decrementProd(product.id));
                                         }}
                                     >
                                         -
@@ -104,6 +105,7 @@ export default function Cart() {
                                         variant='success' 
                                         className='cart-btn'
                                         onClick={() => {
+                                            dispatch(increment())
                                             dispatch(incrementProd(product.id))
                                         }}
                                     >
@@ -120,7 +122,7 @@ export default function Cart() {
                                         variant='success' 
                                         className='myBtnExcl'
                                         onClick={() => {
-                                            dispatch(decrement());
+                                            dispatch(decrement(getNum(product.id)));
                                             dispatch(decrementCart(product.id));
                                             dispatch(removeNumProd(product.id));
                                         }}

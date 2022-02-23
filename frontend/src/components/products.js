@@ -13,6 +13,9 @@ import { CountText }  from './count_text';
 import { spacePath, elementPath } from './utils';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { incrementProd, decrementProd, removeNumProd } from '../features/cart/prodSlice';
+import { increment, decrement } from '../features/cart/counterSlice';
+import { decrementCart } from '../features/cart/cartSlice';
 import { incrementFunc } from '../features/cart/incrementFunc';
 
 const pathname = elementPath()
@@ -109,20 +112,7 @@ function Products() {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Offcanvas 
-                    show={show} 
-                    onHide={handleClose}
-                    placement='end'
-                    // backdrop={true}
-                    backdropClassName="p-3 mb-2 bg-gradient-warning text-dark"
-                >
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                        </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        Some text
-                    </Offcanvas.Body>
-                </Offcanvas>
+                
             </React.Fragment>
                
         )
@@ -154,6 +144,18 @@ function Products() {
                 }
                 
             </Row>
+            <Offcanvas 
+                    show={show} 
+                    onHide={handleClose}
+                    placement='end'
+                >
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title>PRODUSE IN COS</Offcanvas.Title>
+                        </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        Some text
+                    </Offcanvas.Body>
+                </Offcanvas>
         </React.Fragment>
     )
 }
