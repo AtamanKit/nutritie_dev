@@ -358,30 +358,19 @@ h2.categorii {
 
 .cart-btn {
     margin: 3rem 0 3rem 0;
-    /* padding: 0 0 0 0; */
     background-color: #e4e4e4;
     color: rgb(0, 0, 0);
-    /* width: 2rem; */
-    /* height: 2rem; */
     font-weight: bold;
-    /* font-size: 1.5rem; */
-    /* border-color: #e0e0e0 ; */
-    /* border-width: .2rem; */
-    /* text-align: center; */
+    border: 0;
 }
 
 .cart-btn-min {
     margin: 3rem 0 3rem 0;
-    /* padding: 0 0 0 0; */
     background-color: #e4e4e4;
     color: rgb(0, 0, 0);
     width: 2.3rem;
-    /* height: 2rem; */
     font-weight: bold;
-    /* font-size: 1.5rem; */
-    /* border-color: #e0e0e0 ; */
-    /* border-width: .2rem; */
-    /* text-align: center; */
+    border: 0;
 }
 
 .myBtnExcl {
@@ -434,6 +423,25 @@ h2.categorii {
     }
 }
 
-/* .backdrop {
-    bg-transparent;
-} */
+.cart-card-offcanvas {
+    /* width: 70%; */
+    /* margin-left: 17%; */
+    border: none;
+}
+
+.cart-btn-offcanvas {
+    /* margin: 3rem 0 3rem 0; */
+    background-color: #e4e4e4;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border: 0;
+}
+
+.cart-btn-min-offcanvas {
+    /* margin: 3rem 0 3rem 0; */
+    background-color: #e4e4e4;
+    color: rgb(0, 0, 0);
+    width: 1.5rem;
+    font-weight: bold;
+    border: 0;
+}

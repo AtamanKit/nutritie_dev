@@ -17,6 +17,7 @@ import { incrementProd, decrementProd, removeNumProd } from '../features/cart/pr
 import { increment, decrement } from '../features/cart/counterSlice';
 import { decrementCart } from '../features/cart/cartSlice';
 import { incrementFunc } from '../features/cart/incrementFunc';
+import CartOffcanvas from './cart_offcanvas';
 
 const pathname = elementPath()
 
@@ -133,7 +134,7 @@ function Products() {
             </React.Fragment>
         )
     }
-
+    
     return (
         <React.Fragment>
             <Row xs={1} md={5}>
@@ -152,9 +153,11 @@ function Products() {
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>PRODUSE IN COS</Offcanvas.Title>
                         </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        Some text
-                    </Offcanvas.Body>
+                   
+                            <Offcanvas.Body>
+                                <CartOffcanvas />                                
+                            </Offcanvas.Body>
+                       
                 </Offcanvas>
         </React.Fragment>
     )
