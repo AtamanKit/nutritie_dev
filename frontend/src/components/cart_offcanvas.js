@@ -6,6 +6,8 @@ import { incrementProd, decrementProd, removeNumProd } from '../features/cart/pr
 import { increment, decrement } from '../features/cart/counterSlice';
 import { decrementCart } from '../features/cart/cartSlice';
 
+import { BsXLg } from 'react-icons/bs';
+
 import { CountText }  from './count_text';
 import cartImage from '../images/cart_300.png';
 
@@ -27,7 +29,7 @@ export default function CartOffcanvas() {
         return (
             <React.Fragment>
                 <div className='text-center' style={{margin: '5rem 0 5rem 0'}}>
-                        <Card.Img
+                        {/* <Card.Img
                             src={cartImage}
                             style={{
                                 width: '300px',
@@ -37,7 +39,7 @@ export default function CartOffcanvas() {
                         <Card.Body>
                             <Card.Title style={{color: 'rgb(184, 103, 103)'}}>COSUL ESTE GOL</Card.Title>
                             <Card.Text>Pentru a depune in cos apasati butonul "In cos" in dreptul fiecarui produs</Card.Text>
-                        </Card.Body>
+                        </Card.Body> */}
                     {/* </Card> */}
                 </div>
             </React.Fragment>
@@ -50,8 +52,8 @@ export default function CartOffcanvas() {
                     const hrefpath = `/breadcrumb/PRODUS/${product.category.title}/${product.id}`
                     return(
                         <Card className='cart-card-offcanvas'>
-                            <Row xs={1} md={1}>
-                                <Col style={{display: 'flex'}}>
+                            <Row xs={1} md={2}>
+                                <Col style={{display: 'flex', width: '100%'}}>
                                     <a href={hrefpath}>
                                         <Card.Img
                                             src={product.image_desc}
@@ -84,13 +86,13 @@ export default function CartOffcanvas() {
                                                     -
                                                 </Button>                           
                                 
-                                                <div className='cart-counter-text'>
+                                                <div className='cart-counter-text-offcanvas'>
                                                     { getNum(product.id) }
                                                 </div>
-                            
+
                                                 <Button 
                                                     variant='success' 
-                                                    className='cart-btn'
+                                                    className='cart-btn-offcanvas'
                                                     onClick={() => {
                                                         dispatch(increment())
                                                         dispatch(incrementProd(product.id))
@@ -104,55 +106,20 @@ export default function CartOffcanvas() {
                                             </div>
                                         </div>
                                     </div>
-                                </Col>
-                                {/* <Col style={{display: 'flex'}}>
-                            
-                                    <Button 
-                                        variant='success' 
-                                        className='cart-btn-min'
-                                        onClick={() => {
-                                            if (getNum(product.id) !==0) {
-                                                dispatch(decrement(1));
-                                            }
-                                            dispatch(decrementProd(product.id));
-                                        }}
-                                    >
-                                        -
-                                    </Button>
-                                
-                                    <div className='cart-counter-text'>
-                                        { getNum(product.id) }
-                                    </div>
-                            
-                                    <Button 
-                                        variant='success' 
-                                        className='cart-btn'
-                                        onClick={() => {
-                                            dispatch(increment())
-                                            dispatch(incrementProd(product.id))
-                                        }}
-                                    >
-                                        +
-                                    </Button>
+                                    <Col>
+                                        <a href='#'>
+                                            <BsXLg 
+                                                onClick={() => {
+                                                    dispatch(decrementCart(product.id));
+                                                    dispatch(removeNumProd(product.id));
+                                                }
+                                                }
+                                            />
+                                        </a>
+                                    </Col>
                                 </Col>
                                 <Col>
-                                    <div className='cart-text'>
-                                        { product.price * getNum(product.id) } lei
-                                    </div>
                                 </Col>
-                                <Col>
-                                    <Button 
-                                        variant='success' 
-                                        className='myBtnExcl'
-                                        onClick={() => {
-                                            dispatch(decrement(getNum(product.id)));
-                                            dispatch(decrementCart(product.id));
-                                            dispatch(removeNumProd(product.id));
-                                        }}
-                                    >
-                                        Excludeti
-                                    </Button>
-                                </Col> */}
                             </Row>
                         </Card>
                     )}
