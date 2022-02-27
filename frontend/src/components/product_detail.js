@@ -1,4 +1,12 @@
-import { Card, Tabs, Tab, Button, Row, Col } from 'react-bootstrap';
+import { 
+    Card, 
+    Tabs, 
+    Tab, 
+    Button, 
+    Row, 
+    Col,
+    Offcanvas
+} from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { quatesHtml, elementPath } from './utils';
@@ -6,13 +14,20 @@ import { quatesHtml, elementPath } from './utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementFunc } from '../features/cart/incrementFunc';
 
+import CartOffcanvas from './cart_offcanvas';
+
 const pathname = elementPath()
 
-function ProductDetail() {
+function ProductDetail(props) {
     const [product, setProduct] = useState([]);
 
     const inCart = useSelector((state) => state.cart.items)
     const dispatch = useDispatch();
+
+    const [show, setShow] = useState(false);
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true)
 
     useEffect(() => {
         const url = `http://127.0.0.1:8000/nut_app/products/${pathname.id}`;
@@ -126,25 +141,31 @@ function ProductDetail() {
                             variant='success'
                             className='myBtn'
                             onClick={() => {
-                                incrementFunc(product, inCart, dispatch)
+                                incrementFunc(product, inCart, dispatch);
+                                handleShow()
                             }}
                         >
                             In cos <ImCart/>
                         </Button>
                     </div>
                 </Col>
-                {/* <Col>
-                     <SideList
-                        list='categories'
-                        header='CATEGORII DE PRODUSE'
-                        namespace='suplimente'
-                     />
-                     <SideList
-                        list='brands'
-                        header='PRODUCATORI'
-                     />
-                </Col> */}
+                
             </Row>
+            <Offcanvas
+                show={show}
+                onHide={handleClose}
+                placement='end'
+            >
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>PRODUSE IN COS</Offcanvas.Title>
+                </Offcanvas.Header>
+
+                <Offcanvas.Body>
+                    <CartOffcanvas
+                        navCartOffcanvas={props.navCartProd}
+                    />
+                </Offcanvas.Body>
+            </Offcanvas>
         </React.Fragment>
     )
 }

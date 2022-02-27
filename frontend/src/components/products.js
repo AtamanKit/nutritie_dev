@@ -13,15 +13,12 @@ import { CountText }  from './count_text';
 import { spacePath, elementPath } from './utils';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementProd, decrementProd, removeNumProd } from '../features/cart/prodSlice';
-import { increment, decrement } from '../features/cart/counterSlice';
-import { decrementCart } from '../features/cart/cartSlice';
 import { incrementFunc } from '../features/cart/incrementFunc';
 import CartOffcanvas from './cart_offcanvas';
 
 const pathname = elementPath()
 
-function Products() {
+function Products(props) {
     const [products, setProducts] = useState([]);
 
     const inCart = useSelector((state) => state.cart.items)
@@ -146,19 +143,20 @@ function Products() {
                 
             </Row>
             <Offcanvas 
-                    show={show} 
-                    onHide={handleClose}
-                    placement='end'
-                >
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>PRODUSE IN COS</Offcanvas.Title>
-                        </Offcanvas.Header>
-                   
-                            <Offcanvas.Body>
-                                <CartOffcanvas />                                
-                            </Offcanvas.Body>
-                       
-                </Offcanvas>
+                show={show} 
+                onHide={handleClose}
+                placement='end'
+            >
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>PRODUSE IN COS</Offcanvas.Title>
+                </Offcanvas.Header>
+                
+                <Offcanvas.Body>
+                    <CartOffcanvas  
+                        navCartOffcanvas={props.navCartProd}
+                    />                                
+                </Offcanvas.Body>
+            </Offcanvas>
         </React.Fragment>
     )
 }

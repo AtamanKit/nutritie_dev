@@ -96,7 +96,7 @@ function NavBar(props) {
                                             </div>
                                         : <div style={{marginBottom: '1.05rem'}}/>                                    }
                                 </div>
-                                </div>
+                            </div>
                         </Nav.Link>
                         <div className='vertical-line'/>
                         <Nav.Link className='nav_left_sign'>SignIn</Nav.Link>

@@ -72,12 +72,16 @@ function App() {
       }
       {
         pathname.type === 'PRODUSE' && pathname.category !== 'CAUTATI'
-        ? <Products />
+        ? <Products 
+            navCartProd={cartApFunc}
+          />
         : []
       }
       {
         pathname.type === 'PRODUS'
-        ? <ProductDetail />
+        ? <ProductDetail 
+            navCartProd={cartApFunc}
+          />
         : []
       }
       {

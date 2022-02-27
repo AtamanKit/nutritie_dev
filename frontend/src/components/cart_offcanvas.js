@@ -10,8 +10,9 @@ import { BsXLg } from 'react-icons/bs';
 
 import { CountText }  from './count_text';
 import cartImage from '../images/cart_300.png';
+// import { getBsProps } from 'react-bootstrap/lib/utils/bootstrapUtils';
 
-export default function CartOffcanvas() {
+export default function CartOffcanvas(props) {
     const dispatch = useDispatch();
     const inCart = useSelector((state) => state.cart.items)
     const count = useSelector((state) => state.prodCart.items);
@@ -53,19 +54,24 @@ export default function CartOffcanvas() {
                     return(
                         <Card className='cart-card-offcanvas'>
                             <Row xs={1} md={2}>
-                                <Col style={{display: 'flex', width: '100%'}}>
+                                <Col style={{
+                                        display: 'flex', 
+                                        width: '80%', 
+                                        margin: '.5rem 0 .1rem 0'
+                                        }}
+                                >
                                     <a href={hrefpath}>
                                         <Card.Img
                                             src={product.image_desc}
                                             style={{
-                                                width: '5rem',
-                                                height: '5rem',
+                                                width: '6rem',
+                                                height: '6rem',
                                             }}
                                         />
                                     </a>
                                     
                                         
-                                    <div>
+                                    <div style={{margin: '.5rem 0 0 0'}}>
                                         <div>
                                             <a href={hrefpath}>
                                                 <h6>{product.title}</h6>
@@ -101,30 +107,46 @@ export default function CartOffcanvas() {
                                                     +
                                                 </Button>
                                             </div>
+                                            <div style={{margin: '0 .2rem 0 1rem'}}>x</div>
                                             <div>
                                                 { product.price * getNum(product.id) } lei
                                             </div>
                                         </div>
                                     </div>
-                                    <Col>
-                                        <a href='#'>
-                                            <BsXLg 
-                                                onClick={() => {
-                                                    dispatch(decrementCart(product.id));
-                                                    dispatch(removeNumProd(product.id));
-                                                }
-                                                }
-                                            />
-                                        </a>
-                                    </Col>
                                 </Col>
-                                <Col>
+
+                                <Col style={{width: '10%'}}>
+                                    <a href='#'>
+                                        <BsXLg 
+                                            onClick={() => {
+                                                dispatch(decrement(getNum(product.id)));
+                                                dispatch(decrementCart(product.id));
+                                                dispatch(removeNumProd(product.id));
+                                            }
+                                            }
+                                        />
+                                    </a>
                                 </Col>
                             </Row>
                         </Card>
                     )}
                     )
             }
+            <Button 
+                variant='success' 
+                className='offcanvas-btn-sec'
+                onClick={
+                            props.navCartOffcanvas
+                        }
+            >
+                Vedeti cos
+            </Button>
+            <Button 
+                variant='success' 
+                className='offcanvas-btn'
+            >
+                Continuati
+            </Button>
             </React.Fragment>
         )
     }
