@@ -515,6 +515,11 @@ h2.categorii {
     cursor:grab;
 }
 
+.modal_btn {
+    background-color: #94b237;
+    border: #94b237;
+}
+
 /* .site-cart {
     width: 20rem;
 }
