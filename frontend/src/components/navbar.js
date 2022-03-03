@@ -13,6 +13,7 @@ import logo from '../images/logo.png';
 import { ImCart } from 'react-icons/im';
 import { BsSearch } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
+import LoginGoogle from './login_google';
 
 function NavBar(props) {
     const [color, setColor] = useState('');
@@ -153,10 +154,13 @@ function NavBar(props) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>
+                        Logati-va folosind una din metode
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     Woohoo, you're reading this text in a model!
+                    <LoginGoogle/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={handleClose}>
@@ -165,10 +169,6 @@ function NavBar(props) {
                     <Button 
                         variant='success' 
                         onClick={handleClose}
-                        // style={{
-                        //     backgroundColor: '#94b237',
-                        //     border: '#94b237'
-                        // }}
                         className='modal_btn'
                     >
                         Save Changes
