@@ -14,6 +14,7 @@ import { ImCart } from 'react-icons/im';
 import { BsSearch } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 import LoginGoogle from './login_google';
+import LoginFacebook from './login_facebook';
 
 function NavBar(props) {
     const [color, setColor] = useState('');
@@ -159,8 +160,12 @@ function NavBar(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Woohoo, you're reading this text in a model!
-                    <LoginGoogle/>
+                    {/* Woohoo, you're reading this text in a model! */}
+                    <div style={{textAlign: 'center'}}>
+                        <LoginGoogle/>
+                        <br/>
+                        <LoginFacebook/>
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={handleClose}>

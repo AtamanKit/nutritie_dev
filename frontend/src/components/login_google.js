@@ -10,7 +10,7 @@ const clientId = '537614791430-jfsbnar7suuapta69j3im2hiqd2ncutl.apps.googleuserc
 
 function LoginGoogle() {
     const onSuccess = (res) => {
-        console.log('Login Success: cuttentUser:', res.profileObj);
+        console.log('Login Success: cuttentUser:', res);
         refreshTokenSetup(res);
     };
 
@@ -27,9 +27,20 @@ function LoginGoogle() {
     });
 
     return (
-        <Button onClick={signIn}>
+        <Button 
+            onClick={signIn}
+            variant='success'
+            style={{
+                backgroundColor: 'white',
+                color: 'gray',
+                border: 'none',
+                boxShadow: '3px 2px 10px 0 rgba(0, 0, 0, 0.2)',
+                width: '70%',
+                marginBottom: '.5rem',
+            }}
+        >
             <FcGoogle style={{margin: '0 .2rem .2rem 0'}}/>
-            Logati-va cu Google
+                Google
         </Button>
     );
 }
