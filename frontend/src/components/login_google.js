@@ -4,14 +4,30 @@ import { Button } from 'react-bootstrap';
 
 import { FcGoogle } from 'react-icons/fc';
 
+import { useDispatch } from 'react-redux';
+
+import { addUser } from '../features/auth/userSlice';
+
 import { refreshTokenSetup } from './utils.js';
 
 const clientId = '537614791430-jfsbnar7suuapta69j3im2hiqd2ncutl.apps.googleusercontent.com';
 
 function LoginGoogle() {
+    const dispatch = useDispatch();
+
     const onSuccess = (res) => {
-        console.log('Login Success: cuttentUser:', res);
-        refreshTokenSetup(res);
+        const user = JSON.parse(
+            `{`+
+            `"user_id": "${res.googleId}",`+
+            `"given_name":"${res.profileObj.givenName}",`+
+            `"familyName":"${res.profileObj.familyName}",`+
+            `"email":"${res.profileObj.email}",`+
+            `"image_url": "${res.profileObj.imageUrl}"`+
+            `}`
+        )
+
+        dispatch(addUser(user))
+        // refreshTokenSetup(res);
     };
 
     const onFailure = (res) => {

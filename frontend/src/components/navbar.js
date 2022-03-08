@@ -7,12 +7,14 @@ import {
         FormControl,
         Button,
         Modal,
+        Image,
     } from 'react-bootstrap';
 import React, { useState } from 'react';
 import logo from '../images/logo.png';
 import { ImCart } from 'react-icons/im';
 import { BsSearch } from 'react-icons/bs';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeUser } from '../features/auth/userSlice';
 import LoginGoogle from './login_google';
 import LoginFacebook from './login_facebook';
 
@@ -22,7 +24,9 @@ function NavBar(props) {
     const [searchselect, setSearchselect] = useState('PRODUSE');
     const [searchinput, setSearchinput] = useState('');
 
+    const dispatch = useDispatch()
     const count = useSelector((state) => state.counter.value);
+    const user = useSelector((state) => state.user.item);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -35,6 +39,10 @@ function NavBar(props) {
             setColor('')
         }
     })
+
+    const removeUserFunc = () => {
+        dispatch(removeUser());
+    }
     return(
         <React.Fragment>
             <Navbar 
@@ -102,23 +110,49 @@ function NavBar(props) {
                                                 >
                                                     {count}
                                                 </div>
-                                            : <div style={{marginBottom: '1.05rem'}}/>                                    }
+                                            : <div style={{marginBottom: '1.05rem'}}/>
+                                        }
                                     </div>
                                 </div>
                             </Nav.Link>
                             <div className='vertical-line'/>
-                            <Nav.Link 
-                                className='nav_left_sign'
-                            >
-                                SignIn
-                            </Nav.Link>
-                            <div className='vertical-line'/>
-                            <Nav.Link 
-                                className='nav_left_login'
-                                onClick={handleShow}
-                            >
-                                LogIn
-                            </Nav.Link>
+                            {
+                                user === ""
+                                ?   <React.Fragment>
+                                        <Nav.Link 
+                                            className='nav_left_sign'
+                                        >   
+                                           Sign In
+                                        </Nav.Link>
+                                        <div className='vertical-line'/>
+                                        <Nav.Link 
+                                            className='nav_left_login'
+                                            onClick={handleShow}
+                                        >
+                                            Log In
+                                        </Nav.Link>
+                                    </React.Fragment>
+                                :   <React.Fragment>
+                                        <div className='after-login'>
+                                            <Image 
+                                                src={user.image_url}
+                                                roundedCircle={true}
+                                                className='after-login-img'
+                                            />
+                                            <NavDropdown
+                                                title={user.given_name}
+                                                menuVariant='dark'
+                                            >
+                                                <NavDropdown.Item
+                                                    onClick={removeUserFunc}
+                                                >
+                                                    Log Out
+                                                </NavDropdown.Item>
+                                            </NavDropdown>
+                                        </div>
+                                    </React.Fragment>
+                            }
+                            
                         </Nav>
                         <div className='search-box'>
                             <Form className='d-flex'>
@@ -160,7 +194,6 @@ function NavBar(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Woohoo, you're reading this text in a model! */}
                     <div style={{textAlign: 'center'}}>
                         <LoginGoogle/>
                         <br/>
@@ -168,7 +201,7 @@ function NavBar(props) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant='secondary' onClick={handleClose}>
+                    {/* <Button variant='secondary' onClick={handleClose}>
                         Close
                     </Button>
                     <Button 
@@ -177,7 +210,7 @@ function NavBar(props) {
                         className='modal_btn'
                     >
                         Save Changes
-                    </Button>
+                    </Button> */}
                 </Modal.Footer>
             </Modal>
         </React.Fragment>
