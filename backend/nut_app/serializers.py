@@ -1,6 +1,22 @@
 from .models import Categories, Remedies, Brands, Products, Articlefeat, Articlecollection
 from rest_framework import serializers
 
+from djoser.serializers import UserCreateSerializer
+from django.contrib.auth.models import User
+
+
+class UserCreateSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        model = User
+        fields = [
+            'id',
+            'username',
+            'password',
+            'email',
+            'first_name',
+            'last_name',
+        ]
+
 class CategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories

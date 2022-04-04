@@ -1,6 +1,1 @@
-*.swn
-*.swp
-*.swk
-*.swm
-*.swj
-*.swl
+backend/env
