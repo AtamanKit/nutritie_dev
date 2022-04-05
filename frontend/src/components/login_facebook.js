@@ -15,8 +15,8 @@ export default function LoginFacebook() {
         const user = JSON.parse(
             `{`+
             `"user_id": "${response.userID}",`+
-            `"given_name": "${givenName}",`+
-            `"family_name": "${familyName}",`+
+            `"first_name": "${givenName}",`+
+            `"last_name": "${familyName}",`+
             `"email": "${response.email}",`+
             `"image_url": "${response.picture.data.url}"`+
             `}`

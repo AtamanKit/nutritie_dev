@@ -140,7 +140,7 @@ function NavBar(props) {
                                                 className='after-login-img'
                                             />
                                             <NavDropdown
-                                                title={user.given_name}
+                                                title={user.first_name}
                                                 menuVariant='dark'
                                             >
                                                 <NavDropdown.Item

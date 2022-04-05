@@ -3,9 +3,7 @@ import { useGoogleLogin } from 'react-google-login';
 import { Button } from 'react-bootstrap';
 
 import { FcGoogle } from 'react-icons/fc';
-
 import { useDispatch } from 'react-redux';
-
 import { addUser } from '../features/auth/userSlice';
 
 import { refreshTokenSetup } from './utils.js';
@@ -19,8 +17,8 @@ function LoginGoogle() {
         const user = JSON.parse(
             `{`+
             `"user_id": "${res.googleId}",`+
-            `"given_name":"${res.profileObj.givenName}",`+
-            `"familyName":"${res.profileObj.familyName}",`+
+            `"first_name":"${res.profileObj.givenName}",`+
+            `"last_name":"${res.profileObj.familyName}",`+
             `"email":"${res.profileObj.email}",`+
             `"image_url": "${res.profileObj.imageUrl}"`+
             `}`
@@ -28,6 +26,22 @@ function LoginGoogle() {
 
         dispatch(addUser(user))
         // refreshTokenSetup(res);
+
+        fetch(`http://127.0.0.1:8000/accounts/usersocial/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: `"${res.googleId}"`,
+                email: `"${res.profileObj.email}"`,
+                first_name: `"${res.profileObj.givenName}"`,
+                last_name: `"${res.profileObj.familyName}"`,
+                social_from: "google"
+            })
+            .then(res => res.json)
+            .tnen(result => console.log(result))
+        })
     };
 
     const onFailure = (res) => {

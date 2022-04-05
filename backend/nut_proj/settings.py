@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'nut_app',
+    'accounts',
     'rest_framework',
     'corsheaders',
     'ckeditor',
@@ -149,6 +150,6 @@ SIMPLE_JWT = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user_create': 'nut_app.serializers.UserCreateSerializer',
+        'user_create': 'accounts.serializers.UserCreateSerializer',
     }
 }
