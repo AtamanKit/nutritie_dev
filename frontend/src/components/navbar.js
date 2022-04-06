@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../features/auth/userSlice';
 import LoginGoogle from './login_google';
 import LoginFacebook from './login_facebook';
+import LoginEmail from './login_email';
 
 function NavBar(props) {
     const [color, setColor] = useState('');
@@ -199,6 +200,14 @@ function NavBar(props) {
                         <br/>
                         <LoginFacebook/>
                     </div>
+                </Modal.Body>
+                <div style={{
+                    backgroundColor: 'rgb(220, 220, 220)',
+                    height: '2px',
+                }}
+                />
+                <Modal.Body>
+                    <LoginEmail/>
                 </Modal.Body>
                 <Modal.Footer>
                     {/* <Button variant='secondary' onClick={handleClose}>

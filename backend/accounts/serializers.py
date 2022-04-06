@@ -1,10 +1,7 @@
 from djoser.serializers import UserCreateSerializer
-
 from rest_framework import serializers
-
 from django.contrib.auth.models import User
 from .models import UserSocial
-
 
 class UserCreateSerializer(UserCreateSerializer):
     class Meta:
@@ -23,6 +20,7 @@ class UserSocialSerializer(serializers.ModelSerializer):
         model = UserSocial
         fields = [
             'id',
+            'social_id',
             'email',
             'first_name',
             'last_name',

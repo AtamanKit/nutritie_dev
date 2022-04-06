@@ -14,7 +14,7 @@ export default function LoginFacebook() {
 
         const user = JSON.parse(
             `{`+
-            `"user_id": "${response.userID}",`+
+            `"social_id": "${response.userID}",`+
             `"first_name": "${givenName}",`+
             `"last_name": "${familyName}",`+
             `"email": "${response.email}",`+
@@ -23,6 +23,20 @@ export default function LoginFacebook() {
         )
 
         dispatch(addUser(user))
+
+        fetch('http://127.0.0.1:8000/accounts/usersocial/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                social_id: response.userID,
+                email: response.email,
+                first_name: givenName,
+                last_name: familyName,
+                social_from: "facebook",
+            })
+        })
     }
 
     return(

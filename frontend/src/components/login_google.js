@@ -16,7 +16,7 @@ function LoginGoogle() {
     const onSuccess = (res) => {
         const user = JSON.parse(
             `{`+
-            `"user_id": "${res.googleId}",`+
+            `"social_id": "${res.googleId}",`+
             `"first_name":"${res.profileObj.givenName}",`+
             `"last_name":"${res.profileObj.familyName}",`+
             `"email":"${res.profileObj.email}",`+
@@ -30,18 +30,19 @@ function LoginGoogle() {
         fetch(`http://127.0.0.1:8000/accounts/usersocial/`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                id: `"${res.googleId}"`,
-                email: `"${res.profileObj.email}"`,
-                first_name: `"${res.profileObj.givenName}"`,
-                last_name: `"${res.profileObj.familyName}"`,
-                social_from: "google"
+                social_id: res.googleId,
+                email: res.profileObj.email,
+                first_name: res.profileObj.givenName,
+                last_name: res.profileObj.familyName,
+                social_from: "google",
             })
-            .then(res => res.json)
-            .tnen(result => console.log(result))
         })
+        .then(res => res.json)
+        .tnen(result => console.log(result))
+        .catch(error => console.log(error))
     };
 
     const onFailure = (res) => {
