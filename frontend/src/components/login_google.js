@@ -16,15 +16,15 @@ function LoginGoogle() {
     const onSuccess = (res) => {
         const user = JSON.parse(
             `{`+
-            `"social_id": "${res.googleId}",`+
+            `"user_id": "${res.googleId}",`+
             `"first_name":"${res.profileObj.givenName}",`+
             `"last_name":"${res.profileObj.familyName}",`+
             `"email":"${res.profileObj.email}",`+
             `"image_url": "${res.profileObj.imageUrl}"`+
             `}`
-        )
+        );
 
-        dispatch(addUser(user))
+        dispatch(addUser(user));
         // refreshTokenSetup(res);
 
         fetch(`http://127.0.0.1:8000/accounts/usersocial/`, {
@@ -40,9 +40,6 @@ function LoginGoogle() {
                 social_from: "google",
             })
         })
-        .then(res => res.json)
-        .tnen(result => console.log(result))
-        .catch(error => console.log(error))
     };
 
     const onFailure = (res) => {
