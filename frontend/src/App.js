@@ -18,6 +18,7 @@ import BreadProd from './components/bread_prod';
 import Search from './components/search';
 import SectionTitle from './components/section_title';
 import Cart from './components/cart';
+import SignSuccess from './components/signin_success';
 
 const pathname = elementPath();
 
@@ -53,6 +54,11 @@ function App() {
                     downWhite={`RUBRICA: ${spacePath(pathname.category)}`}
                 />
             :   []
+      }
+      {
+        pathname.type === 'STAREA' && pathname.category === 'CONTURI'
+        ? <SignSuccess />
+        : []
       }
       {
         pathname.type === 'PRODUSE' && pathname.category === 'CAUTATI'

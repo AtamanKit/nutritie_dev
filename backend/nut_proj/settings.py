@@ -149,8 +149,11 @@ SIMPLE_JWT = {
 }
 
 DJOSER = {
+    'USER_CREATE_PASSWORD_RETYPE': True,
     'SERIALIZERS': {
-        'user_create': 'accounts.serializers.UserCreateSerializer',
+        # 'user_create': 'accounts.serializers.UserCreateSerializer',
+        'user_create_password_retype': 'accounts.serializers.UserCreatePasswordRetypeSerializer',
+        # 'user': 'accounts.serializers.UserCreateSerializer',
         'current_user': 'accounts.serializers.UserSerializer',
     },
 }

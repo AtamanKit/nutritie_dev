@@ -85,12 +85,6 @@ a:hover {
     }
 }
 
-/* @media only screen and (max-width: 992px) {
-    .nav_left_sign {
-        padding-top: 0;
-    }
-} */
-
 .nav-drop-sub {
     font-size: 0.9rem;
 }

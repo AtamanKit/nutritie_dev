@@ -18,6 +18,8 @@ import { removeUser } from '../features/auth/userSlice';
 import LoginGoogle from './login_google';
 import LoginFacebook from './login_facebook';
 import LoginEmail from './login_email';
+import SignIn from './sign_in';
+import user_image from '../images/user_icon.png';
 
 function NavBar(props) {
     const [color, setColor] = useState('');
@@ -31,7 +33,19 @@ function NavBar(props) {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const [login, setLogin] = useState(false);
+    const handleLoginShow = () => {
+        setShow(true);
+        setLogin(true);
+    }
+    const handleSigninShow = () => {
+        setShow(true);
+        setLogin(false);
+    }
+
+    // console.log(login)
+
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80){
@@ -117,29 +131,39 @@ function NavBar(props) {
                                 </div>
                             </Nav.Link>
                             <div className='vertical-line'/>
-                            {
+                            {   
                                 user === ""
                                 ?   <React.Fragment>
                                         <Nav.Link 
                                             className='nav_left_sign'
+                                            onClick={handleSigninShow}
                                         >   
                                            Sign In
                                         </Nav.Link>
                                         <div className='vertical-line'/>
                                         <Nav.Link 
                                             className='nav_left_login'
-                                            onClick={handleShow}
+                                            onClick={handleLoginShow}
                                         >
                                             Log In
                                         </Nav.Link>
                                     </React.Fragment>
                                 :   <React.Fragment>
                                         <div className='after-login'>
-                                            <Image 
-                                                src={user.image_url}
-                                                roundedCircle={true}
-                                                className='after-login-img'
-                                            />
+                                            {   
+                                                user.image_url !== "user_image"
+                                                ?   <Image 
+                                                        src={user.image_url}
+                                                        roundedCircle={true}
+                                                        className='after-login-img'
+                                                    />
+                                                :   <Image 
+                                                        src={user_image}
+                                                        roundedCircle={true}
+                                                        className='after-login-img'
+                                                    />
+                                                       
+                                            }
                                             <NavDropdown
                                                 title={user.first_name}
                                                 menuVariant='dark'
@@ -153,7 +177,6 @@ function NavBar(props) {
                                         </div>
                                     </React.Fragment>
                             }
-                            
                         </Nav>
                         <div className='search-box'>
                             <Form className='d-flex'>
@@ -207,7 +230,11 @@ function NavBar(props) {
                 }}
                 />
                 <Modal.Body>
-                    <LoginEmail/>
+                    {
+                        login === true
+                        ?   <LoginEmail />
+                        :   <SignIn /> 
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     {/* <Button variant='secondary' onClick={handleClose}>

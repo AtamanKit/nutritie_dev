@@ -27,6 +27,8 @@ function LoginGoogle() {
         dispatch(addUser(user));
         // refreshTokenSetup(res);
 
+        window.location.reload();
+
         fetch(`http://127.0.0.1:8000/accounts/usersocial/`, {
             method: 'POST',
             headers: {
