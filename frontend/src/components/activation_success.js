@@ -1,4 +1,4 @@
-export default function RegisteredSuccess() {
+export default function ActivationSuccess() {
     return(
         <div
             style={{
@@ -8,7 +8,7 @@ export default function RegisteredSuccess() {
             }}
         >
             <h1 className='activation-text'>
-                VERIFCATI EMAIL-UL PENTRU ACTIVAREA CONTULUI!
+                ATI ACTIVAT CU SUCCES CONTUL!
             </h1>
         </div>
     )

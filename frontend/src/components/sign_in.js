@@ -48,13 +48,6 @@ export default function SignIn() {
         }   
     }
 
-    console.log(error);
-    // if (error.includes('Enter a valid')) {
-    //     console.log("yes")
-    // } else {
-    //     console.log("no")
-    // }
-
     if (
         JSON.stringify(error).includes('id') &&
         JSON.stringify(error).includes('username') &&
@@ -62,7 +55,7 @@ export default function SignIn() {
         JSON.stringify(error).includes('first_name') &&
         JSON.stringify(error).includes('last_name')
     ) {
-        window.location.pathname = '/breadcrumb/STAREA/CONTURI/'
+        window.location.pathname = '/breadcrumb/INREGISTRARE/CONTURI/'
     }
 
 
@@ -88,7 +81,7 @@ export default function SignIn() {
                             borderRadius: '4px',
                         }}
                     >
-                        EROARE: Validitate email
+                        Adresa email nu este valida
                     </Form.Label>
                 :   ""
             }

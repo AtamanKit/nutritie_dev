@@ -26,13 +26,17 @@ function NavBar(props) {
 
     const [searchselect, setSearchselect] = useState('PRODUSE');
     const [searchinput, setSearchinput] = useState('');
+    const [passResetCheck, setPassResetCheck] = useState(false)
 
     const dispatch = useDispatch()
     const count = useSelector((state) => state.counter.value);
     const user = useSelector((state) => state.user.item);
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+            setShow(false);
+            setPassResetCheck(false);
+    }
 
     const [login, setLogin] = useState(false);
     const handleLoginShow = () => {
@@ -44,9 +48,10 @@ function NavBar(props) {
         setLogin(false);
     }
 
-    // console.log(login)
+    const handlePassReset = result => {
+        setPassResetCheck(result)
+    }
 
-    
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80){
             setColor('dark')
@@ -58,6 +63,7 @@ function NavBar(props) {
     const removeUserFunc = () => {
         dispatch(removeUser());
     }
+
     return(
         <React.Fragment>
             <Navbar 
@@ -211,28 +217,47 @@ function NavBar(props) {
                 </Container>
             </Navbar>
 
+            {/* Three states of Modal
+                1) When Login ('login' = true)
+                2) When Signin ('login' = false)
+                3) When forgeting the password 'passResetCheck' = true in this case
+                login Google and Facebook buttons will not appear
+            */}
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>
-                        Logati-va folosind una din metode
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div style={{textAlign: 'center'}}>
-                        <LoginGoogle/>
-                        <br/>
-                        <LoginFacebook/>
-                    </div>
-                </Modal.Body>
-                <div style={{
-                    backgroundColor: 'rgb(220, 220, 220)',
-                    height: '2px',
-                }}
-                />
+                {
+                   !passResetCheck
+                   ?    <div>
+                            <Modal.Header closeButton>
+                                <Modal.Title>
+                                    Logati-va folosind una din metode
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <div style={{textAlign: 'center'}}>
+                                    <LoginGoogle/>
+                                    <br/>
+                                    <LoginFacebook/>
+                                </div>
+                            </Modal.Body>
+                            <div style={{
+                                backgroundColor: 'rgb(220, 220, 220)',
+                                height: '2px',
+                            }}
+                            />
+                        </div>
+                   :    <Modal.Header closeButton>
+                            <Modal.Title>
+                                Schimbati parola introducind email
+                            </Modal.Title>
+                        </Modal.Header>
+                }
+                
                 <Modal.Body>
                     {
                         login === true
-                        ?   <LoginEmail />
+                        // passForgotFunc is a prop that will control
+                        // if user pushed 'I forgot the password' link
+                        ?   <LoginEmail passResetFunc={handlePassReset}/>
                         :   <SignIn /> 
                     }
                 </Modal.Body>

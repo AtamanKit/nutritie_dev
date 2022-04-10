@@ -150,10 +150,31 @@ SIMPLE_JWT = {
 
 DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
+    'SEND_ACTIVATION_EMAIL': True,
+    'ACTIVATION_URL': 'breadcrumb/ACTIVARE/CONTURI/{uid}/{token}',
+    'SEND_CONFIRMATION_EMAIL': True,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'breadcrumb/SCHIMBARE/PAROLA/{uid}/{token}',
+    'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'SERIALIZERS': {
         # 'user_create': 'accounts.serializers.UserCreateSerializer',
         'user_create_password_retype': 'accounts.serializers.UserCreatePasswordRetypeSerializer',
         # 'user': 'accounts.serializers.UserCreateSerializer',
         'current_user': 'accounts.serializers.UserSerializer',
     },
+    'EMAIL': {
+        'activation': 'accounts.email.ActivationEmail',
+        'confirmation': 'accounts.email.ConfirmationEmail',
+    }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'rodionatamaniuc@gmail.com'
+EMAIL_HOST_PASSWORD = 'nkznnushddjiapgj'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DOMAIN = 'localhost:3000'
+SITE_NAME = 'VINDECARE.ORG'

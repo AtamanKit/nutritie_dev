@@ -544,3 +544,44 @@ h2.categorii {
         margin: 0 .5rem .5rem 0       
     }
 }
+
+.activation-text {
+    font-size: 300%
+}
+
+@media only screen and (max-width: 576px) {
+    .activation-text {
+        font-size: 200%;
+    }
+}
+
+.activation-btn {
+    background-color: #94b237;
+    border: #94b237;
+    position: relative;
+    color: white;
+    width: 15rem
+}
+
+@media only screen and (max-width: 768px) {
+    .activation-btn {
+        width: 100%;
+    }
+}
+
+.bread-text {
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .bread-text {
+        font-size: 2rem;
+    }
+}
+
+.password-forgot-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

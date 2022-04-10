@@ -4,14 +4,50 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../features/auth/userSlice';
 // import user_image from '../images/user_image.jpg'
 
-export default function LoginEmail(){
+export default function LoginEmail(props){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const [validated, setValidated] = useState(false);
     const [tokenCheck, setTokenCheck] = useState(true);
 
+// Bellow constant is for controling password reset inside component
+    const [passResetCheck, setPassResetCheck] = useState(false);
+    const [emailPassReset, setEmailPassReset] = useState('');
+    const [errorPassReset, setErrorPassReset] = useState('undefined');
+
     const dispatch = useDispatch();
+
+// Function to contol password reset (useState for inside component, 
+// props for outside in navbar parent component)
+    const handlePassReset = () => {
+        setPassResetCheck(true);
+        props.passResetFunc(true)
+    }
+
+    const handleChPass = e => {
+        e.preventDefault();
+
+        setValidated(true);
+
+        fetch('http://127.0.0.1:8000/auth/users/reset_password/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: emailPassReset,
+            })
+        })
+        .then(res => res.text())
+        .then(result => setErrorPassReset(result))
+        .catch(error => console.log(error))
+
+    }
+    
+    if (errorPassReset === '') {
+        window.location.pathname = '/breadcrumb/VERIFICARE/PAROLA/'
+    }
 
     const handleStorage = user_data => {
         const user = JSON.parse(
@@ -51,11 +87,6 @@ export default function LoginEmail(){
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
-        }
     
         setValidated(true);
 
@@ -76,64 +107,145 @@ export default function LoginEmail(){
         }
     }
 
-    return(
-        <Form
-            noValidate
-            validated={validated} 
-            style={{
-                width: '70%',
-                margin: '0 0 0 15%',
-            }}
-            onSubmit={handleSubmit}
-        >
-            {
-                !tokenCheck
-                ?   <Form.Label 
-                        style={{
-                            color: 'red',
-                            backgroundColor: 'yellow',
-                            padding: '.2rem .2rem .2rem .7rem',
-                            width: '100%',
-                            border: '1px solid' ,
-                            borderRadius: '4px',
-                        }}
+    if (!passResetCheck) {
+        return(
+            <React.Fragment>
+                <Form
+                    noValidate
+                    validated={validated} 
+                    style={{
+                        width: '70%',
+                        margin: '0 0 0 15%',
+                    }}
+                    onSubmit={handleSubmit}
+                >
+                    {
+                        !tokenCheck
+                        ?   <Form.Label 
+                                style={{
+                                    color: 'red',
+                                    backgroundColor: 'yellow',
+                                    padding: '.2rem .2rem .2rem .7rem',
+                                    width: '100%',
+                                    border: '1px solid' ,
+                                    borderRadius: '4px',
+                                }}
+                            >
+                                Ati introdus gresit unul din campuri
+                            </Form.Label>
+                        :   ""
+                    }
+                    {/* <Form.Label>"{tokenCheck}"</Form.Label> */}
+                    <Form.Group className="mb-3" controlId="formGroupEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control 
+                            required
+                            type="email" 
+                            placeholder="Trebuie sa contina '@'"
+                            onChange={(e) => {setEmail(e.target.value)}}
+                        />
+                        <Form.Control.Feedback type='invalid'>
+                            Introduceti un email valid
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formGroupPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            required
+                            type="password"
+                            placeholder="Parola"
+                            onChange={(e) => {setPassword(e.target.value)}}
+                        /> 
+                        <Form.Control.Feedback type='invalid'>
+                            Introduceti parola
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Button 
+                        className='login_btn'
+                        variant='success'
+                        type='submit'
                     >
-                        Ati introdus gresit unul din campuri
-                    </Form.Label>
-                :   ""
-            }
-            {/* <Form.Label>"{tokenCheck}"</Form.Label> */}
-            <Form.Group className="mb-3" controlId="formGroupEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control 
-                    required
-                    type="email" 
-                    placeholder="Trebuie sa contina '@'"
-                    onChange={(e) => {setEmail(e.target.value)}}
-                />
-                <Form.Control.Feedback type='invalid'>
-                    Introduceti un email valid
-                </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formGroupPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    required
-                    type="password"
-                    placeholder="Parola"
-                    onChange={(e) => {setPassword(e.target.value)}}
-                /> 
-                <Form.Control.Feedback type='invalid'>
-                    Introduceti parola
-                </Form.Control.Feedback>
-            </Form.Group>
-            <Button 
-                className='login_btn'
-                variant='success'
-                type='submit'
+                        Logati-va
+                    </Button>
+                    
+                </Form>
+                <div style={{
+                    margin: '5% 0 0 10%',
+                    fontSize: '14px',
+                    }}
+                >
+                    <a 
+                        className='password-forgot-link'
+                        onClick={handlePassReset}
+                    >
+                        Ati utitat parola?
+                    </a>
+                </div>
+            </React.Fragment>
+        )
+    } else {
+        return(
+            <Form
+                noValidate
+                validated={validated}
+                style={{
+                    width: '70',
+                    margin: '0 0 0 15%',
+                }}
+                onSubmit={handleChPass}
             >
-                Logati-va
-            </Button>
-        </Form>
-    )
+                {
+                    errorPassReset.includes('Enter a valid email address.')
+                    ?   <Form.Label
+                            style={{
+                                color: 'red',
+                                backgroundColor: 'yellow',
+                                padding: '.2rem .2rem .2rem .7rem',
+                                width: '100%',
+                                border: '1px solid',
+                                borderRadius: '4px',
+                            }}
+                        >
+                            Adresa email nu este valida
+                        </Form.Label>
+                    :   ""
+                }
+                {
+                    errorPassReset.includes('User with given email does not exist.')
+                    ?   <Form.Label
+                            style={{
+                                color: 'red',
+                                backgroundColor: 'yellow',
+                                padding: '.2rem .2rem .2rem .7rem',
+                                width: '100%',
+                                border: '1px solid',
+                                borderRadius: '4px',
+                            }}
+                        >
+                            Nu exista cont cu un astfel de email
+                        </Form.Label>
+                    :   ""
+                }
+                <Form.Group className='mb-3'>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        required 
+                        type='email' 
+                        placeholder="Trebuie sa contina '@'"
+                        onChange={e => {setEmailPassReset(e.target.value)}}
+                    />
+                    <Form.Control.Feedback type='invalid'>
+                        Introduceti un email valid
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Button
+                    className='login_btn'
+                    variant='success'
+                    type='submit'
+                >
+                    Schimbati parola
+                </Button>
+            </Form>
+        )
+    }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 function BreadProd(props) {
     return(
         <React.Fragment>
@@ -24,12 +24,7 @@ function BreadProd(props) {
                                     color: '#fff',
                                 }}
                     >
-                        <h1 
-                            style={{
-                                fontWeight: 'bold',
-                                fontSize: '4rem'
-                            }}
-                        >
+                        <h1 className='bread-text'>
                             {props.downWhite}
                         </h1>
                     </Card.Title>

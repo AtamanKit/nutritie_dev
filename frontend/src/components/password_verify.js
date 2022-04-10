@@ -1,4 +1,4 @@
-export default function RegisteredSuccess() {
+export default function PasswordVerify() {
     return(
         <div
             style={{
@@ -8,8 +8,8 @@ export default function RegisteredSuccess() {
             }}
         >
             <h1 className='activation-text'>
-                VERIFCATI EMAIL-UL PENTRU ACTIVAREA CONTULUI!
+                VERIFICATI EMAIL-UL PENTRU RESETAREA PAROLEI!
             </h1>
-        </div>
+        </div> 
     )
 }

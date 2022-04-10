@@ -19,6 +19,10 @@ import Search from './components/search';
 import SectionTitle from './components/section_title';
 import Cart from './components/cart';
 import SignSuccess from './components/signin_success';
+import ActivationAccount from './components/activation_account';
+import ActivationSuccess from './components/activation_success';
+import PasswordVerify from './components/password_verify';
+import PasswordReset from './components/password_reset';
 
 const pathname = elementPath();
 
@@ -50,13 +54,33 @@ function App() {
       {
         pathname.breadcrumb === 'breadcrumb'
             ?   <BreadProd
-                    upGreen={`VEDETI ${pathname.type} DIN`}
+                    upGreen={`VEDETI ${spacePath(pathname.type)} DIN`}
                     downWhite={`RUBRICA: ${spacePath(pathname.category)}`}
                 />
             :   []
       }
       {
-        pathname.type === 'STAREA' && pathname.category === 'CONTURI'
+        pathname.type === 'SCHIMBARE' && pathname.category === 'PAROLA'
+        ? <PasswordReset />
+        : []
+      }
+      {
+        pathname.type === 'VERIFICARE' && pathname.category === 'PAROLA'
+        ? <PasswordVerify />
+        : []
+      }
+      {
+        pathname.type === 'REUSITA' && pathname.category === 'CONTURI'
+        ? <ActivationSuccess />
+        : []
+      }
+      {
+        pathname.type === 'ACTIVARE' && pathname.category === 'CONTURI'
+        ? <ActivationAccount />
+        : []
+      }
+      {
+        pathname.type === 'INREGISTRARE' && pathname.category === 'CONTURI'
         ? <SignSuccess />
         : []
       }
