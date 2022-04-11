@@ -14,7 +14,9 @@ export default function LoginEmail(props){
 // Bellow constant is for controling password reset inside component
     const [passResetCheck, setPassResetCheck] = useState(false);
     const [emailPassReset, setEmailPassReset] = useState('');
-    const [errorPassReset, setErrorPassReset] = useState('undefined');
+    const [error, setError] = useState('undefined');
+
+    const [loader, setLoader] = useState(false)
 
     const dispatch = useDispatch();
 
@@ -30,6 +32,8 @@ export default function LoginEmail(props){
 
         setValidated(true);
 
+        setError('loading')
+
         fetch('http://127.0.0.1:8000/auth/users/reset_password/', {
             method: 'POST',
             headers: {
@@ -40,14 +44,22 @@ export default function LoginEmail(props){
             })
         })
         .then(res => res.text())
-        .then(result => setErrorPassReset(result))
+        .then(result => setError(result))
         .catch(error => console.log(error))
 
     }
     
-    if (errorPassReset === '') {
+    if (error === '') {
         window.location.pathname = '/breadcrumb/VERIFICARE/PAROLA/'
     }
+
+    let passResetButton = 'Schimbati parola'
+
+    if (error === 'loading') {
+        passResetButton = 'Incarcare...'
+    }
+
+
 
     const handleStorage = user_data => {
         const user = JSON.parse(
@@ -82,6 +94,7 @@ export default function LoginEmail(props){
             .catch(error => console.log(error))
         } else {
             setTokenCheck(false)
+            setLoader(false)
         }
     };
 
@@ -89,6 +102,8 @@ export default function LoginEmail(props){
         e.preventDefault();
     
         setValidated(true);
+
+        setLoader(true);
 
         if (email !== "" || password !== "") {
             fetch('http://127.0.0.1:8000/auth/jwt/create/', {
@@ -105,6 +120,12 @@ export default function LoginEmail(props){
             .then(result => getUser(result))
             .catch(error => console.log(error))
         }
+    }
+
+    let loginButton = 'Logati-va'
+
+    if (loader) {
+        loginButton = 'Incarcare...'
     }
 
     if (!passResetCheck) {
@@ -165,7 +186,7 @@ export default function LoginEmail(props){
                         variant='success'
                         type='submit'
                     >
-                        Logati-va
+                        {loginButton}
                     </Button>
                     
                 </Form>
@@ -195,7 +216,7 @@ export default function LoginEmail(props){
                 onSubmit={handleChPass}
             >
                 {
-                    errorPassReset.includes('Enter a valid email address.')
+                    error.includes('Enter a valid email address.')
                     ?   <Form.Label
                             style={{
                                 color: 'red',
@@ -211,7 +232,7 @@ export default function LoginEmail(props){
                     :   ""
                 }
                 {
-                    errorPassReset.includes('User with given email does not exist.')
+                    error.includes('User with given email does not exist.')
                     ?   <Form.Label
                             style={{
                                 color: 'red',
@@ -243,7 +264,7 @@ export default function LoginEmail(props){
                     variant='success'
                     type='submit'
                 >
-                    Schimbati parola
+                    {passResetButton}
                 </Button>
             </Form>
         )

@@ -10,7 +10,9 @@ export default function SignIn() {
     const [password2, setPassword2] = useState('');
 
     const [validated, setValidated] = useState(false);
-    const [error, setError] = useState({});
+    const [error, setError] = useState('');
+    const [loader, setLoader] = useState(false);
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -23,7 +25,8 @@ export default function SignIn() {
         }
     
         setValidated(true);
-        // console.log(validated)
+
+        setLoader(true);
 
         if (firstName || lastName !== "") {
             fetch(`http://127.0.0.1:8000/auth/users/`, {
@@ -40,7 +43,7 @@ export default function SignIn() {
                     re_password: password2,
                 })
             })
-            .then(res => res.json())
+            .then(res => res.text())
             .then(result => setError(result))
             .catch(error => console.log(error))
 
@@ -48,16 +51,21 @@ export default function SignIn() {
         }   
     }
 
+    let signinButton = 'Inregistrati-va'
+
+    if (loader) {
+        signinButton = 'Incarcare...'
+    }
+
     if (
-        JSON.stringify(error).includes('id') &&
-        JSON.stringify(error).includes('username') &&
-        JSON.stringify(error).includes('email') &&
-        JSON.stringify(error).includes('first_name') &&
-        JSON.stringify(error).includes('last_name')
+        error.includes('id') &&
+        error.includes('username') &&
+        error.includes('email') &&
+        error.includes('first_name') &&
+        error.includes('last_name')
     ) {
         window.location.pathname = '/breadcrumb/INREGISTRARE/CONTURI/'
     }
-
 
     return(
         <Form
@@ -70,7 +78,23 @@ export default function SignIn() {
             onSubmit={handleSubmit}
         >   
             {
-                JSON.stringify(error).includes('Enter a valid email address.')
+                error.includes('A user with that username already exists.')
+                ?   <Form.Label 
+                        style={{
+                            color: 'red',
+                            backgroundColor: 'yellow',
+                            padding: '.2rem .2rem .2rem .7rem',
+                            width: '100%',
+                            border: '1px solid' ,
+                            borderRadius: '4px',
+                        }}
+                    >
+                        Un cont cu un astfel de email exista deja
+                    </Form.Label>
+                :   ""
+            }
+            {
+                error.includes('Enter a valid email address.')
                 ?   <Form.Label 
                         style={{
                             color: 'red',
@@ -86,7 +110,7 @@ export default function SignIn() {
                 :   ""
             }
             {
-                JSON.stringify(error).includes('The password is too similar to the first name.')
+                error.includes('The password is too similar to the first name.')
                 ?   <Form.Label 
                         style={{
                             color: 'red',
@@ -102,7 +126,7 @@ export default function SignIn() {
                 :   ""
             }
             {
-                JSON.stringify(error).includes('This password is too short.')
+                error.includes('This password is too short.')
                 ?   <Form.Label
                         style={{
                             color: 'red',
@@ -118,7 +142,7 @@ export default function SignIn() {
                 : ""
             }
             {
-                JSON.stringify(error).includes('This password is too common.')
+                error.includes('This password is too common.')
                 ?   <Form.Label
                         style={{
                             color: 'red',
@@ -134,7 +158,7 @@ export default function SignIn() {
                 : ""
             }
             {
-                JSON.stringify(error).includes('This password is entirely numeric.')
+                error.includes('This password is entirely numeric.')
                 ?   <Form.Label
                         style={{
                             color: 'red',
@@ -150,7 +174,7 @@ export default function SignIn() {
                 : ""
             }
             {
-                JSON.stringify(error).includes("The two password fields didn't match.")
+                error.includes("The two password fields didn't match.")
                 ?   <Form.Label
                         style={{
                             color: 'red',
@@ -178,7 +202,7 @@ export default function SignIn() {
                 </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className='mb-3'>
-                <Form.Label>First name</Form.Label>
+                <Form.Label>Prenume</Form.Label>
                 <Form.Control 
                     required
                     placeholder='Introduceti prenumele'
@@ -189,7 +213,7 @@ export default function SignIn() {
                 </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className='mb-3'>
-                <Form.Label>Last name</Form.Label>
+                <Form.Label>Nume</Form.Label>
                 <Form.Control
                     required 
                     placeholder='Introduceti numele'
@@ -228,7 +252,7 @@ export default function SignIn() {
                 variant='success'
                 type='submit'
             >
-                Inregistrati-va
+                {signinButton}
             </Button>
         </Form>
     )

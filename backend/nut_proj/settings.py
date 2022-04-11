@@ -157,6 +157,7 @@ DJOSER = {
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'PASSWORD_RESET_CONFIRM_URL': 'breadcrumb/SCHIMBARE/PAROLA/{uid}/{token}',
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'SERIALIZERS': {
         # 'user_create': 'accounts.serializers.UserCreateSerializer',
         'user_create_password_retype': 'accounts.serializers.UserCreatePasswordRetypeSerializer',
