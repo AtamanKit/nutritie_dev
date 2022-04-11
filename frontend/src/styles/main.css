@@ -585,3 +585,31 @@ h2.categorii {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.verif_btn {
+    width: 20%;
+    background-color: #94b237;
+    border: none;
+    color: white;
+    height: 2.2rem;
+    box-shadow: 3px 2px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    margin-left: 20%;
+    /* margin: 0 0 0 15%;     */
+}
+
+.form-password-reset {
+    margin: 0 40% 8% 40%;
+}
+
+@media only screen and (max-width: 992px) {
+    .form-password-reset {
+        margin: 0 30% 8% 30%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .form-password-reset {
+        margin: 0 20% 8% 20%;
+    }
+}
