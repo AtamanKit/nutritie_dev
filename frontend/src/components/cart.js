@@ -136,7 +136,7 @@ export default function Cart() {
                             )
                         }
                     </Col>
-                    <Col style={{width: '25rem'}}>
+                    <Col className='total-cos'>
                         <Card>
                             <Card.Body>
                                 <Card.Title>
@@ -158,6 +158,7 @@ export default function Cart() {
                                 <Button 
                                     variant='success'
                                     className='offcanvas-btn'
+                                    onClick={() => window.location.pathname='/breadcrumb/ADRESA/ACHIZITII/'}
                                 >
                                     Continuati
                                 </Button>

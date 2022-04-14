@@ -24,6 +24,7 @@ import ActivationSuccess from './components/activation_success';
 import PasswordVerify from './components/password_verify';
 import PasswordReset from './components/password_reset';
 import PasswordSuccess from './components/password_success';
+import PurchaseAddress from './components/purchase_address';
 
 const pathname = elementPath();
 
@@ -59,6 +60,11 @@ function App() {
                     downWhite={`RUBRICA: ${spacePath(pathname.category)}`}
                 />
             :   []
+      }
+      {
+        pathname.type === 'ADRESA' && pathname.category === 'ACHIZITII'
+        ? <PurchaseAddress />
+        : []
       }
       {
         pathname.type === 'REUSITA' && pathname.category === 'PAROLA'
