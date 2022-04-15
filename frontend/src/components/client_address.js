@@ -1,12 +1,42 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 
-export default function PurchaseAddress() {
+export default function ClientAddress() {
     const [validated, setValidated] = useState(false);
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [telephone, setTelephone] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [checked, setChecked] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setValidated(true)
+
+        // if (checked) {
+            fetch('http://127.0.0.1:8000/accounts/clients/', {
+                method: 'POST',
+                headers: {
+                    'Content-Typs': 'application/json',
+                },
+                body: JSON.stringify({
+                    first_name: firstName,
+                    last_name: lastName,
+                    telephone: telephone,
+                    email: email,
+                    address: address,
+                    // country: document.getElementById('country').value,
+                    // region: document.getElementById('region').value,
+                })
+            })
+            .then(res => res.json())
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+        // }
+        // console.log(document.getElementById('country').value);
+        // console.log(document.getElementById('region').value)
     }
 
     return(
@@ -31,6 +61,7 @@ export default function PurchaseAddress() {
                         <Form.Control
                             required
                             placeholder='Introduceti prenume' 
+                            onChange={e => setFirstName(e.target.value)}
                         />
                         <Form.Control.Feedback type='invalid'>
                             Introduceti prenume
@@ -40,7 +71,8 @@ export default function PurchaseAddress() {
                         <Form.Label>Nume</Form.Label>
                         <Form.Control
                             required
-                            placeholder='Introduceti nume' 
+                            placeholder='Introduceti nume'
+                            onChange={e => setLastName(e.target.value)}
                         />
                         <Form.Control.Feedback type='invalid'>
                             Introduceti nume
@@ -53,6 +85,7 @@ export default function PurchaseAddress() {
                         <Form.Control
                             required
                             placeholder='Introduceti numar telefon'
+                            onChange={e => setTelephone(e.target.value)}
                         />
                         <Form.Control.Feedback type='invalid'>
                             Introduceti numar de telefon
@@ -64,6 +97,7 @@ export default function PurchaseAddress() {
                             required
                             type='email'
                             placeholder='Introduceci email'
+                            onChange={e => setEmail(e.target.value)}
                         />
                         <Form.Control.Feedback type='invalid'>
                             Introduceti un email valid
@@ -75,6 +109,7 @@ export default function PurchaseAddress() {
                     <Form.Control
                         required
                         placeholder='str., nr. bloc/nr. apartament (localitate rurala)'
+                        onChange={e => setAddress(e.target.value)}
                     />
                     <Form.Control.Feedback type='invalid'>
                         Introduceti adresa
@@ -86,9 +121,10 @@ export default function PurchaseAddress() {
                         <Form.Select 
                             required
                             defaultValue='Alegeti...'
+                            id='country'
                         >
-                            <option>Republica Moldova</option>
-                            <option>Romania</option>
+                            <option value='Moldova'>Republica Moldova</option>
+                            <option value='Romania'>Romania</option>
                         </Form.Select>
                         <Form.Control.Feedback type='invalid'>
                             Introduceti tara
@@ -99,39 +135,40 @@ export default function PurchaseAddress() {
                         <Form.Select 
                             required
                             defaultValue='Alegeti...'
+                            id='region'
                         >
-                            <option>Anenii Noi</option>
-                            <option>Basarabeasca</option>
-                            <option>Briceni</option>
-                            <option>Cahul</option>
-                            <option>Cantemir</option>
-                            <option>Calarasi</option>
-                            <option>Causeni</option>
-                            <option>Cimislia</option>
-                            <option>Criuleni</option>
-                            <option>Donduseni</option>
-                            <option>Drochia</option>
-                            <option>Dubasari</option>
-                            <option>Edinet</option>
-                            <option>Falesti</option>
-                            <option>Floresti</option>
-                            <option>Glodeni</option>
-                            <option>Hincesti</option>
-                            <option>Ialoveni</option>
-                            <option>Leova</option>
-                            <option>Nisporeni</option>
-                            <option>Ocnita</option>
-                            <option>Orhei</option>
-                            <option>Rezina</option>
-                            <option>Riscani</option>
-                            <option>Singerei</option>
-                            <option>Soroca</option>
-                            <option>Straseni</option>
-                            <option>Soldanesti</option>
-                            <option>Stefan Voda</option>
-                            <option>Taraclia</option>
-                            <option>Telenesti</option>
-                            <option>Ungheni</option>
+                            <option value='Anenii Noi'>Anenii Noi</option>
+                            <option value='Basarabeasca'>Basarabeasca</option>
+                            <option value='Briceni'>Briceni</option>
+                            <option value='Cahul'>Cahul</option>
+                            <option value='Cantemir'>Cantemir</option>
+                            <option value='Calarasi'>Calarasi</option>
+                            <option value='Causeni'>Causeni</option>
+                            <option value='Cimislia'>Cimislia</option>
+                            <option value='Criuleni'>Criuleni</option>
+                            <option value='Donduseni'>Donduseni</option>
+                            <option value='Drochia'>Drochia</option>
+                            <option value='Dubasari'>Dubasari</option>
+                            <option value='Edinet'>Edinet</option>
+                            <option value='Falesti'>Falesti</option>
+                            <option value='Floresti'>Floresti</option>
+                            <option value='Glodeni'>Glodeni</option>
+                            <option value='Hincesti'>Hincesti</option>
+                            <option value='Ialoveni'>Ialoveni</option>
+                            <option value='Leova'>Leova</option>
+                            <option value='Nisporeni'>Nisporeni</option>
+                            <option value='Ocnita'>Ocnita</option>
+                            <option value='Orhei'>Orhei</option>
+                            <option value='Rezina'>Rezina</option>
+                            <option value='Riscani'>Riscani</option>
+                            <option value='Singerei'>Singerei</option>
+                            <option value='Soroca'>Soroca</option>
+                            <option value='Straseni'>Straseni</option>
+                            <option value='Soldanesti'>Soldanesti</option>
+                            <option value='Stefan Voda'>Stefan Voda</option>
+                            <option value='Taraclia'>Taraclia</option>
+                            <option value='Telenesti'>Telenesti</option>
+                            <option value='Ungheni'>Ungheni</option>
                         </Form.Select>
                         <Form.Control.Feedback type='invalid'>
                             Introduceti regiunee
@@ -144,6 +181,7 @@ export default function PurchaseAddress() {
                         required
                         type='checkbox' 
                         label='Termeni si conditii'
+                        onChange={e => setChecked(e.target.checked)}
                     />
                     <p>
                         In urma inregistrarii datelor dumneavaostra

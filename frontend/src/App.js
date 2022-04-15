@@ -24,7 +24,7 @@ import ActivationSuccess from './components/activation_success';
 import PasswordVerify from './components/password_verify';
 import PasswordReset from './components/password_reset';
 import PasswordSuccess from './components/password_success';
-import PurchaseAddress from './components/purchase_address';
+import ClientAdress from './components/client_address';
 
 const pathname = elementPath();
 
@@ -63,7 +63,7 @@ function App() {
       }
       {
         pathname.type === 'ADRESA' && pathname.category === 'ACHIZITII'
-        ? <PurchaseAddress />
+        ? <ClientAdress />
         : []
       }
       {
