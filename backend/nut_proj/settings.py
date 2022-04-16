@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'ckeditor',
     'djoser',
+    'django_json_widget',
 ]
 
 MIDDLEWARE = [
@@ -172,8 +173,8 @@ DJOSER = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'rodionatamaniuc@gmail.com'
-EMAIL_HOST_PASSWORD = 'nkznnushddjiapgj'
+EMAIL_HOST_USER = 'vindecareorg@gmail.com'
+EMAIL_HOST_PASSWORD = 'nprlsxrrrlzwtwdn'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

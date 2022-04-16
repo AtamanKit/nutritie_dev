@@ -36,9 +36,12 @@ export const prodSlice = createSlice({
                 state.items.splice(state.items.indexOf(item), 1)
             }
         },
+        decrementProdAll: (state) => {
+            state.items.length = 0;
+        },
     }
 })
 
-export const { incrementProd, decrementProd, removeNumProd } = prodSlice.actions
+export const { incrementProd, decrementProd, removeNumProd, decrementProdAll } = prodSlice.actions
 
 export default prodSlice.reducer

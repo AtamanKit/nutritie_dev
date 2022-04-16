@@ -1,5 +1,6 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function ClientAddress() {
     const [validated, setValidated] = useState(false);
@@ -13,9 +14,45 @@ export default function ClientAddress() {
     const [city, setCity] = useState('');
     const [address, setAddress] = useState('');
 
+    const inCart = useSelector((state) => state.cart.items);
+    const count = useSelector((state) => state.prodCart.items);
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setValidated(true)
+
+        let products = []
+
+        inCart.map(productInCart => {
+            let control = false;
+            let quantity = '';
+            let total_price = '';
+
+            count.map(productCount => {
+                if (productInCart.id === productCount.id) {
+                    control = true;
+                    quantity = productCount.value;
+                    total_price = productCount.value * productInCart.price;
+                }
+            })
+                if (control) {
+                    products.push({
+                        'id': productInCart.id,
+                        'product': productInCart.title,
+                        'quantity': quantity,
+                        'price': productInCart.price,
+                        'total_price': total_price,
+                    })
+                } else {
+                    products.push({
+                        'id': productInCart.id,
+                        'product': productInCart.title,
+                        'quantity': 1,
+                        'price': productInCart.price,
+                        'total_price': productInCart.price,
+                    })
+                }
+        })
 
         if (checked) {
             fetch('http://127.0.0.1:8000/accounts/clients/', {
@@ -32,6 +69,7 @@ export default function ClientAddress() {
                     region: document.getElementById('region').value,
                     city: city,
                     address: address,
+                    products: products,
                 })
             })
             .then(res => res.json())
@@ -263,6 +301,7 @@ export default function ClientAddress() {
                     type='submit' 
                     variant='success'
                     className='login_btn'
+                    // onClick={() => console.log(count)}
                 >
                     Trimiteti date
                 </Button>

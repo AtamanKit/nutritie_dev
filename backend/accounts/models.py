@@ -19,5 +19,6 @@ class Client(models.Model):
     region = models.CharField(max_length=32)
     city = models.CharField(max_length=32)
     address = models.CharField(max_length=255, blank=True)
+    products = models.JSONField()
     watched = models.BooleanField(default=False)
     delivered = models.BooleanField(default=False)

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementProd, decrementProd, removeNumProd } from '../features/cart/prodSlice';
-import { increment, decrement } from '../features/cart/counterSlice';
-import { decrementCart } from '../features/cart/cartSlice';
+import { incrementProd, decrementProd, removeNumProd, decrementProdAll } from '../features/cart/prodSlice';
+import { increment, decrement, decrementAll } from '../features/cart/counterSlice';
+import { decrementCart, emptyCart } from '../features/cart/cartSlice';
 
 import { BsXLg } from 'react-icons/bs';
 
@@ -64,8 +64,8 @@ export default function CartOffcanvas(props) {
                                         <Card.Img
                                             src={product.image_desc}
                                             style={{
-                                                width: '6rem',
-                                                height: '6rem',
+                                                width: '7rem',
+                                                height: '7rem',
                                             }}
                                         />
                                     </a>
@@ -77,6 +77,7 @@ export default function CartOffcanvas(props) {
                                                 <h6>{product.title}</h6>
                                             </a>
                                         </div>
+                                        <p style={{color: 'rgb(0, 130, 255)', fontSize: '12px'}}>COD PRODUS: {product.id}</p>
                                         <div style={{display: 'flex'}}>
                                             <div style={{display: 'flex'}}>
                                                 <Button 
@@ -132,21 +133,27 @@ export default function CartOffcanvas(props) {
                     )}
                     )
             }
-            <Button 
-                variant='success' 
-                className='offcanvas-btn-sec'
-                onClick={
-                            props.navCartOffcanvas
-                        }
-            >
-                Vedeti cos
-            </Button>
-            <Button 
-                variant='success' 
-                className='offcanvas-btn'
-            >
-                Continuati
-            </Button>
+                <Button 
+                    variant='success' 
+                    className='offcanvas-btn-sec'
+                    // onClick={
+                    //             props.navCartOffcanvas
+                    //         }
+                    onClick={() => {
+                        dispatch(emptyCart());
+                        dispatch(decrementAll());
+                        dispatch(decrementProdAll());
+                    }}
+                >
+                    Goliti cos
+                </Button>
+                <Button 
+                    variant='success' 
+                    className='offcanvas-btn'
+                    onClick={() => window.location.pathname='/breadcrumb/ADRESA/ACHIZITII/'}
+                >
+                    Continuati
+                </Button>
             </React.Fragment>
         )
     }

@@ -19,9 +19,13 @@ export const cartSlice = createSlice({
                 state.items.splice(state.items.indexOf(item), 1)
             }
         },
+        emptyCart: (state) => {
+            state.items.length = 0;
+            // console.log('prbaSlice')
+        },
     }
 })
 
-export const { incrementCart, decrementCart } = cartSlice.actions
+export const { incrementCart, decrementCart, emptyCart } = cartSlice.actions
 
 export default cartSlice.reducer

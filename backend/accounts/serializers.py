@@ -67,6 +67,7 @@ class ClientSerializer(serializers.ModelSerializer):
             'address',
             'country',
             'region',
+            'products',
             'watched',
             'delivered',
         ]

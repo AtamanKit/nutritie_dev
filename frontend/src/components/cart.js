@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { incrementProd, decrementProd, removeNumProd } from '../features/cart/prodSlice';
-import { increment, decrement } from '../features/cart/counterSlice';
-import { decrementCart } from '../features/cart/cartSlice';
+import { incrementProd, decrementProd, removeNumProd, decrementProdAll } from '../features/cart/prodSlice';
+import { increment, decrement, decrementAll } from '../features/cart/counterSlice';
+import { decrementCart, emptyCart } from '../features/cart/cartSlice';
 
 import { CountText }  from './count_text';
 import cartImage from '../images/cart_300.png';
@@ -59,8 +59,8 @@ export default function Cart() {
                                                     <Card.Img
                                                         src={product.image_desc}
                                                         style={{
-                                                            width: '8rem',
-                                                            height: '8rem',
+                                                            width: '10rem',
+                                                            height: '10rem',
                                                         }}
                                                     />
                                                 </a>
@@ -83,8 +83,9 @@ export default function Cart() {
                                                             </OverlayTrigger>
                                                         </a>
                                                     </div>
+                                                    <div><p style={{color: 'rgb(0, 130, 255)', fontSize: '14px'}}>COD PRODUS: { product.id }</p></div>
                                                     <div>
-                                                        <h2>{ product.price * getNum(product.id) } lei</h2>
+                                                        <h5>{ product.price * getNum(product.id) } lei</h5>
                                                     </div>
                                                     <div style={{display: 'flex'}}>
                                                         <Button 
@@ -155,6 +156,20 @@ export default function Cart() {
                                 >
                                     PRETUL TOTAL: { total + 50 } lei
                                 </Card.Text>
+                                <Button 
+                                    variant='success' 
+                                    className='offcanvas-btn-sec'
+                                    // onClick={
+                                    //             props.navCartOffcanvas
+                                    //         }
+                                    onClick={() => {
+                                        dispatch(emptyCart());
+                                        dispatch(decrementAll());
+                                        dispatch(decrementProdAll())
+                                    }}
+                                >
+                                    Goliti cos
+                                </Button>
                                 <Button 
                                     variant='success'
                                     className='offcanvas-btn'

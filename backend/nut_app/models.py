@@ -73,7 +73,6 @@ class Products(models.Model):
     ]
 
     title = models.CharField(max_length=255, unique=True)
-    product_code = models.IntegerField(unique=True, blank=False, null=True)
     description = RichTextField(blank=True)
     administration = RichTextField(null=True, blank=True)
     content = RichTextField(null=True, blank=True)

@@ -15,10 +15,15 @@ import { spacePath, elementPath } from './utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementFunc } from '../features/cart/incrementFunc';
 import CartOffcanvas from './cart_offcanvas';
+// import { emptyCart } from '../features/cart/cartSlice';
 
 const pathname = elementPath()
 
 function Products(props) {
+    // const emptyCart = () => {
+    //     console.log('tata')
+    // }
+
     const [products, setProducts] = useState([]);
 
     const inCart = useSelector((state) => state.cart.items)
@@ -87,6 +92,7 @@ function Products(props) {
                                 </a>
                             </Card.Title>
                             </OverlayTrigger>
+                            <Card.Text style={{color: 'rgb(0, 130, 255)', fontSize: '15px'}}>COD PRODUS: {product.id}</Card.Text>
                             <Card.Text style={{color: 'rgb(200, 41, 41)'}}>{product.stock}</Card.Text>
                             <Card.Title><h1>{product.price} lei</h1></Card.Title>
                             <Button 
@@ -153,7 +159,8 @@ function Products(props) {
                 
                 <Offcanvas.Body>
                     <CartOffcanvas  
-                        navCartOffcanvas={props.navCartProd}
+                        // navCartOffcanvas={props.navCartProd}
+                        // emptyCart={emptyCart}
                     />                                
                 </Offcanvas.Body>
             </Offcanvas>
