@@ -173,7 +173,7 @@ export default function Cart() {
                                 <Button 
                                     variant='success'
                                     className='offcanvas-btn'
-                                    onClick={() => window.location.pathname='/breadcrumb/ADRESA/ACHIZITII/'}
+                                    onClick={() => window.location.pathname='/breadcrumb/ADRESA/VINZARI/'}
                                 >
                                     Continuati
                                 </Button>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'djoser',
     'django_json_widget',
+    'sales',
 ]
 
 MIDDLEWARE = [

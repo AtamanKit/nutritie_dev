@@ -6,7 +6,7 @@ from djoser.serializers import (
 
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import UserSocial, Client
+from .models import UserSocial
 
 
 class UserCreateSerializer(UserCreateSerializer):
@@ -53,22 +53,4 @@ class UserSocialSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'social_from',
-        ]
-
-class ClientSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Client
-        fields = [
-            'id',
-            'first_name',
-            'last_name',
-            'telephone',
-            'email',
-            'country',
-            'region',
-            'city',
-            'address',
-            'products',
-            'watched',
-            'delivered',
         ]

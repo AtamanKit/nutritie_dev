@@ -2,7 +2,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export default function ClientAddress() {
+export default function Order() {
     const [validated, setValidated] = useState(false);
 
     const [firstName, setFirstName] = useState('');
@@ -14,7 +14,7 @@ export default function ClientAddress() {
     const [city, setCity] = useState('');
     const [address, setAddress] = useState('');
     // const [resultEmail, setResultEmail] = useState('');
-    const [client, setClient] = useState('')
+    const [order, setOrder] = useState('')
 
     const inCart = useSelector((state) => state.cart.items);
     const count = useSelector((state) => state.prodCart.items);
@@ -57,7 +57,7 @@ export default function ClientAddress() {
         })
 
         if (checked) {
-            fetch('http://127.0.0.1:8000/accounts/clients/', {
+            fetch('http://127.0.0.1:8000/sales/orders/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,10 +75,10 @@ export default function ClientAddress() {
                 })
             })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => setOrder(result))
             .catch(error => console.log(error))
 
-            fetch('http://127.0.0.1:8000/purchase/', {
+            fetch('http://127.0.0.1:8000/orderemail/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,6 +86,7 @@ export default function ClientAddress() {
                 body: JSON.stringify({
                     email: email,
                     products: products,
+                    order: order,
                 }),
             })
             // .then(res => res.text())
