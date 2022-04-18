@@ -7,6 +7,7 @@ from django.utils.html import format_html
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'first_name',
         'last_name',
         'telephone',
@@ -17,10 +18,7 @@ class ClientAdmin(admin.ModelAdmin):
         'delivered',
     )
 
-    # readonly_fields = ('products',)
-
-    # def products_field(self, instance):
-    #     return instance.get_products().lstrip('[').rstrip(']')
+    readonly_fields = ('id',)
 
     formfield_overrides = {
         models.JSONField: {'widget': JSONEditorWidget}
