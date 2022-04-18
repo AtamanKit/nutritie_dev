@@ -13,6 +13,8 @@ export default function ClientAddress() {
     const [country, setCountry] = useState('Moldova');
     const [city, setCity] = useState('');
     const [address, setAddress] = useState('');
+    // const [resultEmail, setResultEmail] = useState('');
+    const [client, setClient] = useState('')
 
     const inCart = useSelector((state) => state.cart.items);
     const count = useSelector((state) => state.prodCart.items);
@@ -38,7 +40,7 @@ export default function ClientAddress() {
                 if (control) {
                     products.push({
                         'id': productInCart.id,
-                        'product': productInCart.title,
+                        'title': productInCart.title,
                         'quantity': quantity,
                         'price': productInCart.price,
                         'total_price': total_price,
@@ -46,7 +48,7 @@ export default function ClientAddress() {
                 } else {
                     products.push({
                         'id': productInCart.id,
-                        'product': productInCart.title,
+                        'title': productInCart.title,
                         'quantity': 1,
                         'price': productInCart.price,
                         'total_price': productInCart.price,
@@ -75,9 +77,21 @@ export default function ClientAddress() {
             .then(res => res.json())
             .then(result => console.log(result))
             .catch(error => console.log(error))
+
+            fetch('http://127.0.0.1:8000/purchase/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    products: products,
+                }),
+            })
+            // .then(res => res.text())
+            // .then(result => setResultEmail(result))
+            // .catch(error => console.log(error))
         }
-        // console.log(document.getElementById('country').value);
-        // console.log(document.getElementById('region').value)
     }
 
     return(

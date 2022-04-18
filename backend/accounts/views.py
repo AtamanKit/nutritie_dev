@@ -20,19 +20,33 @@ class ClientViewSet(viewsets.ModelViewSet):
 
 @api_view(['POST'])
 def purchase_email(request):
-    if request.method == 'POST':
-        subject = 'Email-l meu pentru tine'
 
-        template = get_template('email/purchase.html')
-        content = template.render()
+    if request.data['email'] != '':
+        if request.method == 'POST':
 
-        msg = EmailMessage(
-            subject,
-            content,
-            settings.EMAIL_HOST_USER,
-            [request.data['email']]
-        )
-        msg.content_subtype = 'html'
-        msg.send()
+            products = []
+            for product in request.data['products']:
+                products.append(product)
 
-    return Response(status=status.HTTP_201_CREATED)
+            context = {
+                'products': products,
+            }
+            
+            subject = 'Email-l meu pentru tine'
+
+            template = get_template('email/purchase.html')
+            content = template.render(context)
+
+            msg = EmailMessage(
+                subject,
+                content,
+                settings.EMAIL_HOST_USER,
+                [request.data['email']]
+            )
+            msg.content_subtype = 'html'
+            msg.send()
+            
+        return Response('email sent')
+    else:
+        return Response('email not provided')
+

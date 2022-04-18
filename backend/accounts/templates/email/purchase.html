@@ -7,7 +7,16 @@
     <title>Purchase</title>
 </head>
 <body>
-    <h1>Email de proba</h1>
-    <p>Ura, s-a primit!</p>
+    <h1>Confirmare achizitie</h1>
+    <p>Ati primit acest mesaj pentru ca ati cumparat urmatoarele produse</p>
+    {% for product in products %}
+        <style>
+            table {
+                font-family: arial;
+                border-collapse: collapse;
+                width: 100%;
+            }
+        </style>
+    {% endfor %}
 </body>
 </html>
