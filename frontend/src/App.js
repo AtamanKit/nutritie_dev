@@ -25,6 +25,7 @@ import PasswordVerify from './components/password_verify';
 import PasswordReset from './components/password_reset';
 import PasswordSuccess from './components/password_success';
 import Order from './components/order';
+// import OrderConfirmation from './components/order_confirmation';
 
 const pathname = elementPath();
 
@@ -61,8 +62,13 @@ function App() {
                 />
             :   []
       }
+      {/* {
+        pathname.type === 'CONFIRMARE' && pathname.category === 'VINZARI'
+        ? <OrderConfirmation />
+        : []
+      } */}
       {
-        pathname.type === 'ADRESA' && pathname.category === 'VINZARI'
+        pathname.type === 'COMANDA' && pathname.category === 'VINZARI'
         ? <Order />
         : []
       }

@@ -84,7 +84,7 @@ export default function Cart() {
                                                             </OverlayTrigger>
                                                         </a>
                                                     </div>
-                                                    <div><p style={{color: 'rgb(0, 130, 255)', fontSize: '14px'}}>COD PRODUS: { product.id }</p></div>
+                                                    <div><p style={{color: 'rgb(0, 130, 255)', fontSize: '14px'}}>ID PRODUS: { product.id }</p></div>
                                                     <div>
                                                         <h5>{ product.price * getNum(product.id) } lei</h5>
                                                     </div>
@@ -174,7 +174,7 @@ export default function Cart() {
                                 <Button 
                                     variant='success'
                                     className='offcanvas-btn'
-                                    onClick={() => window.location.pathname=`/breadcrumb/ADRESA/VINZARI/${total}/${delivery}/`}
+                                    onClick={() => window.location.pathname=`/breadcrumb/COMANDA/VINZARI/${total}/${delivery}/`}
                                 >
                                     Continuati
                                 </Button>

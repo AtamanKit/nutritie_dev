@@ -32,93 +32,93 @@
             padding: 3% 0 3% 0;
         "
     >
-        Confirmare achizitie
+        CONFIRMARE COMANDA
     </h1>
     <h3 style="
             padding: 0 0 0 1rem;
             color: #a61c1c;
         "
     >
-        Numar comanda: {{ order.id }}
+        ID comanda: {{ command_id }}
     </h3>
     <p>Ati primit acest mesaj pentru ca ati comandat urmatoarele produse:</p>
-        <table>
-            <tr style="background-color: #dddddd">
-                <th>Produs</th>
-                <th>Cod produs</th>
-                <th>Cantitate</th>
-                <th>Pret, unitate</th>
-                <th>Pret, total</th>
-            </tr>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.title }}</td>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.total_price }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <div style="
-                background-color: #dddddd; 
-                height: 7px;
-                width: 70%;
-            "
-        >
-        </div>
-        <table>
+    <table>
+        <tr style="background-color: #dddddd">
+            <th>Produs</th>
+            <th>ID produs</th>
+            <th>Cantitate</th>
+            <th>Pret, unitate</th>
+            <th>Pret, total</th>
+        </tr>
+        {% for product in products %}
             <tr>
-                <td>Pret produse</td>
-                <td>200 lei</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.id }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.total_price }}</td>
             </tr>
-            <tr>
-                <td>Pret livrare</td>
-                <te>40 lei</te>
-            </tr>
-            <tr style="background-color: #dddddd">
-                <td style="font-weight: bold">Pret total</td>
-                <td style="font-weight: bold">240 lei</td>
-            </tr>
-        </table>
-        <h3 style="
-                padding: 0 0 0 1rem;
-            "
-        >
-            Adresa livrarii
-        </h3>
-        <p>Inainte de livrare veti fi contactat de catre un reprezentant de-al nostru pentru a confirma livrarea</p>
-        <table style="width: 40%; background-color: #eeeeee">
-            <tr>
-                <td style="font-weight: bold">Tara</td>
-                <td>{{ country }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Raion/Judet</td>
-                <td>{{ region }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Localitate</td>
-                <td>{{ city }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Adresa</td>
-                <td>{{ address }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Nume</td>
-                <td>{{ last_name }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Prenume</td>
-                <td>{{ first_name }}</td>
-            </tr>
-            <tr>
-                <td style="font-weight: bold">Telefon</td>
-                <td>{{ telephone }}</td>
-            </tr>
-        </table>
-        <p>Va multumit ca ati ales site-l nostru!</p>
-        <p>Echipa: VINDECARE.ORG, adresa email: vindecareorg@gmail.com</p>
+        {% endfor %}
+    </table>
+    <div style="
+            background-color: #dddddd; 
+            height: 7px;
+            width: 70%;
+        "
+    >
+    </div>
+    <table>
+        <tr>
+            <td>Pret produse</td>
+            <td>{{ products_price }} lei</td>
+        </tr>
+        <tr>
+            <td>Pret livrare</td>
+            <td>{{ delivery_price }} lei</td>
+        </tr>
+        <tr style="background-color: #dddddd">
+            <td style="font-weight: bold">Pret total</td>
+            <td style="font-weight: bold">{{ total_price }} lei</td>
+        </tr>
+    </table>
+    <h3 style="
+            padding: 0 0 0 1rem;
+        "
+    >
+        Adresa livrarii
+    </h3>
+    <p>Inainte de livrare veti fi contactat de catre un reprezentant de-al nostru pentru a confirma livrarea</p>
+    <table style="width: 40%; background-color: #eeeeee">
+        <tr>
+            <td style="font-weight: bold">Tara</td>
+            <td>{{ country }}</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">Raion/Judet</td>
+            <td>{{ region }}</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">Localitate</td>
+            <td>{{ city }}</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">Adresa</td>
+            <td>{{ address }}</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">Nume</td>
+            <td>{{ last_name }}</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">Prenume</td>
+            <td>{{ first_name }}</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">Telefon</td>
+            <td>{{ telephone }}</td>
+        </tr>
+    </table>
+    <p>Va multumit ca ati ales site-l nostru!</p>
+    <p>Echipa: VINDECARE.ORG, adresa email: vindecareorg@gmail.com</p>
 </body>
 </html>

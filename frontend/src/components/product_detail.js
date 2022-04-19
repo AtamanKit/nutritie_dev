@@ -70,7 +70,7 @@ function ProductDetail(props) {
                         {product.title}
                     </h1>
                     <div>
-                        <h6 style={{color: '#94b237', display: 'inline'}}>COD PRODUS:</h6>
+                        <h6 style={{color: '#94b237', display: 'inline'}}>ID PRODUS:</h6>
                         <h6 style={{display: 'inline'}}> {product.product_code}</h6>
                     </div>
                     <div>

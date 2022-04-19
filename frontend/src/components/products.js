@@ -92,7 +92,7 @@ function Products(props) {
                                 </a>
                             </Card.Title>
                             </OverlayTrigger>
-                            <Card.Text style={{color: 'rgb(0, 130, 255)', fontSize: '15px'}}>COD PRODUS: {product.id}</Card.Text>
+                            <Card.Text style={{color: 'rgb(0, 130, 255)', fontSize: '15px'}}>ID PRODUS: {product.id}</Card.Text>
                             <Card.Text style={{color: 'rgb(200, 41, 41)'}}>{product.stock}</Card.Text>
                             <Card.Title><h1>{product.price} lei</h1></Card.Title>
                             <Button 

@@ -452,12 +452,6 @@ h2.categorii {
     /* margin: '0 0.5rem 0 0.5rem'; */
 }
 
-.cart-card-offcanvas {
-    /* width: 70%; */
-    /* margin-left: 17%; */
-    /* border: none; */
-}
-
 .cart-btn-offcanvas {
     margin: 0 1rem 0 0;
     background-color: #e4e4e4;
@@ -624,8 +618,16 @@ h2.categorii {
     }
 }
 
-/* @media only screen and (max-width: 992px) {
-    .total-cos {
-        width: 100%;
-    }
+table {
+    font-family: arial;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+/* tr:nth-child(even) {
+    background-color: #dddddd;
 } */

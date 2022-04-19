@@ -8,6 +8,7 @@ from .models import Order
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'id',
+        'command_id',
         'first_name',
         'last_name',
         'telephone',
@@ -18,7 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
         'delivered',
     )
 
-    readonly_fields = ('id',)
+    # readonly_fields = ('id',)
 
     formfield_overrides = {
         models.JSONField: {'widget': JSONEditorWidget}

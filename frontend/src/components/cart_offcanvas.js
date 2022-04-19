@@ -77,7 +77,7 @@ export default function CartOffcanvas(props) {
                                                 <h6>{product.title}</h6>
                                             </a>
                                         </div>
-                                        <p style={{color: 'rgb(0, 130, 255)', fontSize: '12px'}}>COD PRODUS: {product.id}</p>
+                                        <p style={{color: 'rgb(0, 130, 255)', fontSize: '12px'}}>ID PRODUS: {product.id}</p>
                                         <div style={{display: 'flex'}}>
                                             <div style={{display: 'flex'}}>
                                                 <Button 
@@ -150,7 +150,7 @@ export default function CartOffcanvas(props) {
                 <Button 
                     variant='success' 
                     className='offcanvas-btn'
-                    onClick={() => window.location.pathname='/breadcrumb/ADRESA/VINZARI/'}
+                    onClick={() => window.location.pathname='/breadcrumb/COMANDA/VINZARI/'}
                 >
                     Continuati
                 </Button>
