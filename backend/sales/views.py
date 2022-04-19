@@ -20,13 +20,20 @@ def order_email(request):
     if request.data['email'] != '':
         if request.method == 'POST':
 
-            products = []
-            for product in request.data['products']:
-                products.append(product)
+            # products = []
+            # for product in request.data['products']:
+            #     products.append(product)
 
             context = {
-                'products': products,
-                'order': request.data['order']
+                'products': request.data['products'],
+                'first_name': request.data['first_name'],
+                'last_name': request.data['last_name'],
+                'telephone': request.data['telephone'],
+                'email': request.data['email'],
+                'country': request.data['country'],
+                'region': request.data['region'],
+                'city': request.data['city'],
+                'address': request.data['address'],
             }
             
             subject = 'Comanda receptionata VINDECARE.ORG'

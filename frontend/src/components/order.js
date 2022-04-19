@@ -86,7 +86,14 @@ export default function Order() {
                 body: JSON.stringify({
                     email: email,
                     products: products,
-                    order: order,
+                    first_name: firstName,
+                    last_name: lastName,
+                    telephone: telephone,
+                    email: email,
+                    country: country,
+                    region: document.getElementById('region').value,
+                    city: city,
+                    address: address,
                 }),
             })
             // .then(res => res.text())

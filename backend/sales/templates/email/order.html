@@ -87,34 +87,38 @@
         >
             Adresa livrarii
         </h3>
+        <p>Inainte de livrare veti fi contactat de catre un reprezentant de-al nostru pentru a confirma livrarea</p>
         <table style="width: 40%; background-color: #eeeeee">
             <tr>
-                <td>Tara</td>
-                <td>{{ order.country }}</td>
+                <td style="font-weight: bold">Tara</td>
+                <td>{{ country }}</td>
             </tr>
             <tr>
-                <td>Raion/Judet</td>
-                <td>{{ order.region }}</td>
+                <td style="font-weight: bold">Raion/Judet</td>
+                <td>{{ region }}</td>
             </tr>
             <tr>
-                <td>Localitate</td>
-                <td>{{ order.city }}</td>
+                <td style="font-weight: bold">Localitate</td>
+                <td>{{ city }}</td>
             </tr>
             <tr>
-                <td>Nume</td>
-                <td>{{ order.last_name }}</td>
+                <td style="font-weight: bold">Adresa</td>
+                <td>{{ address }}</td>
             </tr>
             <tr>
-                <td>Prenume</td>
-                <td>{{ order.first_name }}</td>
+                <td style="font-weight: bold">Nume</td>
+                <td>{{ last_name }}</td>
             </tr>
             <tr>
-                <td>Telefon</td>
-                <td>{{ order.telephone }}</td>
+                <td style="font-weight: bold">Prenume</td>
+                <td>{{ first_name }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Telefon</td>
+                <td>{{ telephone }}</td>
             </tr>
         </table>
-        <p>Va multumit ca ati ales site-l nostru</p>
-        <p>Echipa: VINDECARE.ORG</p>
-        <p>Adresa email: vindecareorg@gmail.com</p>
+        <p>Va multumit ca ati ales site-l nostru!</p>
+        <p>Echipa: VINDECARE.ORG, adresa email: vindecareorg@gmail.com</p>
 </body>
 </html>

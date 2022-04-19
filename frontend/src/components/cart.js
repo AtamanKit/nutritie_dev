@@ -14,6 +14,7 @@ export default function Cart() {
     const inCart = useSelector((state) => state.cart.items);
     const count = useSelector((state) => state.prodCart.items);
     let total = 0;
+    let delivery = 50;
 
     function getNum(id) {
         const item = count.find(item => item.id === id)
@@ -147,14 +148,14 @@ export default function Cart() {
                                     Pret producte: { total } lei
                                 </Card.Text>
                                 <Card.Text>
-                                    Pret livrare: 50 lei
+                                    Pret livrare: { delivery } lei
                                 </Card.Text>
                                 <div style={{borderBottom: '2px solid', marginBottom: '1rem'}} />
                                 <Card.Text style={{
                                         color: 'rgb(200, 41, 41)'  
                                     }}
                                 >
-                                    PRETUL TOTAL: { total + 50 } lei
+                                    PRETUL TOTAL: { total + delivery } lei
                                 </Card.Text>
                                 <Button 
                                     variant='success' 
@@ -173,7 +174,7 @@ export default function Cart() {
                                 <Button 
                                     variant='success'
                                     className='offcanvas-btn'
-                                    onClick={() => window.location.pathname='/breadcrumb/ADRESA/VINZARI/'}
+                                    onClick={() => window.location.pathname=`/breadcrumb/ADRESA/VINZARI/${total}/${delivery}/`}
                                 >
                                     Continuati
                                 </Button>
