@@ -3,7 +3,7 @@ export default function OrderConfirmation(props) {
         <div
             style={{
                 textAlign: 'center',
-                margin: '10% 10% 10% 10%',
+                margin: '8% 10% 5% 10%',
                 color: 'rgb(80, 80, 80)',
             }}
         >
@@ -19,13 +19,16 @@ export default function OrderConfirmation(props) {
             <h3 style={{
                     padding: '0 0 0 1rem',
                     color: '#a61c1c',
+                    margin: '5% 0 0 0',
                 }}
             >
                 ID comanda: {props.commandID}
             </h3>
-            <p>Aceasta pagina reprezinta confirmarea comenzii pentru urmatoarele produse:</p>
+            <p style={{margin: '0 0 2% 0'}}>
+                Aceasta pagina reprezinta confirmarea comenzii pentru urmatoarele produse:
+            </p>
             <table>
-                <tr style={{ backgroundColor: '#dddddd' }}>
+                <tr style={{backgroundColor: '#dddddd'}}>
                     <th>Produs</th>
                     <th>ID produs</th>
                     <th>Cantitate</th>
@@ -60,13 +63,19 @@ export default function OrderConfirmation(props) {
                    <td>{ props.deliveryPrice }</td>
                 </tr>
                 <tr style={{ backgroundColor: '#dddddd' }}>
-                   <td>Pret total</td>
+                   <td style={{fontWeight: 'bold'}}>Pret total</td>
                    <td>{ props.totalPrice }</td>
                 </tr>
             </table>
             <h3 style={{ margin: '5% 0 0 0' }}>
                 Adresa livrarii
             </h3>
+            <p style={{margin: '0 0 0 0'}}>
+                Inainte de livrare ve-ti fi contactat de catre un reprezentat de-al nostru pentru a confirma livrarea.
+            </p>
+            <p style={{margin: '0 0 2% 0'}}>
+                In caz ca ati prezentat un email valid, veti primi o versiune email a acestei pagini. 
+            </p>
             <table style={{width: '70%', backgroundColor: '#eeeeee'}}>
                 <tr>
                     <td style={{fontWeight: 'bold'}}>Tara</td>
@@ -97,6 +106,10 @@ export default function OrderConfirmation(props) {
                     <td>{ props.telephone }</td>
                 </tr>                       
             </table>
+            <p style={{margin: '5% 0 0 0'}}>Va multumit ca ati ales site-l nostru!</p>
+            <p>
+                Echipa: <a style={{color: 'blue', textDecoration: 'underline'}} href='https://vindecare.org'>VINDECARE.ORG</a>, adresa email: <a href='#' style={{color: 'blue'}}>vindecareorg@gmail.com</a>
+            </p>
         </div>
     )
 }

@@ -1,6 +1,10 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { decrementProdAll } from '../features/cart/prodSlice';
+import { decrementAll } from '../features/cart/counterSlice';
+import { emptyCart } from '../features/cart/cartSlice';
 
 import OrderConfirmation from './order_confirmation';
 
@@ -10,10 +14,13 @@ let deliveryPrice = 0;
 let totalPrice = 0;
 
 let products = [];
+let commandID = 0;
 
 export default function Order() {
     
     const [validated, setValidated] = useState(false);
+
+    const dispatch = useDispatch();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -81,7 +88,6 @@ export default function Order() {
                 }
         })
 
-        let commandID = 0
         lastOrder.map(field => {
             commandID = field.id + 1
         })
@@ -134,6 +140,10 @@ export default function Order() {
             // .then(res => res.text())
             // .then(result => setResultEmail(result))
             // .catch(error => console.log(error))
+
+            dispatch(emptyCart());
+            dispatch(decrementAll());
+            dispatch(decrementProdAll());
         }
     }
 
@@ -151,6 +161,7 @@ export default function Order() {
         // window.location.pathname = '/breadcrumb/CONFIRMARE/VINZARI/'
         return(
             <OrderConfirmation
+                commandID={commandID}
                 firstName={firstName}
                 lastName={lastName}
                 telephone={telephone}

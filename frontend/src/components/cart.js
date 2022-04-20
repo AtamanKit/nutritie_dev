@@ -6,13 +6,13 @@ import { incrementProd, decrementProd, removeNumProd, decrementProdAll } from '.
 import { increment, decrement, decrementAll } from '../features/cart/counterSlice';
 import { decrementCart, emptyCart } from '../features/cart/cartSlice';
 
-import { CountText }  from './count_text';
 import cartImage from '../images/cart_300.png';
 
 export default function Cart() {
     const dispatch = useDispatch();
     const inCart = useSelector((state) => state.cart.items);
     const count = useSelector((state) => state.prodCart.items);
+    
     let total = 0;
     let delivery = 50;
 

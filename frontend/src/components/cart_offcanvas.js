@@ -17,6 +17,9 @@ export default function CartOffcanvas(props) {
     const inCart = useSelector((state) => state.cart.items)
     const count = useSelector((state) => state.prodCart.items);
 
+    let total = 0;
+    let delivery = 50;
+
     function getNum(id) {
         const item = count.find(item => item.id === id)
         if (item) {
@@ -50,6 +53,7 @@ export default function CartOffcanvas(props) {
             <React.Fragment>
             {
                 inCart.map(product => {
+                    total += product.price * getNum(product.id);
                     const hrefpath = `/breadcrumb/PRODUS/${product.category.title}/${product.id}`
                     return(
                         <Card className='cart-card-offcanvas'>
@@ -108,7 +112,7 @@ export default function CartOffcanvas(props) {
                                                     +
                                                 </Button>
                                             </div>
-                                            <div style={{margin: '0 .2rem 0 1rem'}}>x</div>
+                                            {/* <div style={{margin: '0 .2rem 0 1rem'}}>x</div> */}
                                             <div>
                                                 { product.price * getNum(product.id) } lei
                                             </div>
@@ -150,7 +154,7 @@ export default function CartOffcanvas(props) {
                 <Button 
                     variant='success' 
                     className='offcanvas-btn'
-                    onClick={() => window.location.pathname='/breadcrumb/COMANDA/VINZARI/'}
+                    onClick={() => window.location.pathname=`/breadcrumb/COMANDA/VINZARI/${total}/${delivery}/`}
                 >
                     Continuati
                 </Button>
