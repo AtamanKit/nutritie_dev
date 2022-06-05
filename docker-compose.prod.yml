@@ -10,14 +10,16 @@ services:
       - 3000:3000
   
   api:
-    build: ./backend
-    command: python manage.py runserver 0.0.0.0:8000
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    command: gunicorn nut_proj.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./backend:/backend
     ports:
       - 8000:8000
     env_file:
-      - ./.env.dev.api
+      - ./.env.prod.api
     depends_on:
       - db
 
@@ -26,7 +28,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.dev.db
+      - ./.env.prod.db
 
 volumes:
   postgres_data:
