@@ -17,7 +17,7 @@ services:
     ports:
       - 8000:8000
     env_file:
-      - ./.env.dev.api
+      - ./backend/.env.dev.api
     depends_on:
       - db
 
@@ -26,7 +26,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.dev.db
+      - ./backend/.env.dev.db
 
 volumes:
   postgres_data:

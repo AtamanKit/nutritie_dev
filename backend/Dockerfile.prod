@@ -1,6 +1,9 @@
 FROM python:3.10-alpine3.15
 
-WORKDIR /backend
+RUN mkdir -p /home/backend
+ENV HOME=/home/backend
+
+WORKDIR $HOME
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -13,3 +16,9 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
+
+RUN addgroup backend && adduser -S -G backend backend
+RUN chown -R backend:backend $HOME
+USER backend
+
+
