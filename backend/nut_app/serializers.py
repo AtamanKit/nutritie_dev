@@ -12,6 +12,7 @@ class CategoriesSerializer(serializers.ModelSerializer):
             'image_desc',
         ]
 
+
 class CategorytitleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories
@@ -20,6 +21,7 @@ class CategorytitleSerializer(serializers.ModelSerializer):
             'title',
         ]
 
+
 class ArtcollSerializer(serializers.ModelSerializer):
     class Meta:
         model = Articlecollection
@@ -27,6 +29,7 @@ class ArtcollSerializer(serializers.ModelSerializer):
             'id',
             'title',
         ]
+
 
 class RemediesSerializer(serializers.ModelSerializer):
     category = ArtcollSerializer()
@@ -41,6 +44,7 @@ class RemediesSerializer(serializers.ModelSerializer):
             'category',
         ]
 
+
 class ArticlecollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Articlecollection
@@ -50,6 +54,7 @@ class ArticlecollectionSerializer(serializers.ModelSerializer):
             'image_desc',
         ]
 
+
 class ArticlefeatSerializer(serializers.ModelSerializer):
     article = RemediesSerializer()
 
@@ -58,6 +63,7 @@ class ArticlefeatSerializer(serializers.ModelSerializer):
         fields = [
             'article',
         ]
+
 
 class BrandsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -69,6 +75,7 @@ class BrandsSerializer(serializers.ModelSerializer):
             'image_desc',
         ]
 
+
 class BrandtoprodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brands
@@ -76,6 +83,7 @@ class BrandtoprodSerializer(serializers.ModelSerializer):
             'id',
             'title',
         ]
+
 
 class ProductsSerializer(serializers.ModelSerializer):
     category = CategorytitleSerializer()

@@ -12,5 +12,5 @@ router.register(r'brands', BrandsViewSet)
 router.register(r'products', ProductsViewSet, basename='products')
 
 urlpatterns = [
-    path('', include(router.urls))    
+    path('', include(router.urls))
 ]

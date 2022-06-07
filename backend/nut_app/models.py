@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from ckeditor.fields import RichTextField
 
+
 class Categories(models.Model):
     title = models.CharField(max_length=30, unique=True)
     description = models.TextField()
@@ -13,11 +14,12 @@ class Categories(models.Model):
 
     def clean(self):
         if self.image_desc.width != 863 or \
-            self.image_desc.height != 458:
+                self.image_desc.height != 458:
             raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
 
     def __str__(self):
         return self.title
+
 
 class Articlecollection(models.Model):
     title = models.CharField(max_length=255)
@@ -26,11 +28,12 @@ class Articlecollection(models.Model):
 
     def clean(self):
         if self.image_desc.width != 863 or \
-            self.image_desc.height !=458:
+                self.image_desc.height != 458:
             raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
 
     def __str__(self):
         return self.title
+
 
 class Remedies(models.Model):
     title = models.CharField(max_length=255, unique=True)
@@ -45,14 +48,16 @@ class Remedies(models.Model):
 
     def clean(self):
         if self.image_desc.width != 863 or \
-            self.image_desc.height != 458:
+                self.image_desc.height != 458:
             raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 863x458px")
 
 #    def __str__(self):
 #        return self.title
 
+
 class Articlefeat(models.Model):
     article = models.OneToOneField(Remedies, on_delete=models.CASCADE)
+
 
 class Brands(models.Model):
     title = models.CharField(max_length=255, unique=True)
@@ -65,6 +70,7 @@ class Brands(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Products(models.Model):
     IN_STOCK_CHOICES = [
@@ -91,7 +97,7 @@ class Products(models.Model):
 
     def clean(self):
         if self.image_desc.width != 1000 or \
-            self.image_desc.height != 1000:
+                self.image_desc.height != 1000:
             raise ValidationError("Dimensiunile imaginei trebuie sa corespunda 1000x1000px")
 
     def __str__(self):

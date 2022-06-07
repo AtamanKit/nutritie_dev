@@ -25,4 +25,5 @@ class OrderAdmin(admin.ModelAdmin):
         models.JSONField: {'widget': JSONEditorWidget}
     }
 
+
 admin.site.register(Order, OrderAdmin)

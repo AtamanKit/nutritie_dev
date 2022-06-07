@@ -21,6 +21,7 @@ class UserCreateSerializer(UserCreateSerializer):
             'last_name',
         ]
 
+
 class UserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerializer):
     class Meta:
         model = User
@@ -33,6 +34,7 @@ class UserCreatePasswordRetypeSerializer(UserCreatePasswordRetypeSerializer):
             'last_name',
         ]
 
+
 class UserSerializer(UserSerializer):
     class Meta:
         model = User
@@ -42,6 +44,7 @@ class UserSerializer(UserSerializer):
             'first_name',
             'last_name',
         ]
+
 
 class UserSocialSerializer(serializers.ModelSerializer):
     class Meta:

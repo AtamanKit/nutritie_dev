@@ -9,4 +9,5 @@ class UserSocialAdmin(admin.ModelAdmin):
         'email',
     )
 
+
 admin.site.register(UserSocial, UserSocialAdmin)

@@ -14,9 +14,11 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
+
 class LastOrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all().order_by('-id')[:1]
     serializer_class = OrderSerializer
+
 
 @api_view(['POST'])
 def order_email(request):
@@ -43,7 +45,7 @@ def order_email(request):
                 'delivery_price': request.data['delivery_price'],
                 'total_price': request.data['total_price'],
             }
-            
+
             subject = 'Comanda receptionata VINDECARE.ORG'
 
             template = get_template('email/order.html')
@@ -57,7 +59,7 @@ def order_email(request):
             )
             msg.content_subtype = 'html'
             msg.send()
-            
+
         return Response('email sent')
     else:
         return Response('email not provided')

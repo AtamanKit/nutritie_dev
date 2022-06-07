@@ -15,6 +15,10 @@ services:
       dockerfile: Dockerfile.prod
     command: gunicorn nut_proj.wsgi:application --bind 0.0.0.0:8000
     volumes:
+      - ./backend/accounts:/home/backend/accounts/
+      - ./backend/nut_app:/home/backend/nut_app/
+      - ./backend/nut_proj:/home/backend/nut_proj/
+      - ./backend/sales:/home/backend/sales/
       - static_volume:/home/backend/static/
       - media_volume:/home/backend/media/
     expose:
@@ -37,7 +41,7 @@ services:
       - static_volume:/home/backend/static/
       - media_volume:/home/backend/media/
     ports:
-      - 1337:80
+      - 80:8000
     depends_on:
       - api
 
