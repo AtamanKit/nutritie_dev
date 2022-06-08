@@ -30,7 +30,7 @@ function ProductDetail(props) {
     const handleShow = () => setShow(true)
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/products/${pathname.id}`;
+        const url = process.env.REACT_APP_SERVER + `/nut_app/products/${pathname.id}`;
 
         const fetchData = async() => {
             try {

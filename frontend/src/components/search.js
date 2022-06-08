@@ -10,7 +10,7 @@ function Search(props) {
 
     useEffect(() => {
 
-        const url = `http://127.0.0.1:8000/nut_app/${props.table}/?search=${spacePath(pathname.id)}`
+        const url = process.env.REACT_APP_SERVER + `/nut_app/${props.table}/?search=${spacePath(pathname.id)}`
 
         const fetchData = async() => {
             try {

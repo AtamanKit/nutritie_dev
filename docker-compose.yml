@@ -8,6 +8,8 @@ services:
       - ./frontend/public:/frontend/public
     ports:
       - 3000:3000
+    env_file:
+      - ./frontend/.env.dev.web
   
   api:
     build: ./backend

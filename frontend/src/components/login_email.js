@@ -34,7 +34,7 @@ export default function LoginEmail(props){
 
         setError('loading')
 
-        fetch('http://127.0.0.1:8000/auth/users/reset_password/', {
+        fetch(process.env.REACT_APP_SERVER + '/auth/users/reset_password/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default function LoginEmail(props){
     const getUser = tokens => {
         
         if (tokens.access) {
-            fetch('http://127.0.0.1:8000/auth/users/me/', {
+            fetch(process.env.REACT_APP_SERVER + '/auth/users/me/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ export default function LoginEmail(props){
         setLoader(true);
 
         if (email !== "" || password !== "") {
-            fetch('http://127.0.0.1:8000/auth/jwt/create/', {
+            fetch(process.env.REACT_APP_SERVER + '/auth/jwt/create/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

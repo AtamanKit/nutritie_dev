@@ -19,7 +19,7 @@ export default function PasswordReset() {
         const uid = urlList[4];
         const token = urlList[5];
 
-        fetch('http://127.0.0.1:8000/auth/users/reset_password_confirm/', {
+        fetch(process.env.REACT_APP_SERVER + '/auth/users/reset_password_confirm/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

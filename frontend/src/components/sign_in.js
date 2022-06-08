@@ -29,7 +29,7 @@ export default function SignIn() {
         setLoader(true);
 
         if (firstName || lastName !== "") {
-            fetch(`http://127.0.0.1:8000/auth/users/`, {
+            fetch(process.env.REACT_APP_SERVER + `/auth/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

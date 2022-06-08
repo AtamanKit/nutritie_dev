@@ -37,7 +37,7 @@ export default function Order() {
     const count = useSelector((state) => state.prodCart.items);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/sales/lastorder/', {
+        fetch(process.env.REACT_APP_SERVER + '/sales/lastorder/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ export default function Order() {
         })
 
         if (checked) {
-            fetch('http://127.0.0.1:8000/sales/orders/', {
+            fetch(process.env.REACT_APP_SERVER + '/sales/orders/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ export default function Order() {
             .then(result => setOrder(result))
             .catch(error => console.log(error))
 
-            fetch('http://127.0.0.1:8000/orderemail/', {
+            fetch(process.env.REACT_APP_SERVER + '/orderemail/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,0 +1,19 @@
+FROM node:17-alpine3.14
+
+RUN mkdir -p /home/frontend
+ENV HOME=/home/frontend
+
+WORKDIR $HOME
+
+COPY package*.json .
+RUN npm install --force
+
+COPY . .
+
+RUN addgroup frontend && adduser -S -G frontend frontend
+RUN chown -R frontend:frontend $HOME
+USER frontend
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

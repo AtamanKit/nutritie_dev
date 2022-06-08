@@ -10,7 +10,7 @@ function Articles(props){
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        const url = `http://127.0.0.1:8000/nut_app/remedies/`;
+        const url = process.env.REACT_APP_SERVER + `/nut_app/remedies/`;
 
         const fetchData = async() => {
             try {

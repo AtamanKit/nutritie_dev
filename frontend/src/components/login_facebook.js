@@ -24,7 +24,7 @@ export default function LoginFacebook() {
 
         dispatch(addUser(user))
 
-        fetch('http://127.0.0.1:8000/accounts/usersocial/', {
+        fetch(process.env.REACT_APP_SERVER + '/accounts/usersocial/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

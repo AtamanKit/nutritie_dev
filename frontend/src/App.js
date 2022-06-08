@@ -28,6 +28,10 @@ import Order from './components/order';
 // import OrderConfirmation from './components/order_confirmation';
 
 const pathname = elementPath();
+const api_nut_app_categories = process.env.REACT_APP_SERVER
+                                + '/nut_app/categories/';
+const api_nut_app_articlecollections = process.env.REACT_APP_SERVER
+                                        + '/nut_app/articlecollections/';
 
 function App() {
   const homeApRef = useRef(null);
@@ -151,7 +155,7 @@ function App() {
         text = 'Accesati una din categorii pentru a vedea produsele'
       />
       <Categories 
-        url = 'http://127.0.0.1:8000/nut_app/categories/'
+        url = {api_nut_app_categories}
         type = 'PRODUSE'
       />
       <SectionTitle 
@@ -175,7 +179,7 @@ function App() {
         text = 'Accesati una din categorii pentru a vedea articolele'
       />
       <Categories 
-        url = 'http://127.0.0.1:8000/nut_app/articlecollections/'
+        url = {api_nut_app_articlecollections}
         type = 'ARTICOLE'
       />
       <SectionTitle 

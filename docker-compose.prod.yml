@@ -2,12 +2,16 @@ version: '3.9'
 
 services:
   web:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.prod
     volumes:
       - ./frontend/src:/frontend/src
       - ./frontend/public:/frontend/public
     ports:
       - 3000:3000
+    env_file:
+      - ./frontend/.env.prod.web
   
   api:
     build: 
@@ -15,10 +19,6 @@ services:
       dockerfile: Dockerfile.prod
     command: gunicorn nut_proj.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./backend/accounts:/home/backend/accounts/
-      - ./backend/nut_app:/home/backend/nut_app/
-      - ./backend/nut_proj:/home/backend/nut_proj/
-      - ./backend/sales:/home/backend/sales/
       - static_volume:/home/backend/static/
       - media_volume:/home/backend/media/
     expose:
