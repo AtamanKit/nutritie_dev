@@ -10,9 +10,9 @@ RUN npm install --force
 
 COPY . .
 
-RUN addgroup frontend && adduser -S -G frontend frontend
-RUN chown -R frontend:frontend $HOME
-USER frontend
+# RUN addgroup frontend && adduser -S -G frontend frontend
+# RUN chown -R frontend:frontend $HOME
+# USER frontend
 
 EXPOSE 3000
 

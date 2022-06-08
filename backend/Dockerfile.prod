@@ -33,12 +33,14 @@ RUN pip install --no-cache /wheels/*
 
 COPY . .
 
+RUN chmod +x $HOME/entrypoint.sh
+
 RUN mkdir $HOME/static
 
 RUN addgroup backend && adduser -S -G backend backend
 RUN chown -R backend:backend $HOME
 USER backend
 
-# ENTRYPOINT ['/home/backend/entrypoint.sh']
+# ENTRYPOINT ["/home/backend/entrypoint.sh"]
 
 

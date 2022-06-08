@@ -5,9 +5,6 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile.prod
-    volumes:
-      - ./frontend/src:/frontend/src
-      - ./frontend/public:/frontend/public
     ports:
       - 3000:3000
     env_file:
@@ -20,7 +17,7 @@ services:
     command: gunicorn nut_proj.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/backend/static/
-      - media_volume:/home/backend/media/
+      - ./backend/media/:/home/backend/media/
     expose:
       - 8000
     env_file:
@@ -39,7 +36,7 @@ services:
     build: ./nginx
     volumes:
       - static_volume:/home/backend/static/
-      - media_volume:/home/backend/media/
+      - ./backend/media/:/home/backend/media/
     ports:
       - 80:8000
     depends_on:
@@ -48,4 +45,3 @@ services:
 volumes:
   postgres_data:
   static_volume:
-  media_volume:
