@@ -1,19 +1,20 @@
-FROM node:17-alpine3.14
+# Stage 1: Build stage
+FROM node:17-alpine3.14 as builder
 
-RUN mkdir -p /home/frontend
-ENV HOME=/home/frontend
-
-WORKDIR $HOME
+WORKDIR /home/src/app
 
 COPY package*.json .
 RUN npm install --force
 
 COPY . .
 
-# RUN addgroup frontend && adduser -S -G frontend frontend
-# RUN chown -R frontend:frontend $HOME
-# USER frontend
+RUN npm run build 
+
+# Stage 2: Production
+FROM nginx:1.21-alpine
+
+COPY --from=builder /home/src/app /usr/share/nginx/html
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

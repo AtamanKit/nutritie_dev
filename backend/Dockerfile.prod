@@ -1,4 +1,4 @@
-########## Builder ########
+# Stage 1: Build stage
 FROM python:3.10-alpine3.15 as builder
 
 WORKDIR /usr/src/app
@@ -19,7 +19,7 @@ RUN flake8 --ignore=E501,F401 .
 COPY ./requirements.txt .
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
 
-########## Final ###########
+# Stage 2: Production
 FROM python:3.10-alpine3.15
 
 RUN mkdir -p /home/backend
@@ -41,6 +41,6 @@ RUN addgroup backend && adduser -S -G backend backend
 RUN chown -R backend:backend $HOME
 USER backend
 
-# ENTRYPOINT ["/home/backend/entrypoint.sh"]
+ENTRYPOINT ["/home/backend/entrypoint.sh"]
 
 
