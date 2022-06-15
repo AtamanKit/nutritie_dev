@@ -6,7 +6,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.prod
     ports:
-      - 3000:3000
+      - 80:80
     env_file:
       - ./frontend/.env.prod.web
   
@@ -38,7 +38,7 @@ services:
       - static_volume:/home/backend/static/
       - ./backend/media/:/home/backend/media/
     ports:
-      - 80:8000
+      - 8000:8000
     depends_on:
       - api
 
