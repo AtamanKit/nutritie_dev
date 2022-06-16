@@ -6,18 +6,18 @@ from django.conf.urls.static import static
 from sales.views import order_email
 
 urlpatterns = [
-    path('orderemail/', order_email),
-    path('sales/', include('sales.urls')),
+    path('api/orderemail/', order_email),
+    path('api/sales/', include('sales.urls')),
 
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('api/auth/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.jwt')),
 
     # path('api/token/', TokenObtainPairView.as_view()),
 
-    path('accounts/', include('accounts.urls')),
+    path('api/accounts/', include('accounts.urls')),
 
-    path('nut_app/', include('nut_app.urls')),
-    path('admin/', admin.site.urls),
+    path('api/nut_app/', include('nut_app.urls')),
+    path('api/admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
