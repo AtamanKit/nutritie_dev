@@ -6,7 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../features/auth/userSlice';
 
-import { refreshTokenSetup } from './utils.js';
+import { refreshTokenSetup, apiUrl } from './utils.js';
 
 const clientId = '537614791430-jfsbnar7suuapta69j3im2hiqd2ncutl.apps.googleusercontent.com';
 
@@ -29,7 +29,7 @@ function LoginGoogle() {
 
         window.location.reload();
 
-        fetch(process.env.REACT_APP_SERVER + `/accounts/usersocial/`, {
+        fetch(apiUrl() + `/accounts/usersocial/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

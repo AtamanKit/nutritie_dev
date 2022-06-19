@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import RemedyDetail from './remedy_detail';
-import { FiChevronsRight } from 'react-icons/fi'
+import { FiChevronsRight } from 'react-icons/fi';
+
+import { apiUrl } from './utils';
 
 function SideList(props) {
     const[list, setList] = useState([]);
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + `/nut_app/${props.list}/`;
+        const url = apiUrl() + `/nut_app/${props.list}/`;
 
         const fetchData = async() => {
             try {

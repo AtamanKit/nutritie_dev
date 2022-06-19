@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
-import { quatesHtml, elementPath } from './utils';
+import { quatesHtml, elementPath, apiUrl } from './utils';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementFunc } from '../features/cart/incrementFunc';
@@ -30,7 +30,7 @@ function ProductDetail(props) {
     const handleShow = () => setShow(true)
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + `/nut_app/products/${pathname.id}`;
+        const url = apiUrl() + `/nut_app/products/${pathname.id}`;
 
         const fetchData = async() => {
             try {

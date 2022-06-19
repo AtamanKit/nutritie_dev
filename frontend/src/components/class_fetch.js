@@ -6,7 +6,7 @@ class ClassFetch extends React.Component {
     }
 
     componentDidMount() {
-        fetch(process.env.REACT_APP_SERVER + '/categories/', {
+        fetch(apiUrl() + '/categories/', {
             method: 'GET',
         })
         .then(res => res.json())

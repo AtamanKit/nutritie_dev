@@ -1,7 +1,7 @@
 import { Tooltip, OverlayTrigger, Row, Col, Card, CardGroup, Button } from 'react-bootstrap';
 import React, {useEffect, useState } from 'react';
 import { CountText } from './count_text';
-import { elementPath } from './utils';
+import { elementPath, apiUrl } from './utils';
 
 const pathname = elementPath()
 
@@ -10,7 +10,7 @@ function Articles(props){
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + `/nut_app/remedies/`;
+        const url = apiUrl() + `/nut_app/remedies/`;
 
         const fetchData = async() => {
             try {

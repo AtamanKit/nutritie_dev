@@ -1,11 +1,12 @@
 import { CardGroup, Card, Button, Figure, Row, Col } from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
+import { apiUrl } from './utils';
 
 function Brands(props){
     const [brands, setBrands] = useState('');
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + '/nut_app/brands/';
+        const url = apiUrl() + '/nut_app/brands/';
 
         const fetchData = async() => {
             try {

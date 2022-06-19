@@ -16,7 +16,7 @@ FROM node:17-alpine3.14
 WORKDIR /home/frontend/
 
 COPY --from=builder /home/src/app/build/ /home/frontend/
-# COPY --from=builder /home/src/app/nginx.conf /etc/nginx/conf.d/default.conf
+# COPY --from=builder /home/src/app/.env.prod.web /home/frontend/
 
 # For information only
 # EXPOSE 80

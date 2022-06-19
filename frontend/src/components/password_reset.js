@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+import { apiUrl } from './utils';
+
 export default function PasswordReset() {
     const [validated, setValidated] = useState(false);
 
@@ -19,7 +21,7 @@ export default function PasswordReset() {
         const uid = urlList[4];
         const token = urlList[5];
 
-        fetch(process.env.REACT_APP_SERVER + '/auth/users/reset_password_confirm/', {
+        fetch(apiUrl() + '/auth/users/reset_password_confirm/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

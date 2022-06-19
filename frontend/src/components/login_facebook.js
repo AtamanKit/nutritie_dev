@@ -4,6 +4,8 @@ import FacebookLogin from 'react-facebook-login';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../features/auth/userSlice';
 
+import { apiUrl } from './utils';
+
 export default function LoginFacebook() {
     const dispatch = useDispatch();
 
@@ -24,7 +26,7 @@ export default function LoginFacebook() {
 
         dispatch(addUser(user))
 
-        fetch(process.env.REACT_APP_SERVER + '/accounts/usersocial/', {
+        fetch(apiUrl() + '/accounts/usersocial/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -34,3 +34,13 @@ export function refreshTokenSetup(res) {
 
     setTimeout(refreshToken, refreshTiming);
 }
+
+export function apiUrl() {
+    let url = ''
+    if (process.env.NODE_ENV === 'production') {
+        url = 'http://localhost/api';
+    } else {
+        url = 'http://127.0.0.1:8000/api';
+    };
+    return url;
+}

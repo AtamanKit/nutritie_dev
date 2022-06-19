@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+import { apiUrl } from './utils';
+
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -29,7 +31,7 @@ export default function SignIn() {
         setLoader(true);
 
         if (firstName || lastName !== "") {
-            fetch(process.env.REACT_APP_SERVER + `/auth/users/`, {
+            fetch(apiUrl() + `/auth/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

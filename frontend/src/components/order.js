@@ -8,6 +8,8 @@ import { emptyCart } from '../features/cart/cartSlice';
 
 import OrderConfirmation from './order_confirmation';
 
+import { apiUrl } from './utils';
+
 
 let productsPrice = 0;
 let deliveryPrice = 0;
@@ -37,7 +39,7 @@ export default function Order() {
     const count = useSelector((state) => state.prodCart.items);
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_SERVER + '/sales/lastorder/', {
+        fetch(apiUrl() + '/sales/lastorder/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +95,7 @@ export default function Order() {
         })
 
         if (checked) {
-            fetch(process.env.REACT_APP_SERVER + '/sales/orders/', {
+            fetch(apiUrl() + '/sales/orders/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +117,7 @@ export default function Order() {
             .then(result => setOrder(result))
             .catch(error => console.log(error))
 
-            fetch(process.env.REACT_APP_SERVER + '/orderemail/', {
+            fetch(apiUrl() + '/orderemail/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

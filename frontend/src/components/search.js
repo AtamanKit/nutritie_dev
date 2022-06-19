@@ -1,7 +1,7 @@
 import { Tooltip, OverlayTrigger, Card, Button, Row, Col, Figure } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { CountText }  from './count_text';
-import { spacePath, elementPath, quatesHtml } from './utils';
+import { spacePath, elementPath, apiUrl } from './utils';
 
 const pathname = elementPath()
 
@@ -10,7 +10,7 @@ function Search(props) {
 
     useEffect(() => {
 
-        const url = process.env.REACT_APP_SERVER + `/nut_app/${props.table}/?search=${spacePath(pathname.id)}`
+        const url = apiUrl() + `/nut_app/${props.table}/?search=${spacePath(pathname.id)}`
 
         const fetchData = async() => {
             try {

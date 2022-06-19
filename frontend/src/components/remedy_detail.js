@@ -2,7 +2,7 @@ import { Tooltip, OverlayTrigger, Card, CardGroup, Tabs, Tab, Button, Row, Col, 
 import React, { useEffect, useState } from 'react';
 import BreadProd from './bread_prod';
 import SideList from './side_list';
-import { quatesHtml, elementPath } from './utils'
+import { quatesHtml, elementPath, apiUrl } from './utils'
 
 const pathname = elementPath()
 
@@ -10,7 +10,7 @@ function RemedyDetail() {
     const [remedy, setRemedy] = useState([]);
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + `/nut_app/remedies/${pathname.id}`;
+        const url = apiUrl() + `/nut_app/remedies/${pathname.id}`;
 
         const fetchData = async() => {
             try {

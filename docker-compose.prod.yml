@@ -4,14 +4,14 @@ services:
   web:
     build: 
       context: ./frontend
-      dockerfile: Dockerfile
-    # volumes:
-      # - react_build:/home/frontend/
+      dockerfile: Dockerfile.prod
+    volumes:
+      - react_build:/home/frontend/
     #   - ./backend/media/:/home/backend/media/
-    ports:
-      - 3000:3000
-    env_file:
-      - ./frontend/.env.prod.web
+    # ports:
+    #   - 3000:3000
+    # env_file:
+    #   - ./frontend/.env.prod.web
     # depends_on:
     #   - api
   
@@ -42,7 +42,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      # - react_build:/home/frontend/
+      - react_build:/home/frontend/
       - static_volume:/home/backend/static/
       - ./backend/media/:/home/backend/media/
     ports:
@@ -53,5 +53,5 @@ services:
 
 volumes:
   postgres_data:
-  # react_build:
+  react_build:
   static_volume:

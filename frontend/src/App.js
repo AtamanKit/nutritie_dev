@@ -25,13 +25,18 @@ import PasswordVerify from './components/password_verify';
 import PasswordReset from './components/password_reset';
 import PasswordSuccess from './components/password_success';
 import Order from './components/order';
+import { apiUrl } from './components/utils';
 // import OrderConfirmation from './components/order_confirmation';
 
 const pathname = elementPath();
-const api_nut_app_categories = process.env.REACT_APP_SERVER
-                                + '/nut_app/categories/';
-const api_nut_app_articlecollections = process.env.REACT_APP_SERVER
-                                        + '/nut_app/articlecollections/';
+const api_nut_app_categories = apiUrl() + '/nut_app/categories/';
+const api_nut_app_articlecollections = apiUrl() + '/nut_app/articlecollections/';
+
+// const api_nut_app_categories = apiUrl()
+//                                 + '/nut_app/categories/';
+// const api_nut_app_articlecollections = apiUrl()
+//                                         + '/nut_app/articlecollections/';
+
 
 function App() {
   const homeApRef = useRef(null);

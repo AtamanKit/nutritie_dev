@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../features/auth/userSlice';
+import { apiUrl } from './utils';
 // import user_image from '../images/user_image.jpg'
 
 export default function LoginEmail(props){
@@ -34,7 +35,7 @@ export default function LoginEmail(props){
 
         setError('loading')
 
-        fetch(process.env.REACT_APP_SERVER + '/auth/users/reset_password/', {
+        fetch(apiUrl() + '/auth/users/reset_password/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ export default function LoginEmail(props){
     const getUser = tokens => {
         
         if (tokens.access) {
-            fetch(process.env.REACT_APP_SERVER + '/auth/users/me/', {
+            fetch(apiUrl() + '/auth/users/me/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ export default function LoginEmail(props){
         setLoader(true);
 
         if (email !== "" || password !== "") {
-            fetch(process.env.REACT_APP_SERVER + '/auth/jwt/create/', {
+            fetch(apiUrl() + '/auth/jwt/create/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

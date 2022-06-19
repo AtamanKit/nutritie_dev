@@ -1,6 +1,8 @@
 import { CardGroup, Card, Button, Carousel } from 'react-bootstrap';
 import React, {useEffect, useState } from 'react';
 import { CountText } from './count_text';
+
+import { apiUrl } from './utils';
 // import { quatesHtml } from './quates_html';
 
 function Remedies(props){
@@ -8,7 +10,7 @@ function Remedies(props){
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + '/nut_app/articlefeats/';
+        const url = apiUrl() + '/nut_app/articlefeats/';
 
         const fetchData = async() => {
             try {

@@ -1,4 +1,5 @@
 import { Button } from 'react-bootstrap';
+import { apiUrl } from './utils';
 
 export default function ActivationAccount() {
     const handleActivate = () => {
@@ -6,7 +7,7 @@ export default function ActivationAccount() {
         const uid = urlList[4];
         const token = urlList[5];
 
-        fetch(process.env.REACT_APP_SERVER + '/auth/users/activation/', {
+        fetch(apiUrl() + '/auth/users/activation/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

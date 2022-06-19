@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
 import { CountText }  from './count_text';
-import { spacePath, elementPath } from './utils';
+import { spacePath, elementPath, apiUrl } from './utils';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementFunc } from '../features/cart/incrementFunc';
@@ -18,6 +18,8 @@ import CartOffcanvas from './cart_offcanvas';
 // import { emptyCart } from '../features/cart/cartSlice';
 
 const pathname = elementPath()
+
+// console.log(api_url)
 
 function Products(props) {
     // const emptyCart = () => {
@@ -35,7 +37,7 @@ function Products(props) {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        const url = process.env.REACT_APP_SERVER + '/nut_app/products/'
+        const url = apiUrl() + '/nut_app/products/'
 
         const fetchData = async() => {
             try {
