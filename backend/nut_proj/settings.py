@@ -22,18 +22,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', default=False)
+DEBUG = bool(os.environ.get("DEBUG"))
 
-if bool(DEBUG):
+if DEBUG:
     ALLOWED_HOSTS = []
     CORS_ALLOWED_ORIGINS = [
         'http://localhost:3000',
     ]
 else:
-    ALLOWED_HOSTS = ['.vindecare.org']
+    ALLOWED_HOSTS = ['.vindecare.org', 'localhost']
     CORS_ALLOWED_ORIGINS = []
 
 # Application definition
+print(DEBUG)
+print(ALLOWED_HOSTS)
+print(CORS_ALLOWED_ORIGINS)
 
 INSTALLED_APPS = [
     'django.contrib.admin',

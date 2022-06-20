@@ -40,7 +40,7 @@ export function apiUrl() {
     if (process.env.NODE_ENV === 'production') {
         url = 'http://localhost/api';
     } else {
-        url = 'http://127.0.0.1:8000/api';
+        url = 'http://localhost:8000/api';
     };
     return url;
 }
