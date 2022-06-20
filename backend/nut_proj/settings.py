@@ -31,13 +31,9 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = ['.vindecare.org', 'localhost']
-    CORS_ALLOWED_ORIGINS = []
+    CORS_ALLOWED_ORIGINS = ['.vindecare.org']
 
 # Application definition
-print(DEBUG)
-print(ALLOWED_HOSTS)
-print(CORS_ALLOWED_ORIGINS)
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
