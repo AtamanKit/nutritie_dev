@@ -31,7 +31,7 @@ if DEBUG:
     ]
 else:
     ALLOWED_HOSTS = ['.vindecare.org', 'localhost']
-    CORS_ALLOWED_ORIGINS = ['.vindecare.org']
+    CORS_ALLOWED_ORIGINS = []
 
 # Application definition
 INSTALLED_APPS = [
