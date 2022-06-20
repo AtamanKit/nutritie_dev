@@ -7,13 +7,6 @@ services:
       dockerfile: Dockerfile.prod
     volumes:
       - react_build:/home/frontend/
-    #   - ./backend/media/:/home/backend/media/
-    # ports:
-    #   - 3000:3000
-    # env_file:
-    #   - ./frontend/.env.prod.web
-    # depends_on:
-    #   - api
   
   api:
     build: 
