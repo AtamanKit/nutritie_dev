@@ -24,14 +24,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG"))
 
+CSRF_TRUSTED_ORIGINS = ['https://vindecare.org']
+ALLOWED_HOSTS = ['.vindecare.org']
+
 if DEBUG:
     ALLOWED_HOSTS = []
     CORS_ALLOWED_ORIGINS = [
         'http://localhost:3000',
     ]
-else:
-    ALLOWED_HOSTS = ['.vindecare.org', 'localhost']
-    CORS_ALLOWED_ORIGINS = []
 
 # Application definition
 INSTALLED_APPS = [

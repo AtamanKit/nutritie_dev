@@ -6,6 +6,7 @@ import {
     Row, 
     Col,
     Offcanvas,
+    Spinner,
 } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { ImCart } from 'react-icons/im';
@@ -142,6 +143,18 @@ function Products(props) {
     
     return (
         <React.Fragment>
+            {
+                products.length === 0
+                ?   <div class="spinner">
+                        <Spinner
+                            animation="border"
+                            role="status"
+                        >
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div>
+                :   []
+            }
             <Row xs={1} md={5}>
                 {
                     products.map(product => 

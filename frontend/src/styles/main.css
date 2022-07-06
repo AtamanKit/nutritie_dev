@@ -628,6 +628,8 @@ td, th {
     text-align: left;
     padding: 8px;
 }
-/* tr:nth-child(even) {
-    background-color: #dddddd;
-} */
+.spinner {
+    text-align: center;
+    height: 100vh;
+    padding-top: 20%;
+}
