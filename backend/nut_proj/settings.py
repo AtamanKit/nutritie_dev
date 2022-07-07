@@ -23,12 +23,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG"))
+# DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = ['https://vindecare.org']
-ALLOWED_HOSTS = ['.vindecare.org']
+ALLOWED_HOSTS = ['localhost']
 
 if DEBUG:
-    ALLOWED_HOSTS = []
     CORS_ALLOWED_ORIGINS = [
         'http://localhost:3000',
     ]
